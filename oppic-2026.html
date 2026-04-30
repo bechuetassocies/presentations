@@ -138,6 +138,9 @@ img { max-width: 100%; display: block; }
   object-fit: cover;
   object-position: center 60%;
 }
+@media (max-width: 800px) {
+  .oppic-hero img { max-height: 50vh; }
+}
 
 .oppic-hero-meta {
   display: grid;
@@ -487,6 +490,11 @@ img { max-width: 100%; display: block; }
   font-style: normal;
   padding-left: 32px;
 }
+@media (max-width: 800px) {
+  .case-pullquote { margin: 60px auto; }
+  .case-pullquote blockquote { padding-left: 20px; }
+  .case-pullquote cite { padding-left: 20px; }
+}
 
 /* ================================================================
    8 · CASE STUDY LISCH — variante secondaire (plus textuelle)
@@ -584,6 +592,9 @@ img { max-width: 100%; display: block; }
   color: var(--noir);
   margin-bottom: 8px;
   display: block;
+}
+@media (max-width: 800px) {
+  .oppic-2026 .big-stat { font-size: clamp(72px, 22vw, 120px); }
 }
 .oppic-2026 .big-stat-label {
   font-size: 13px;
@@ -858,7 +869,35 @@ img { max-width: 100%; display: block; }
   .oppic-cta { padding: 80px var(--page-pad); }
   .oppic-totop { right: 16px; bottom: 16px; padding: 12px 16px; font-size: 10px; }
   .oppic-totop .label { display: none; }
-  .mininav { display: none; }
+
+  /* Mini-nav mobile : scrollable horizontalement (au lieu d'être cachée) */
+  .mininav {
+    padding: 12px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox : cache la scrollbar */
+  }
+  .mininav::-webkit-scrollbar { display: none; } /* Chrome/Safari : cache la scrollbar */
+  .mininav__list {
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding: 0 var(--page-pad);
+    width: max-content; /* la liste s'étire selon le contenu */
+  }
+  .mininav__list .label {
+    display: none; /* on masque "Sommaire" pour gagner de la place */
+  }
+  .mininav__item {
+    flex-shrink: 0; /* empêche les items d'être compressés */
+  }
+  .mininav__item a {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .mininav__num {
+    font-size: 9px;
+  }
 }
 @media (max-width: 500px) {
   .agence-figures { grid-template-columns: 1fr; }
