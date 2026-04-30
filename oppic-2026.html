@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bechu & Associés — Note à l'OPPIC · Patrimoine en activité</title>
+<meta name="description" content="Note de méthode adressée à l'OPPIC sur le double régime MOP/ACMH, à partir des opérations de Dijon (CIGV) et de la Gare Lisch.">
+
+<style>
+/* ================================================================
+   PAGE OPPIC — Bechu & Associés
+   Adaptation de la grammaire fiche projet "Hunnu" pour une note
+   éditoriale adressée à un commanditaire institutionnel.
+   Tout-en-un : HTML + CSS + JS dans un seul fichier (GitHub Pages).
+   ================================================================ */
+
+/* === Police officielle Bechu — Altform === */
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Light.woff2') format('woff2'),
+       url('fonts/Altform-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-LightItalic.woff2') format('woff2'),
+       url('fonts/Altform-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Regular.woff2') format('woff2'),
+       url('fonts/Altform-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-RegularItalic.woff2') format('woff2'),
+       url('fonts/Altform-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Bold.woff2') format('woff2'),
+       url('fonts/Altform-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-BoldItalic.woff2') format('woff2'),
+       url('fonts/Altform-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --noir: #1B1B1B;
+  --blanc: #FFFFFF;
+  --gris-fin: rgba(27,27,27,0.08);
+  --gris-trait: rgba(27,27,27,0.15);
+  --gris-texte: rgba(27,27,27,0.55);
+  --gris-soft: #F5F4F1;
+  --img-bg: #efefef;
+  --page-pad: 40px;
+  --max-w: 1600px;
+  --text-w: 1100px;
+  --note-w: 780px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Altform', -apple-system, sans-serif;
+  color: var(--noir);
+  background: var(--blanc);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.oppic-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ================================================================
+   1 · BANDEAU DE TÊTE — destinataire + date
+   Très sobre, format note officielle
+   ================================================================ */
+.oppic-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 28px var(--page-pad);
+  border-bottom: 1px solid var(--gris-fin);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+.oppic-header strong {
+  color: var(--noir);
+  font-weight: 600;
+  margin-right: 28px;
+  letter-spacing: 0.15em;
+}
+.oppic-header .header-meta {
+  text-align: right;
+}
+
+/* ================================================================
+   2 · HERO — image dominante + bandeau d'adresse
+   ================================================================ */
+.oppic-hero {
+  background: var(--img-bg);
+  position: relative;
+}
+.oppic-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+.oppic-hero-meta {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: baseline;
+  padding: 32px var(--page-pad);
+  border-bottom: 1px solid var(--noir);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+}
+.oppic-hero-meta .destination {
+  color: var(--noir);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.oppic-hero-meta .ref {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--gris-texte);
+  font-size: 13px;
+}
+
+/* ================================================================
+   3 · TITRE — note d'objet
+   ================================================================ */
+.oppic-title {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 90px var(--page-pad) 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.oppic-title .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 24px;
+  display: block;
+}
+.oppic-title h1 {
+  font-size: clamp(40px, 5.5vw, 78px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.oppic-title h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.oppic-title .lede {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.65;
+  color: var(--noir);
+  font-weight: 400;
+  max-width: 460px;
+  margin-left: auto;
+}
+.oppic-title .lede em {
+  font-style: italic;
+  color: var(--gris-texte);
+}
+
+/* ================================================================
+   4 · MINI-NAV — sticky horizontale (apparaît au scroll)
+   ================================================================ */
+.mininav {
+  position: sticky;
+  top: 0;
+  background: var(--blanc);
+  border-top: 1px solid var(--noir);
+  border-bottom: 1px solid var(--gris-fin);
+  z-index: 90;
+  padding: 16px var(--page-pad);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.oppic-page.is-scrolled .mininav {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mininav__list {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.mininav__list .label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-right: 12px;
+}
+.mininav__item a {
+  font-size: 13px;
+  color: var(--gris-texte);
+  font-weight: 400;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.mininav__item a:hover {
+  color: var(--noir);
+}
+.mininav__item.is-active a {
+  color: var(--noir);
+  border-bottom-color: var(--noir);
+  font-weight: 500;
+}
+.mininav__num {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gris-texte);
+  letter-spacing: 0.05em;
+}
+.mininav__item.is-active .mininav__num {
+  color: var(--noir);
+}
+
+/* ================================================================
+   5 · CORPS DE LA NOTE — typographie éditoriale
+   ================================================================ */
+.oppic-section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px var(--page-pad);
+}
+
+.oppic-section--narrow {
+  max-width: var(--note-w);
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(28px, 3.4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  max-width: 900px;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+
+.note-prose {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.note-prose p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  color: var(--noir);
+  margin-bottom: 1.4em;
+  font-weight: 400;
+}
+.note-prose p.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 1.6em;
+  letter-spacing: -0.005em;
+}
+.note-prose em {
+  font-style: italic;
+}
+.note-prose strong {
+  font-weight: 600;
+}
+
+/* ================================================================
+   6 · BLOC INTRO MOP/ACMH — fond clair, marquant
+   ================================================================ */
+.oppic-intro {
+  background: var(--gris-soft);
+  padding: 100px var(--page-pad);
+  border-top: 1px solid var(--gris-fin);
+  border-bottom: 1px solid var(--gris-fin);
+}
+.oppic-intro-inner {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+
+/* ================================================================
+   7 · CASE STUDY — Dijon (cas principal, déployé)
+   ================================================================ */
+.case-study {
+  position: relative;
+}
+
+.case-header {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px var(--page-pad) 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  border-top: 1px solid var(--noir);
+}
+.case-header-left .case-num {
+  font-size: clamp(56px, 7vw, 110px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--gris-trait);
+  margin-bottom: 20px;
+}
+.case-header-left h2 {
+  font-size: clamp(30px, 3.6vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.case-header-left h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.case-header-right {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  display: grid;
+  gap: 14px;
+  max-width: 380px;
+  margin-left: auto;
+}
+.case-fact {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gris-fin);
+}
+.case-fact dt {
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+.case-fact dd {
+  color: var(--noir);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+/* image dominante */
+.case-image-full {
+  margin: 60px var(--page-pad) 0;
+}
+.case-image-full img {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  height: auto;
+  background: var(--img-bg);
+}
+.case-image-full figcaption {
+  max-width: var(--note-w);
+  margin: 18px auto 0;
+  font-size: 12px;
+  color: var(--gris-texte);
+  letter-spacing: 0.02em;
+  font-style: italic;
+  text-align: center;
+}
+
+/* gallery 2-3 colonnes */
+.case-gallery {
+  max-width: var(--max-w);
+  margin: 60px auto;
+  padding: 0 var(--page-pad);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+.case-gallery .case-gal-col {
+  display: grid;
+  gap: 24px;
+}
+.case-gallery img {
+  width: 100%;
+  height: auto;
+  background: var(--img-bg);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* pull quote */
+.case-pullquote {
+  max-width: var(--note-w);
+  margin: 100px auto;
+  padding: 0 var(--page-pad);
+  text-align: left;
+}
+.case-pullquote blockquote {
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--noir);
+  letter-spacing: -0.01em;
+  font-style: italic;
+  border-left: 2px solid var(--noir);
+  padding-left: 32px;
+}
+.case-pullquote cite {
+  display: block;
+  margin-top: 24px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  font-style: normal;
+  padding-left: 32px;
+}
+
+/* ================================================================
+   8 · CASE STUDY LISCH — variante secondaire (plus textuelle)
+   ================================================================ */
+.case-lisch {
+  background: var(--noir);
+  color: var(--blanc);
+  padding: 100px var(--page-pad);
+  margin-top: 60px;
+}
+.case-lisch .case-header {
+  border-top: none;
+  padding: 0;
+  max-width: var(--max-w);
+  margin: 0 auto 60px;
+  color: var(--blanc);
+}
+.case-lisch .case-header-left .case-num {
+  color: rgba(255,255,255,0.18);
+}
+.case-lisch .case-fact {
+  border-bottom-color: rgba(255,255,255,0.12);
+}
+.case-lisch .case-fact dt,
+.case-lisch .case-header-right {
+  color: rgba(255,255,255,0.55);
+}
+.case-lisch .case-fact dd {
+  color: var(--blanc);
+}
+.case-lisch .note-prose {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.case-lisch .note-prose p {
+  color: rgba(255,255,255,0.85);
+}
+.case-lisch .note-prose strong {
+  color: var(--blanc);
+}
+.case-lisch .case-images-row {
+  max-width: var(--max-w);
+  margin: 70px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.case-lisch .case-images-row img {
+  width: 100%;
+  height: auto;
+  background: rgba(255,255,255,0.05);
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+.case-lisch .case-images-row figcaption {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  margin-top: 12px;
+  font-style: italic;
+}
+.case-lisch .case-drawings {
+  max-width: var(--max-w);
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.case-lisch .case-drawings img {
+  width: 100%;
+  height: auto;
+  background: var(--blanc);
+  padding: 24px;
+  aspect-ratio: 16/10;
+  object-fit: contain;
+}
+
+/* ================================================================
+   9 · BLOC 2026 — exergue stratégique
+   ================================================================ */
+.oppic-2026 {
+  padding: 120px var(--page-pad);
+  position: relative;
+  background: var(--blanc);
+}
+.oppic-2026-inner {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.oppic-2026 .big-stat {
+  font-size: clamp(80px, 12vw, 180px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--noir);
+  margin-bottom: 8px;
+  display: block;
+}
+.oppic-2026 .big-stat-label {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 60px;
+  display: block;
+}
+.oppic-2026 .key-statement {
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--noir);
+  letter-spacing: -0.01em;
+  margin: 50px 0;
+  padding: 30px 0;
+  border-top: 1px solid var(--noir);
+  border-bottom: 1px solid var(--noir);
+}
+.oppic-2026 .key-statement em {
+  font-style: italic;
+  color: var(--gris-texte);
+}
+
+/* ================================================================
+   10 · AGENCE — chiffres + récit
+   ================================================================ */
+.oppic-agence {
+  background: var(--noir);
+  color: var(--blanc);
+  padding: 100px var(--page-pad);
+}
+.oppic-agence-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.oppic-agence .section-eyebrow,
+.oppic-agence .section-title {
+  color: var(--blanc);
+}
+.oppic-agence .section-eyebrow {
+  color: rgba(255,255,255,0.55);
+}
+
+.agence-figures {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 60px 0 80px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 80px;
+}
+.agence-figure {
+  padding-top: 24px;
+}
+.agence-figure .ag-fig-n {
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--blanc);
+  display: block;
+}
+.agence-figure .ag-fig-suffix {
+  font-size: 0.55em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.65);
+}
+.agence-figure .ag-fig-l {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  display: block;
+}
+
+.agence-text {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.agence-text p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.4em;
+}
+.agence-text p.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  color: var(--blanc);
+  font-weight: 400;
+  margin-bottom: 1.6em;
+}
+.agence-text strong {
+  color: var(--blanc);
+  font-weight: 500;
+}
+.agence-citation {
+  margin: 60px 0 0;
+  padding: 30px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-style: italic;
+  font-size: clamp(16px, 1.3vw, 20px);
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
+}
+.agence-citation cite {
+  display: block;
+  margin-top: 16px;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ================================================================
+   11 · CTA FINAL — pour aller plus loin
+   ================================================================ */
+.oppic-cta {
+  padding: 120px var(--page-pad);
+  text-align: left;
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.oppic-cta h2 {
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 36px;
+}
+.oppic-cta h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.oppic-cta p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  margin-bottom: 1.4em;
+  color: var(--noir);
+}
+.oppic-cta-actions {
+  margin-top: 50px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.oppic-cta-actions a.contact-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--noir);
+  border-bottom: 1px solid var(--noir);
+  padding: 6px 0;
+  transition: opacity 0.2s ease;
+}
+.oppic-cta-actions a.contact-link:hover {
+  opacity: 0.6;
+}
+
+/* ================================================================
+   12 · FOOTER
+   ================================================================ */
+.oppic-foot {
+  border-top: 1px solid var(--gris-fin);
+  padding: 40px var(--page-pad);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+
+/* ================================================================
+   13 · BACK TO TOP
+   ================================================================ */
+.oppic-totop {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  background: var(--noir);
+  color: var(--blanc);
+  border: none;
+  padding: 14px 22px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.oppic-totop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.oppic-totop:hover {
+  background: #000;
+}
+.oppic-totop svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* ================================================================
+   14 · ANIMATIONS — reveal on scroll
+   ================================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   15 · RESPONSIVE
+   ================================================================ */
+@media (max-width: 1100px) {
+  .case-header { grid-template-columns: 1fr; gap: 40px; }
+  .case-header-right { margin-left: 0; }
+  .agence-figures { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 800px) {
+  :root { --page-pad: 24px; }
+  .oppic-header { font-size: 10px; }
+  .oppic-header strong { display: block; margin-bottom: 4px; }
+  .oppic-title { grid-template-columns: 1fr; gap: 30px; padding: 60px var(--page-pad) 40px; }
+  .oppic-title .lede { margin-left: 0; }
+  .oppic-hero-meta { grid-template-columns: 1fr; gap: 12px; padding: 24px var(--page-pad); text-align: left; }
+  .oppic-section { padding: 60px var(--page-pad); }
+  .oppic-intro { padding: 70px var(--page-pad); }
+  .case-gallery { grid-template-columns: 1fr; }
+  .case-lisch .case-images-row { grid-template-columns: 1fr; }
+  .case-lisch .case-drawings { grid-template-columns: 1fr; }
+  .agence-figures { grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 40px 0 50px; margin-bottom: 50px; }
+  .oppic-2026 { padding: 80px var(--page-pad); }
+  .oppic-cta { padding: 80px var(--page-pad); }
+  .oppic-totop { right: 16px; bottom: 16px; padding: 12px 16px; font-size: 10px; }
+  .oppic-totop .label { display: none; }
+  .mininav { display: none; }
+}
+@media (max-width: 500px) {
+  .agence-figures { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="oppic-page">
+
+  <!-- =========================================================
+       1 · BANDEAU DE TÊTE
+       ========================================================= -->
+  <header class="oppic-header">
+    <div>
+      <strong>BECHU & ASSOCIÉS</strong>
+      Architectes — 82 rue Lecourbe, Paris 15ᵉ
+    </div>
+    <div class="header-meta">
+      Note · Édition 2026
+    </div>
+  </header>
+
+  <!-- =========================================================
+       2 · HERO — Cité Internationale Dijon (image dominante)
+       ========================================================= -->
+  <section class="oppic-hero">
+    <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/11/1-MAIN-IMAGE-CIGV-Dijon-A-Bechu-©Fernando-Javier-Urquijo-75-scaled.jpg"
+         alt="Cité Internationale de la Gastronomie et du Vin — Dijon, vue de la Cité Ferrandi au crépuscule"
+         loading="eager" fetchpriority="high">
+  </section>
+
+  <div class="oppic-hero-meta">
+    <span class="destination">À l'attention de l'OPPIC</span>
+    <span></span>
+    <span class="ref">Opérateur du patrimoine et des projets immobiliers de la Culture</span>
+  </div>
+
+  <!-- =========================================================
+       3 · TITRE — note d'objet
+       ========================================================= -->
+  <section class="oppic-title">
+    <div>
+      <span class="eyebrow">Note de méthode · Avril 2026</span>
+      <h1 data-reveal>Patrimoine <em>en activité.</em></h1>
+    </div>
+    <p class="lede" data-reveal>
+      Deux opérations conduites en double régime <em>MOP / ACMH</em>, sur des bâtis classés où le programme continue de fonctionner pendant les travaux. Une méthode pensée avant le chantier, et tenue pendant.
+    </p>
+  </section>
+
+  <!-- =========================================================
+       4 · MINI-NAV — sticky
+       ========================================================= -->
+  <nav class="mininav" aria-label="Sommaire de la note">
+    <ul class="mininav__list">
+      <li><span class="label">Sommaire</span></li>
+      <li class="mininav__item"><a href="#nav-contexte"><span class="mininav__num">01</span><span>Contexte</span></a></li>
+      <li class="mininav__item"><a href="#nav-dijon"><span class="mininav__num">02</span><span>Dijon</span></a></li>
+      <li class="mininav__item"><a href="#nav-lisch"><span class="mininav__num">03</span><span>Gare Lisch</span></a></li>
+      <li class="mininav__item"><a href="#nav-2026"><span class="mininav__num">04</span><span>Lecture 2026</span></a></li>
+      <li class="mininav__item"><a href="#nav-agence"><span class="mininav__num">05</span><span>L'agence</span></a></li>
+      <li class="mininav__item"><a href="#nav-suite"><span class="mininav__num">06</span><span>Pour aller plus loin</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================================
+       5 · INTRO — le double régime MOP/ACMH
+       ========================================================= -->
+  <section class="oppic-intro" id="nav-contexte">
+    <div class="oppic-intro-inner">
+      <span class="section-eyebrow" data-reveal>Préambule</span>
+      <h2 class="section-title" data-reveal>Ce que le double régime <em>MOP / ACMH</em> révèle.</h2>
+      <div class="note-prose" data-reveal>
+        <p class="lead">L'OPPIC travaille sur un vivier où une part significative des opérations se déroule en territoire ACMH&nbsp;: un architecte mandataire MOP qui intervient sur un bâti classé, dans un site qu'il ne maîtrise pas unilatéralement, avec un programme qui continue de fonctionner pendant les travaux.</p>
+        <p>Ce n'est pas une contrainte parmi d'autres — c'est la configuration qui détermine si une opération tient ou dérive. Elle suppose une organisation de maîtrise d'œuvre pensée avant le chantier, et une capacité à trancher en phases études des questions que le chantier ne peut plus rouvrir sans coût.</p>
+        <p>Ce document présente deux opérations où cette configuration s'est présentée sous des formes différentes. Non pour démontrer une capacité, mais parce que la méthode qui y a été appliquée est précisément celle que le contexte de 2026 rend pertinente pour l'OPPIC.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6 · CASE STUDY · DIJON — cas principal
+       ========================================================= -->
+  <section class="case-study" id="nav-dijon">
+
+    <div class="case-header">
+      <div class="case-header-left">
+        <div class="case-num" data-reveal>01</div>
+        <h2 data-reveal>Dijon — un programme vivant<br>dans un bâti <em>qui ne cède pas.</em></h2>
+      </div>
+      <dl class="case-header-right">
+        <div class="case-fact"><dt>Lieu</dt><dd>Hôtel-Dieu, Dijon</dd></div>
+        <div class="case-fact"><dt>Programme</dt><dd>Cité Internationale de la Gastronomie et du Vin</dd></div>
+        <div class="case-fact"><dt>Maîtrise d'œuvre</dt><dd>Bechu & Associés — co-traitance ACMH avec Alain-Charles Perrot</dd></div>
+        <div class="case-fact"><dt>Surface</dt><dd>17 bâtiments — patrimoine classé MH</dd></div>
+        <div class="case-fact"><dt>Statut</dt><dd>Livré · Enveloppe et délai tenus</dd></div>
+      </dl>
+    </div>
+
+    <!-- Image dominante -->
+    <figure class="case-image-full" data-reveal>
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/10/07.2022_BechuAssocies_Francois-Weckerle1-scaled.jpeg"
+           alt="Vue aérienne nocturne de l'Hôtel-Dieu de Dijon — la Cité Internationale de la Gastronomie et du Vin illuminée"
+           loading="lazy">
+      <figcaption>L'Hôtel-Dieu reconfiguré : 17 bâtiments dont la Grande Salle des malades du XIIIᵉ siècle, classée MH.</figcaption>
+    </figure>
+
+    <!-- Texte 1 -->
+    <div class="oppic-section oppic-section--narrow">
+      <div class="note-prose" data-reveal>
+        <p class="lead">La Cité Internationale de la Gastronomie et du Vin n'est pas, d'abord, une opération d'insertion contemporaine dans un patrimoine médiéval. C'est une question de programme.</p>
+        <p>Comment faire tenir, sur un même site de dix-sept bâtiments, un équipement culturel grand public, une école professionnelle à forte intensité d'usage, de la restauration, de l'hôtellerie, des espaces de dégustation — le tout dans l'ancien Hôtel-Dieu, dont la Grande Salle des malades du XIIIᵉ siècle est classée monument historique et n'est pas négociable dans sa structure&nbsp;?</p>
+        <p>La réponse n'est pas venue de la forme. Elle est venue d'un travail préalable, d'abord technique&nbsp;: désamiantage d'un ensemble dont l'état sanitaire avait été sous-estimé dans les premières évaluations, reprise de fondations en sous-nappe phréatique sur plusieurs corps de bâtiment, transplantation d'éléments patrimoniaux déposés en phase de démolition partielle. C'est dans ce contexte — avant même que la question architecturale soit posée — que l'opération a révélé ce qu'elle coûterait réellement en termes de maîtrise d'exécution.</p>
+        <p>La <strong>co-traitance avec Alain-Charles Perrot</strong>, architecte en chef des monuments historiques, a structuré la méthode de travail dès la phase études&nbsp;: les décisions sur le bâti classé relevaient de son périmètre, les décisions sur le programme vivant relevaient du nôtre, et les zones de recouvrement — insertion de fluides, traitement thermique, lisibilité des strates — faisaient l'objet d'arbitrages conjoints documentés.</p>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="case-gallery" data-reveal>
+      <div class="case-gal-col">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/CIGV-Dijon-A-Bechu-04-22-014.jpg"
+             alt="Façade Cité Gastronomie en corten — insertion contemporaine dans le site patrimonial"
+             loading="lazy">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/CIGV-Dijon-A-Bechu-04-22-050V2.jpg"
+             alt="Le Village de la Cité — verre et pierre, bâti ancien et structure contemporaine"
+             loading="lazy">
+      </div>
+      <div class="case-gal-col">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/06/CIGV-Dijon-A-Bechu-04-22-039-scaled.jpg"
+             alt="Vue depuis l'intérieur — clocher cadré par les lames métalliques de l'extension"
+             loading="lazy">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/CIGV-Dijon-A-Bechu-04-22-036.jpg"
+             alt="Portail historique du XIIIᵉ siècle — rosace et statuaire conservées et révélées"
+             loading="lazy">
+      </div>
+    </div>
+
+    <!-- Texte 2 -->
+    <div class="oppic-section oppic-section--narrow" style="padding-top:0;">
+      <div class="note-prose" data-reveal>
+        <p>Le canon de lumière en acier corten, inséré dans la travée centrale de la Grande Salle pour distribuer lumière naturelle et flux de circulation au programme pédagogique, est souvent présenté comme le geste architectural de l'opération. Il n'a pas été conçu ainsi.</p>
+        <p>Il est la conséquence d'un problème précis&nbsp;: faire entrer dans une nef du XIIIᵉ siècle un programme de formation professionnelle intensive — avec ses exigences en lumière de travail, en circulation encadrée, en séparation des flux public et pédagogique — sans toucher à la structure porteuse, sans produire un volume parasite illisible depuis les travées latérales, et sans fermer à la restauration la lecture de la salle dans son état classé. <strong>La forme est venue après.</strong> Elle est venue parce que les contraintes avaient été énumérées précisément, pas parce qu'un parti formel avait été arrêté en amont.</p>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="case-pullquote" data-reveal>
+      <blockquote>L'enveloppe et le délai global ont été tenus dans les limites fixées par la convention de programme. Sur dix-sept bâtiments en exécution simultanée, le phasage n'est pas un document de planning — c'est un outil de pilotage permanent.</blockquote>
+      <cite>Méthode CIGV Dijon · Bechu & Associés · ACMH co-traitance</cite>
+    </div>
+
+    <!-- Plan masse -->
+    <figure class="case-image-full" data-reveal>
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/Dijon-Bechu-Associes-CIGV-4.jpg"
+           alt="Plan masse — l'Hôtel-Dieu dans le tissu urbain dijonnais"
+           loading="lazy"
+           style="aspect-ratio:16/10; object-fit:cover;">
+      <figcaption>Plan masse — la fiabilité prévisionnelle sur une opération de cette complexité tient à la qualité du travail en phase ESQ et APS, où les arbitrages difficiles sont instruits plutôt que renvoyés.</figcaption>
+    </figure>
+
+  </section>
+
+  <!-- =========================================================
+       7 · CASE STUDY · LISCH — cas secondaire (fond noir)
+       ========================================================= -->
+  <section class="case-lisch" id="nav-lisch">
+
+    <div class="case-header">
+      <div class="case-header-left">
+        <div class="case-num" data-reveal>02</div>
+        <h2 data-reveal>La Gare Lisch — trancher avant<br>que le chantier <em>ne contraigne la réponse.</em></h2>
+      </div>
+      <dl class="case-header-right">
+        <div class="case-fact"><dt>Lieu</dt><dd>Gare du Champ-de-Mars, Paris</dd></div>
+        <div class="case-fact"><dt>Architecte d'origine</dt><dd>Juste Lisch — 1878, Exposition universelle</dd></div>
+        <div class="case-fact"><dt>Maîtrise d'œuvre</dt><dd>Bechu & Associés</dd></div>
+        <div class="case-fact"><dt>Protection</dt><dd>Classée Monument Historique</dd></div>
+        <div class="case-fact"><dt>Statut</dt><dd>En cours · Phase études</dd></div>
+      </dl>
+    </div>
+
+    <div class="case-images-row">
+      <figure data-reveal>
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2025/11/Gare-Lisch-Bechu-Associes-14-scaled.jpg"
+             alt="Gare Lisch — perspective extérieure au crépuscule"
+             loading="lazy">
+        <figcaption>Halle voyageurs — perspective extérieure projetée.</figcaption>
+      </figure>
+      <figure data-reveal>
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2025/11/Gare-Lisch-Bechu-Associes-15-scaled.jpg"
+             alt="Gare Lisch — vue intérieure, charpente bois et lumière traversante"
+             loading="lazy">
+        <figcaption>Intérieur de la halle — la charpente conservée, lecture stratigraphique.</figcaption>
+      </figure>
+    </div>
+
+    <div class="oppic-section oppic-section--narrow" style="padding-bottom:40px;">
+      <div class="note-prose" data-reveal>
+        <p class="lead">La halle voyageurs de la gare du Champ-de-Mars — construite en 1878 par Juste Lisch pour l'Exposition universelle — pose une question différente de celle de Dijon. Non plus&nbsp;: comment faire tenir un programme dans un site qui résiste&nbsp;? Mais&nbsp;: <strong>quel parti prendre sur le bâtiment lui-même, avant que le chantier ne ferme les options&nbsp;?</strong></p>
+        <p>La question de la restitution s'est posée tôt. L'état de 1878, avant les transformations successives du XXᵉ siècle, était documenté. La DRAC avait ses préférences. Une partie des parties prenantes portait une demande de retour à l'état d'origine. <strong>L'argument pour ne pas aller dans cette direction a été construit en phase esquisse — et tenu.</strong></p>
+        <p>Ce n'était pas un argument esthétique. C'était un argument de faisabilité&nbsp;: la restitution à l'identique impliquait des choix de matériaux et de mise en œuvre dont la compatibilité avec le programme d'usage n'était pas assurée, des délais de recherche et d'approvisionnement qui auraient fragilisé le calendrier global, et surtout une ouverture permanente du débat avec les instances patrimoniales sur chaque écart entre l'état documenté et l'état réalisable. Instruits en phase esquisse, avec les instances impliquées, ces arbitrages n'ont pas eu à se rouvrir sous une forme plus coûteuse.</p>
+      </div>
+    </div>
+
+    <!-- Drawings techniques (3 colonnes) -->
+    <div class="case-drawings" data-reveal>
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/Bechu-Associes-Gare-Lisch-drawings-13.jpg"
+           alt="Gare Lisch — élévation principale dessinée"
+           loading="lazy">
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/Bechu-Associes-Gare-Lisch-drawings-4.jpg"
+           alt="Gare Lisch — coupe transversale technique"
+           loading="lazy">
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/Bechu-Associes-Gare-Lisch-drawings-15.jpg"
+           alt="Gare Lisch — élévation latérale"
+           loading="lazy">
+    </div>
+
+    <div class="oppic-section oppic-section--narrow" style="padding-bottom:0;">
+      <div class="note-prose" data-reveal>
+        <p>La <strong>lecture stratigraphique</strong> du bâtiment — exposer ce que l'édifice a traversé plutôt que gommer ce qu'il a accumulé — est la conséquence pratique de cet arbitrage&nbsp;: on documente l'histoire constructive, on décide ensemble de ce qui est lisible, de ce qui est conservé, de ce qui est restitué partiellement, de ce qui est assumé comme strate contemporaine. Les choix constructifs ont suivi la même logique de compatibilité et de réversibilité&nbsp;: isolation sans compromission des maçonneries existantes, traitement de l'étanchéité sans imperméabilisation irréversible des parois, ventilation à faible intrusion dans la structure.</p>
+        <p>Le projet est en cours. Ce que cette opération documente à ce stade, c'est <strong>une méthode de gouvernance des décisions de principe</strong> — parti de restauration, choix constructifs, coordination avec la DRAC — dont le détail peut être présenté.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       8 · BLOC 2026 — exergue stratégique
+       ========================================================= -->
+  <section class="oppic-2026" id="nav-2026">
+    <div class="oppic-2026-inner">
+      <span class="section-eyebrow" data-reveal>Lecture 2026</span>
+
+      <span class="big-stat" data-reveal data-count="-8">−8%</span>
+      <span class="big-stat-label" data-reveal>Programme 175 « Patrimoines » — PLF 2026</span>
+
+      <div class="note-prose" data-reveal>
+        <p class="lead">Le programme 175 « Patrimoines » enregistre une baisse de 8 % dans le PLF 2026. C'est un signal d'arbitrage en amont&nbsp;: les opérations en études vont être examinées de plus près, certains lancements décalés, et la concentration des crédits disponibles sur les projets les plus avancés va mécaniquement rehausser le niveau d'exigence à l'entrée du cycle pour les équipes qui se présentent cette année.</p>
+      </div>
+
+      <div class="key-statement" data-reveal>
+        Dans ce contexte, le critère de sélection d'une équipe de maîtrise d'œuvre se déplace. Ce n'est plus seulement la qualité de la réponse au programme — <em>c'est la prévisibilité de l'exécution.</em>
+      </div>
+
+      <div class="note-prose" data-reveal>
+        <p>La capacité à tenir une enveloppe n'est pas une vertu comptable&nbsp;: c'est ce qui rend un dossier défendable devant le contrôleur budgétaire, ce qui évite à un opérateur d'avoir à expliquer un dépassement à ses tutelles en cours de chantier, ce qui permet à une institution de planifier son ouverture sans réserve. <strong>C'est sur ce registre — et pas seulement sur celui de la qualité architecturale — que nous proposons de présenter notre historique en commande publique.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       9 · BECHU & ASSOCIÉS — chiffres + récit
+       ========================================================= -->
+  <section class="oppic-agence" id="nav-agence">
+    <div class="oppic-agence-inner">
+      <span class="section-eyebrow" data-reveal>L'agence</span>
+      <h2 class="section-title" data-reveal>Une pratique transversale, construite sur <em>quatre générations.</em></h2>
+
+      <!-- Chiffres -->
+      <div class="agence-figures">
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="2000"><span class="ag-fig-suffix">+</span></span>
+          <span class="ag-fig-l">Projets</span>
+        </div>
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="56"></span>
+          <span class="ag-fig-l">Récompenses</span>
+        </div>
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="42"></span>
+          <span class="ag-fig-l">Collaborateurs</span>
+        </div>
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="30"></span>
+          <span class="ag-fig-l">Pays</span>
+        </div>
+      </div>
+
+      <div class="agence-text">
+        <p class="lead" data-reveal>Depuis plus de cent ans, la famille Bechu construit des lieux qui durent. Aujourd'hui à sa quatrième génération, l'agence réunit urbanistes, architectes, architectes du patrimoine et designers autour d'une conviction commune&nbsp;: <strong>l'architecture doit faire tenir la complexité — programmes vivants, sites contraints, calendriers tendus, exigences patrimoniales — sans la diluer.</strong></p>
+        <p data-reveal>Cette tradition de la commande publique culturelle et patrimoniale s'inscrit dans une expertise élargie. Face aux mutations climatiques, sociétales et démographiques, l'agence a développé une pratique singulière articulant restauration, réhabilitation et architecture contemporaine, avec une attention particulière aux interventions sur l'existant — souvent dans la complexité du bâti classé.</p>
+        <p data-reveal>Biomimétisme, matériaux bas carbone, approches low-tech&nbsp;: nos outils de conception servent des projets variés — logements, bureaux, équipements culturels, hôtellerie, monuments historiques — en France et à l'international, avec une exigence constante&nbsp;: <strong>la fiabilité d'exécution comme condition de la qualité architecturale</strong>.</p>
+
+        <div class="agence-citation" data-reveal>
+          « Pour être durable, un projet doit naître de ses racines, et chacun de nos choix, guidé par la responsabilité que nous avons envers le vivant. »
+          <cite>Clémence Bechu — Directrice générale</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       10 · CTA FINAL — pour aller plus loin
+       ========================================================= -->
+  <section class="oppic-cta" id="nav-suite">
+    <span class="section-eyebrow" data-reveal>Pour aller plus loin</span>
+    <h2 data-reveal>Ce document est <em>une entrée en matière.</em></h2>
+    <div data-reveal>
+      <p>Ce qui peut être approfondi&nbsp;: la documentation détaillée des deux opérations présentées ici, les indicateurs de tenue d'enveloppes et de délais sur l'ensemble de nos chantiers publics, et — si la question de la co-traitance ACMH vous intéresse — le détail de méthode sur l'organisation de la maîtrise d'œuvre à Dijon.</p>
+      <p>Nous sommes disponibles pour un échange dans le format qui convient — point ciblé sur une opération ou présentation élargie si le sujet le justifie.</p>
+    </div>
+    <div class="oppic-cta-actions" data-reveal>
+      <a class="contact-link" href="mailto:contact@bechuetassocies.com">contact@bechuetassocies.com</a>
+      <a class="contact-link" href="https://www.bechuetassocies.com">bechuetassocies.com</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       11 · FOOTER
+       ========================================================= -->
+  <footer class="oppic-foot">
+    <span>Bechu & Associés — 82 rue Lecourbe, Paris 15ᵉ</span>
+    <span>Note · Avril 2026</span>
+    <span>© Bechu & Associés</span>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="oppic-totop" type="button" aria-label="Retour en haut de la page">
+    <span class="label">Haut de page</span>
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <polyline points="3,8 8,3 13,8" fill="none"></polyline>
+      <line x1="8" y1="3" x2="8" y2="14"></line>
+    </svg>
+  </button>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var REDUCED_MOTION = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var page = document.querySelector('.oppic-page');
+
+  /* ── Back to top ── */
+  var toTop = document.querySelector('.oppic-totop');
+  if (toTop) {
+    var onScroll = function() {
+      if (window.scrollY > 600) toTop.classList.add('is-visible');
+      else toTop.classList.remove('is-visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ── Mini-nav apparaît au scroll ── */
+  function updateScrolled() {
+    if (!page) return;
+    if (window.scrollY > 400) page.classList.add('is-scrolled');
+    else page.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', updateScrolled, { passive: true });
+  updateScrolled();
+
+  /* ── Scroll-spy mini-nav ── */
+  var mininav = document.querySelector('.mininav');
+  var mininavItems = mininav ? Array.prototype.slice.call(mininav.querySelectorAll('.mininav__item')) : [];
+  var mininavSections = mininavItems.map(function(item) {
+    var anchor = item.querySelector('a');
+    if (!anchor) return null;
+    var href = anchor.getAttribute('href');
+    return { item: item, target: href ? document.querySelector(href) : null };
+  }).filter(function(e) { return e && e.target; });
+
+  function updateActive() {
+    if (!mininavSections.length) return;
+    var anchorY = window.innerHeight * 0.33;
+    var best = null;
+    var bestDelta = Infinity;
+    mininavSections.forEach(function(entry) {
+      var top = entry.target.getBoundingClientRect().top;
+      if (top - anchorY <= 0) {
+        var delta = Math.abs(top - anchorY);
+        if (delta < bestDelta) { bestDelta = delta; best = entry; }
+      }
+    });
+    mininavItems.forEach(function(i) { i.classList.remove('is-active'); });
+    if (best) best.item.classList.add('is-active');
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+
+  /* Smooth-scroll mini-nav avec offset */
+  mininavItems.forEach(function(item) {
+    var a = item.querySelector('a');
+    if (!a) return;
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      var target = href ? document.querySelector(href) : null;
+      if (!target) return;
+      e.preventDefault();
+      var top = window.scrollY + target.getBoundingClientRect().top - 70;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  /* ── Animation des chiffres ── */
+  function formatNumber(n) {
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function animateCount(el) {
+    if (el.dataset.animDone === '1') return;
+    el.dataset.animDone = '1';
+
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (isNaN(target)) return;
+
+    var suffixEl = el.querySelector('.ag-fig-suffix');
+    var suffix = suffixEl ? suffixEl.outerHTML : '';
+    var negative = target < 0;
+    var absTarget = Math.abs(target);
+    var prefix = el.textContent.indexOf('−') === 0 || el.textContent.indexOf('-') === 0 || negative ? '−' : '';
+
+    if (REDUCED_MOTION) {
+      el.innerHTML = prefix + (target === -8 ? '8%' : formatNumber(absTarget)) + suffix;
+      return;
+    }
+
+    var duration = 1800;
+    var start = performance.now();
+
+    function tick(now) {
+      var t = Math.min(1, (now - start) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var val = absTarget * eased;
+      // Cas spécial -8% (formattage différent)
+      if (target === -8) {
+        el.innerHTML = prefix + Math.round(val) + '%' + suffix;
+      } else {
+        el.innerHTML = prefix + formatNumber(val) + suffix;
+      }
+      if (t < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        if (target === -8) {
+          el.innerHTML = prefix + absTarget + '%' + suffix;
+        } else {
+          el.innerHTML = prefix + formatNumber(absTarget) + suffix;
+        }
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ── Reveal on scroll + chiffres ── */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          // Si l'élément contient ou est un compteur, on l'anime
+          if (e.target.hasAttribute('data-count')) {
+            animateCount(e.target);
+          } else {
+            var counters = e.target.querySelectorAll('[data-count]');
+            counters.forEach(animateCount);
+          }
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+      io.observe(el);
+    });
+    // Sécurité : observer aussi tous les compteurs au cas où ils ne soient pas dans un [data-reveal]
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+      if (!el.closest('[data-reveal]')) io.observe(el);
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+    document.querySelectorAll('[data-count]').forEach(animateCount);
+  }
+
+})();
+</script>
+
+</body>
+</html>
