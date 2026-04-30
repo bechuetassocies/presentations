@@ -449,6 +449,7 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
+  align-items: start;
 }
 .case-gallery .case-gal-col {
   display: grid;
@@ -458,8 +459,7 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: auto;
   background: var(--img-bg);
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  display: block;
 }
 
 /* pull quote */
@@ -515,6 +515,9 @@ img { max-width: 100%; display: block; }
 .case-lisch .case-header-left .case-num {
   color: rgba(255,255,255,0.18);
 }
+.case-lisch .case-header-left h2 em {
+  color: rgba(255,255,255,0.55);
+}
 .case-lisch .case-fact {
   border-bottom-color: rgba(255,255,255,0.12);
 }
@@ -541,13 +544,13 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+  align-items: start;
 }
 .case-lisch .case-images-row img {
   width: 100%;
   height: auto;
   background: rgba(255,255,255,0.05);
-  aspect-ratio: 16/10;
-  object-fit: cover;
+  display: block;
 }
 .case-lisch .case-images-row figcaption {
   font-size: 11px;
@@ -562,14 +565,14 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: start;
 }
 .case-lisch .case-drawings img {
   width: 100%;
   height: auto;
   background: var(--blanc);
   padding: 24px;
-  aspect-ratio: 16/10;
-  object-fit: contain;
+  display: block;
 }
 
 /* ================================================================
@@ -1054,8 +1057,7 @@ img { max-width: 100%; display: block; }
     <figure class="case-image-full" data-reveal>
       <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/04/Dijon-Bechu-Associes-CIGV-4.jpg"
            alt="Plan masse — l'Hôtel-Dieu dans le tissu urbain dijonnais"
-           loading="lazy"
-           style="aspect-ratio:16/10; object-fit:cover;">
+           loading="lazy">
       <figcaption>Plan masse — la fiabilité prévisionnelle sur une opération de cette complexité tient à la qualité du travail en phase ESQ et APS, où les arbitrages difficiles sont instruits plutôt que renvoyés.</figcaption>
     </figure>
 
