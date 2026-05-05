@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bechu & Associés — What a building owes its ground</title>
+<meta name="description" content="A first reading of three projects on cultural anchorage as a structural question — Dijon, A.S.A.R.I., ISM Dakar — with adjacent practice in five further notes.">
+
+<style>
+/* ================================================================
+   PAGE OPPIC — Bechu & Associés
+   Adaptation de la grammaire fiche projet "Hunnu" pour une note
+   éditoriale adressée à un commanditaire institutionnel.
+   Tout-en-un : HTML + CSS + JS dans un seul fichier (GitHub Pages).
+   ================================================================ */
+
+/* === Police officielle Bechu — Altform === */
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Light.woff2') format('woff2'),
+       url('fonts/Altform-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-LightItalic.woff2') format('woff2'),
+       url('fonts/Altform-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Regular.woff2') format('woff2'),
+       url('fonts/Altform-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-RegularItalic.woff2') format('woff2'),
+       url('fonts/Altform-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Bold.woff2') format('woff2'),
+       url('fonts/Altform-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-BoldItalic.woff2') format('woff2'),
+       url('fonts/Altform-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --noir: #1B1B1B;
+  --blanc: #FFFFFF;
+  --gris-fin: rgba(27,27,27,0.08);
+  --gris-trait: rgba(27,27,27,0.15);
+  --gris-texte: rgba(27,27,27,0.55);
+  --gris-soft: #F5F4F1;
+  --img-bg: #efefef;
+  --page-pad: 40px;
+  --max-w: 1600px;
+  --text-w: 1100px;
+  --note-w: 780px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Altform', -apple-system, sans-serif;
+  color: var(--noir);
+  background: var(--blanc);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.oppic-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ================================================================
+   1 · BANDEAU DE TÊTE — destinataire + date
+   Très sobre, format note officielle
+   ================================================================ */
+.oppic-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 28px var(--page-pad);
+  border-bottom: 1px solid var(--gris-fin);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+.oppic-header strong {
+  color: var(--noir);
+  font-weight: 600;
+  margin-right: 28px;
+  letter-spacing: 0.15em;
+}
+.oppic-header .header-meta {
+  text-align: right;
+}
+
+/* ================================================================
+   2 · HERO — image dominante + bandeau d'adresse
+   ================================================================ */
+.oppic-hero {
+  background: var(--img-bg);
+  position: relative;
+}
+.oppic-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: center 60%;
+}
+@media (max-width: 800px) {
+  .oppic-hero img { max-height: 50vh; }
+}
+
+.oppic-hero-meta {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: baseline;
+  padding: 32px var(--page-pad);
+  border-bottom: 1px solid var(--noir);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+}
+.oppic-hero-meta .destination {
+  color: var(--noir);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.oppic-hero-meta .ref {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--gris-texte);
+  font-size: 13px;
+}
+
+/* ================================================================
+   3 · TITRE — note d'objet
+   ================================================================ */
+.oppic-title {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 90px var(--page-pad) 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.oppic-title .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 24px;
+  display: block;
+}
+.oppic-title h1 {
+  font-size: clamp(40px, 5.5vw, 78px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.oppic-title h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.oppic-title .lede {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.65;
+  color: var(--noir);
+  font-weight: 400;
+  max-width: 460px;
+  margin-left: auto;
+}
+.oppic-title .lede em {
+  font-style: italic;
+  color: var(--gris-texte);
+}
+
+/* ================================================================
+   4 · MINI-NAV — sticky horizontale (apparaît au scroll)
+   ================================================================ */
+.mininav {
+  position: sticky;
+  top: 0;
+  background: var(--blanc);
+  border-top: 1px solid var(--noir);
+  border-bottom: 1px solid var(--gris-fin);
+  z-index: 90;
+  padding: 16px var(--page-pad);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.oppic-page.is-scrolled .mininav {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mininav__list {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.mininav__list .label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-right: 12px;
+}
+.mininav__item a {
+  font-size: 13px;
+  color: var(--gris-texte);
+  font-weight: 400;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.mininav__item a:hover {
+  color: var(--noir);
+}
+.mininav__item.is-active a {
+  color: var(--noir);
+  border-bottom-color: var(--noir);
+  font-weight: 500;
+}
+.mininav__num {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gris-texte);
+  letter-spacing: 0.05em;
+}
+.mininav__item.is-active .mininav__num {
+  color: var(--noir);
+}
+
+/* ================================================================
+   5 · CORPS DE LA NOTE — typographie éditoriale
+   ================================================================ */
+.oppic-section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px var(--page-pad);
+}
+
+.oppic-section--narrow {
+  max-width: var(--note-w);
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(28px, 3.4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  max-width: 900px;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+
+.note-prose {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.note-prose p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  color: var(--noir);
+  margin-bottom: 1.4em;
+  font-weight: 400;
+}
+.note-prose p.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 1.6em;
+  letter-spacing: -0.005em;
+}
+.note-prose em {
+  font-style: italic;
+}
+.note-prose strong {
+  font-weight: 600;
+}
+
+/* ================================================================
+   6 · BLOC INTRO MOP/ACMH — fond clair, marquant
+   ================================================================ */
+.oppic-intro {
+  background: var(--gris-soft);
+  padding: 100px var(--page-pad);
+  border-top: 1px solid var(--gris-fin);
+  border-bottom: 1px solid var(--gris-fin);
+}
+.oppic-intro-inner {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+
+/* ================================================================
+   7 · CASE STUDY — Dijon (cas principal, déployé)
+   ================================================================ */
+.case-study {
+  position: relative;
+}
+
+.case-header {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px var(--page-pad) 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  border-top: 1px solid var(--noir);
+}
+.case-header-left .case-num {
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--gris-texte);
+  margin-bottom: 32px;
+  display: block;
+}
+.case-header-left h2 {
+  font-size: clamp(30px, 3.6vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.case-header-left h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.case-header-right {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  display: grid;
+  gap: 14px;
+  max-width: 380px;
+  margin-left: auto;
+}
+.case-fact {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gris-fin);
+}
+.case-fact dt {
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+.case-fact dd {
+  color: var(--noir);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+/* image dominante */
+.case-image-full {
+  margin: 60px var(--page-pad) 0;
+}
+.case-image-full img {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  height: auto;
+  background: var(--img-bg);
+}
+.case-image-full figcaption {
+  max-width: var(--note-w);
+  margin: 18px auto 0;
+  font-size: 12px;
+  color: var(--gris-texte);
+  letter-spacing: 0.02em;
+  font-style: italic;
+  text-align: center;
+}
+
+/* gallery 2-3 colonnes */
+.case-gallery {
+  max-width: var(--max-w);
+  margin: 60px auto;
+  padding: 0 var(--page-pad);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.case-gallery .case-gal-col {
+  display: grid;
+  gap: 24px;
+}
+.case-gallery img {
+  width: 100%;
+  height: auto;
+  background: var(--img-bg);
+  display: block;
+}
+
+/* pull quote */
+.case-pullquote {
+  max-width: var(--note-w);
+  margin: 100px auto;
+  padding: 0 var(--page-pad);
+  text-align: left;
+}
+.case-pullquote blockquote {
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--noir);
+  letter-spacing: -0.01em;
+  font-style: italic;
+  border-left: 2px solid var(--noir);
+  padding-left: 32px;
+}
+.case-pullquote cite {
+  display: block;
+  margin-top: 24px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  font-style: normal;
+  padding-left: 32px;
+}
+@media (max-width: 800px) {
+  .case-pullquote { margin: 60px auto; }
+  .case-pullquote blockquote { padding-left: 20px; }
+  .case-pullquote cite { padding-left: 20px; }
+}
+
+/* ================================================================
+   8 · CASE STUDY LISCH — variante secondaire (plus textuelle)
+   ================================================================ */
+.case-lisch {
+  background: var(--noir);
+  color: var(--blanc);
+  padding: 100px var(--page-pad);
+  margin-top: 60px;
+}
+.case-lisch .case-header {
+  border-top: none;
+  padding: 0;
+  max-width: var(--max-w);
+  margin: 0 auto 60px;
+  color: var(--blanc);
+}
+.case-lisch .case-header-left .case-num {
+  color: rgba(255,255,255,0.55);
+}
+.case-lisch .case-header-left h2 em {
+  color: rgba(255,255,255,0.55);
+}
+.case-lisch .case-fact {
+  border-bottom-color: rgba(255,255,255,0.12);
+}
+.case-lisch .case-fact dt,
+.case-lisch .case-header-right {
+  color: rgba(255,255,255,0.55);
+}
+.case-lisch .case-fact dd {
+  color: var(--blanc);
+}
+.case-lisch .note-prose {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.case-lisch .note-prose p {
+  color: rgba(255,255,255,0.85);
+}
+.case-lisch .note-prose strong {
+  color: var(--blanc);
+}
+.case-lisch .case-images-row {
+  max-width: var(--max-w);
+  margin: 70px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.case-lisch .case-images-row img {
+  width: 100%;
+  height: auto;
+  background: rgba(255,255,255,0.05);
+  display: block;
+}
+.case-lisch .case-images-row figcaption {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  margin-top: 12px;
+  font-style: italic;
+}
+.case-lisch .case-drawings {
+  max-width: var(--max-w);
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.case-lisch .case-drawings img {
+  width: 100%;
+  height: auto;
+  background: var(--blanc);
+  padding: 24px;
+  display: block;
+}
+
+/* ================================================================
+   9 · BLOC 2026 — exergue stratégique
+   ================================================================ */
+.oppic-2026 {
+  padding: 120px var(--page-pad);
+  position: relative;
+  background: var(--blanc);
+}
+.oppic-2026-inner {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.oppic-2026 .big-stat {
+  font-size: clamp(80px, 12vw, 180px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--noir);
+  margin-bottom: 8px;
+  display: block;
+}
+@media (max-width: 800px) {
+  .oppic-2026 .big-stat { font-size: clamp(72px, 22vw, 120px); }
+}
+.oppic-2026 .big-stat-label {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 60px;
+  display: block;
+}
+.oppic-2026 .key-statement {
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--noir);
+  letter-spacing: -0.01em;
+  margin: 50px 0;
+  padding: 30px 0;
+  border-top: 1px solid var(--noir);
+  border-bottom: 1px solid var(--noir);
+}
+.oppic-2026 .key-statement em {
+  font-style: italic;
+  color: var(--gris-texte);
+}
+
+/* ================================================================
+   10 · AGENCE — chiffres + récit
+   ================================================================ */
+.oppic-agence {
+  background: var(--noir);
+  color: var(--blanc);
+  padding: 100px var(--page-pad);
+}
+.oppic-agence-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.oppic-agence .section-eyebrow,
+.oppic-agence .section-title {
+  color: var(--blanc);
+}
+.oppic-agence .section-eyebrow {
+  color: rgba(255,255,255,0.55);
+}
+
+.agence-figures {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 60px 0 80px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 80px;
+}
+.agence-figure {
+  padding-top: 24px;
+}
+.agence-figure .ag-fig-n {
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--blanc);
+  display: block;
+}
+.agence-figure .ag-fig-suffix {
+  font-size: 0.55em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.65);
+}
+.agence-figure .ag-fig-l {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  display: block;
+}
+
+.agence-text {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.agence-text p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.4em;
+}
+.agence-text p.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  color: var(--blanc);
+  font-weight: 400;
+  margin-bottom: 1.6em;
+}
+.agence-text strong {
+  color: var(--blanc);
+  font-weight: 500;
+}
+.agence-citation {
+  margin: 60px 0 0;
+  padding: 30px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-style: italic;
+  font-size: clamp(16px, 1.3vw, 20px);
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
+}
+.agence-citation cite {
+  display: block;
+  margin-top: 16px;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ================================================================
+   11 · CTA FINAL — pour aller plus loin
+   ================================================================ */
+.oppic-cta {
+  padding: 120px var(--page-pad);
+  text-align: left;
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.oppic-cta h2 {
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 36px;
+}
+.oppic-cta h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.oppic-cta p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  margin-bottom: 1.4em;
+  color: var(--noir);
+}
+.oppic-cta-actions {
+  margin-top: 50px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.oppic-cta-actions a.contact-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--noir);
+  border-bottom: 1px solid var(--noir);
+  padding: 6px 0;
+  transition: opacity 0.2s ease;
+}
+.oppic-cta-actions a.contact-link:hover {
+  opacity: 0.6;
+}
+
+/* ================================================================
+   12 · FOOTER
+   ================================================================ */
+.oppic-foot {
+  border-top: 1px solid var(--gris-fin);
+  padding: 40px var(--page-pad);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+
+/* ================================================================
+   13 · BACK TO TOP
+   ================================================================ */
+.oppic-totop {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  background: var(--noir);
+  color: var(--blanc);
+  border: none;
+  padding: 14px 22px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.oppic-totop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.oppic-totop:hover {
+  background: #000;
+}
+.oppic-totop svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* ================================================================
+   13bis · BOUTON TÉLÉCHARGER PDF
+   ================================================================ */
+.oppic-pdf {
+  position: fixed;
+  right: 32px;
+  bottom: 90px;
+  background: var(--blanc);
+  color: var(--noir);
+  border: 1px solid var(--noir);
+  padding: 14px 22px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.oppic-pdf:hover {
+  background: var(--noir);
+  color: var(--blanc);
+}
+.oppic-pdf svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* ================================================================
+   14 · ANIMATIONS — reveal on scroll
+   ================================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   14bis · ADJACENT PRACTICE — grid of 5 small project cards
+   ================================================================ */
+.adjacent-practice {
+  background: var(--gris-soft);
+  padding: 100px var(--page-pad);
+  border-top: 1px solid var(--gris-fin);
+  border-bottom: 1px solid var(--gris-fin);
+}
+.adjacent-practice-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.adjacent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px 40px;
+}
+
+.adjacent-card {
+  background: var(--blanc);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid var(--gris-fin);
+}
+
+.adjacent-card__media {
+  margin: 0;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--img-bg);
+}
+.adjacent-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.adjacent-card__body {
+  padding: 32px;
+  display: grid;
+  gap: 20px;
+}
+
+.adjacent-card__head h3 {
+  font-size: clamp(20px, 1.7vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.adjacent-card__loc {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  display: block;
+}
+
+.adjacent-card__quote {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--noir);
+  font-style: italic;
+}
+
+.adjacent-card__facts {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gris-fin);
+}
+.adjacent-card__facts > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  font-size: 12px;
+}
+.adjacent-card__facts dt {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+}
+.adjacent-card__facts dd {
+  color: var(--noir);
+}
+
+@media (max-width: 1100px) {
+  .adjacent-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 800px) {
+  .adjacent-practice { padding: 70px var(--page-pad); }
+  .adjacent-card__body { padding: 24px; }
+}
+
+/* ================================================================
+   15 · RESPONSIVE
+   ================================================================ */
+@media (max-width: 1100px) {
+  .case-header { grid-template-columns: 1fr; gap: 40px; }
+  .case-header-right { margin-left: 0; }
+  .agence-figures { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 800px) {
+  :root { --page-pad: 24px; }
+  .oppic-header { font-size: 10px; }
+  .oppic-header strong { display: block; margin-bottom: 4px; }
+  .oppic-title { grid-template-columns: 1fr; gap: 30px; padding: 60px var(--page-pad) 40px; }
+  .oppic-title .lede { margin-left: 0; }
+  .oppic-hero-meta { grid-template-columns: 1fr; gap: 12px; padding: 24px var(--page-pad); text-align: left; }
+  .oppic-section { padding: 60px var(--page-pad); }
+  .oppic-intro { padding: 70px var(--page-pad); }
+  .case-gallery { grid-template-columns: 1fr; }
+  .case-lisch .case-images-row { grid-template-columns: 1fr; }
+  .case-lisch .case-drawings { grid-template-columns: 1fr; }
+  .agence-figures { grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 40px 0 50px; margin-bottom: 50px; }
+  .oppic-2026 { padding: 80px var(--page-pad); }
+  .oppic-cta { padding: 80px var(--page-pad); }
+  .oppic-totop { right: 16px; bottom: 16px; padding: 12px 16px; font-size: 10px; }
+  .oppic-totop .label { display: none; }
+  .oppic-pdf { right: 16px; bottom: 60px; padding: 12px 16px; font-size: 10px; }
+  .oppic-pdf .label { display: none; }
+
+  /* Mini-nav mobile : scrollable horizontalement (au lieu d'être cachée) */
+  .mininav {
+    padding: 12px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox : cache la scrollbar */
+  }
+  .mininav::-webkit-scrollbar { display: none; } /* Chrome/Safari : cache la scrollbar */
+  .mininav__list {
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding: 0 var(--page-pad);
+    width: max-content; /* la liste s'étire selon le contenu */
+  }
+  .mininav__list .label {
+    display: none; /* on masque "Sommaire" pour gagner de la place */
+  }
+  .mininav__item {
+    flex-shrink: 0; /* empêche les items d'être compressés */
+  }
+  .mininav__item a {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .mininav__num {
+    font-size: 9px;
+  }
+}
+@media (max-width: 500px) {
+  .agence-figures { grid-template-columns: 1fr; }
+}
+
+/* ================================================================
+   16 · PRINT — feuille de style impression / export PDF A4
+   ================================================================ */
+@media print {
+  /* Réglages globaux */
+  @page {
+    size: A4;
+    margin: 15mm 12mm;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  /* Masquer tous les éléments d'interface non-print */
+  .mininav,
+  .oppic-totop,
+  .oppic-pdf,
+  .oppic-foot {
+    display: none !important;
+  }
+
+  /* Empêcher animations & opacité 0 (sinon contenus invisibles à l'impression) */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Inverser les sections fond noir → fond blanc avec encadré */
+  .case-lisch,
+  .oppic-agence {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #000;
+    padding: 20mm 12mm !important;
+    margin: 0 !important;
+  }
+  .case-lisch * ,
+  .oppic-agence * {
+    color: #000 !important;
+  }
+  .case-lisch .case-fact,
+  .oppic-agence .case-fact {
+    border-bottom-color: rgba(0,0,0,0.15) !important;
+  }
+  .case-lisch .case-header-right,
+  .oppic-agence .agence-figure .ag-fig-l {
+    color: #555 !important;
+  }
+  .case-lisch .case-header-left .case-num {
+    color: #555 !important;
+  }
+
+  /* Titre principal compact */
+  .oppic-title {
+    padding: 0 !important;
+    margin: 0 0 10mm 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 20mm;
+  }
+  .oppic-title h1 {
+    font-size: 28pt !important;
+    line-height: 1 !important;
+  }
+  .oppic-title .lede {
+    font-size: 11pt !important;
+    line-height: 1.5;
+  }
+  .oppic-title .eyebrow {
+    font-size: 8pt !important;
+  }
+
+  /* Hero */
+  .oppic-hero {
+    page-break-after: avoid;
+  }
+  .oppic-hero img {
+    max-height: 80mm !important;
+    width: 100% !important;
+  }
+  .oppic-hero-meta {
+    padding: 6mm 0 !important;
+    font-size: 9pt;
+    border-bottom: 1px solid #000;
+  }
+
+  /* Header sobre */
+  .oppic-header {
+    padding: 0 0 5mm 0 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+    font-size: 8pt !important;
+  }
+
+  /* Sections : padding réduit */
+  .oppic-section,
+  .oppic-intro,
+  .oppic-2026,
+  .oppic-cta {
+    padding: 10mm 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Saut de page propre avant chaque case study & charnière */
+  .case-study,
+  .case-lisch,
+  .oppic-charniere,
+  .adjacent-practice,
+  .oppic-2026,
+  .oppic-agence,
+  .oppic-cta {
+    page-break-before: always;
+  }
+
+  /* Grille adjacent-practice en print : 1 colonne, fond blanc */
+  .adjacent-practice {
+    background: #fff !important;
+    padding: 10mm 0 !important;
+    border: none !important;
+  }
+  .adjacent-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8mm !important;
+  }
+  .adjacent-card {
+    page-break-inside: avoid;
+    border: 1px solid #000 !important;
+  }
+  .adjacent-card__media {
+    aspect-ratio: 16/8 !important;
+    max-height: 60mm !important;
+  }
+  .adjacent-card__body {
+    padding: 5mm !important;
+    gap: 3mm !important;
+  }
+  .adjacent-card__head h3 {
+    font-size: 13pt !important;
+  }
+  .adjacent-card__quote {
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+  }
+  .adjacent-card__facts {
+    font-size: 8pt !important;
+  }
+  /* Pas de saut avant la première section après le hero */
+  .oppic-hero + .oppic-hero-meta + .oppic-title + .mininav + .oppic-intro {
+    page-break-before: auto;
+  }
+
+  /* Gestion des images : ne pas couper, taille raisonnable */
+  figure, img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+  .case-image-full img {
+    max-height: 110mm !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+  .case-gallery {
+    padding: 0 !important;
+    margin: 8mm 0 !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4mm !important;
+  }
+  .case-gallery img {
+    max-height: 80mm !important;
+    object-fit: cover;
+  }
+  .case-images-row {
+    margin: 8mm 0 !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4mm !important;
+  }
+  .case-images-row img {
+    max-height: 70mm !important;
+    object-fit: cover;
+  }
+
+  /* Titres de sections */
+  .case-header {
+    page-break-after: avoid;
+    padding: 0 !important;
+    margin: 0 0 6mm 0 !important;
+  }
+  .case-header-left h2,
+  .section-title {
+    font-size: 18pt !important;
+    line-height: 1.1 !important;
+  }
+  .case-header-left .case-num {
+    font-size: 9pt !important;
+    margin-bottom: 4mm !important;
+  }
+  .case-fact {
+    padding: 2mm 0 !important;
+  }
+  .case-fact dt {
+    font-size: 7pt !important;
+  }
+  .case-fact dd {
+    font-size: 9pt !important;
+  }
+
+  /* Texte */
+  .note-prose p {
+    font-size: 10pt !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1em !important;
+    orphans: 3;
+    widows: 3;
+  }
+  .note-prose p.lead {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Pull-quote */
+  .case-pullquote {
+    margin: 8mm 0 !important;
+    padding: 0 !important;
+    page-break-inside: avoid;
+  }
+  .case-pullquote blockquote {
+    font-size: 14pt !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Key-statement */
+  .key-statement {
+    font-size: 13pt !important;
+    line-height: 1.35 !important;
+    margin: 6mm 0 !important;
+    padding: 4mm 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Chiffres agence */
+  .agence-figures {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6mm !important;
+    padding: 6mm 0 !important;
+    margin-bottom: 8mm !important;
+  }
+  .agence-figure .ag-fig-n {
+    font-size: 28pt !important;
+    line-height: 1 !important;
+  }
+  .agence-figure .ag-fig-l {
+    font-size: 7pt !important;
+  }
+
+  /* Liens */
+  a {
+    color: #000 !important;
+    text-decoration: none;
+  }
+  a[href^="mailto:"]::after,
+  a[href^="http"]::after {
+    content: "";
+  }
+
+  /* Crédit photo */
+  figcaption {
+    font-size: 8pt !important;
+    margin-top: 2mm !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="oppic-page">
+
+  <!-- =========================================================
+       1 · TOP BAND
+       ========================================================= -->
+  <header class="oppic-header">
+    <div>
+      <strong>BECHU & ASSOCIÉS</strong>
+      Architects — 82 rue Lecourbe, Paris 15
+    </div>
+    <div class="header-meta">
+      Note · May 2026
+    </div>
+  </header>
+
+  <!-- =========================================================
+       2 · HERO — ISM Dakar nocturne (parfaite ouverture sur "ground")
+       ========================================================= -->
+  <section class="oppic-hero">
+    <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/10/07.2022_BechuAssocies_Francois-Weckerle1-scaled.jpeg"
+         alt="Cité Internationale de la Gastronomie et du Vin — Dijon, aerial view at dusk"
+         loading="eager" fetchpriority="high">
+  </section>
+
+  <div class="oppic-hero-meta">
+    <span class="destination">Bechu & Associés</span>
+    <span></span>
+    <span class="ref">A first reading — three projects, five further notes</span>
+  </div>
+
+  <!-- =========================================================
+       3 · TITLE — note subject
+       ========================================================= -->
+  <section class="oppic-title">
+    <div>
+      <span class="eyebrow">Note · May 2026</span>
+      <h1 data-reveal>What a building <em>owes its ground.</em></h1>
+    </div>
+    <p class="lede" data-reveal>
+      A first reading of three projects, with adjacent practice in five further notes. <em>From a context where the ground situates a programme, to one where it structures it, to one where it organises the very grammar of the building itself.</em>
+    </p>
+  </section>
+
+  <!-- =========================================================
+       4 · MINI-NAV — sticky
+       ========================================================= -->
+  <nav class="mininav" aria-label="Contents">
+    <ul class="mininav__list">
+      <li><span class="label">Contents</span></li>
+      <li class="mininav__item"><a href="#nav-reading"><span class="mininav__num">01</span><span>Reading</span></a></li>
+      <li class="mininav__item"><a href="#nav-dijon"><span class="mininav__num">02</span><span>Dijon</span></a></li>
+      <li class="mininav__item"><a href="#nav-asari"><span class="mininav__num">03</span><span>A.S.A.R.I.</span></a></li>
+      <li class="mininav__item"><a href="#nav-dakar"><span class="mininav__num">04</span><span>ISM Dakar</span></a></li>
+      <li class="mininav__item"><a href="#nav-adjacent"><span class="mininav__num">05</span><span>Adjacent practice</span></a></li>
+      <li class="mininav__item"><a href="#nav-closing"><span class="mininav__num">06</span><span>Closing</span></a></li>
+      <li class="mininav__item"><a href="#nav-practice"><span class="mininav__num">07</span><span>The practice</span></a></li>
+      <li class="mininav__item"><a href="#nav-opening"><span class="mininav__num">08</span><span>An opening</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================================
+       5 · INTRO — What a building owes its ground
+       ========================================================= -->
+  <section class="oppic-intro" id="nav-reading">
+    <div class="oppic-intro-inner">
+      <span class="section-eyebrow" data-reveal>A reading</span>
+      <h2 class="section-title" data-reveal>What a building <em>owes its ground.</em></h2>
+      <div class="note-prose" data-reveal>
+        <p class="lead">There is a phrase that has become difficult to use precisely. <em>Anchored in culture</em> — written into briefs, repeated in design statements, illustrated by surface treatments that vary from one geography to another but rarely change what a building is for. Used this way, the phrase describes a stylistic register&nbsp;: a vocabulary, a palette, an iconography drawn from a place and applied to a programme that could just as easily have come from anywhere.</p>
+        <p>There is another way to take the phrase, which produces different architecture and, more importantly, a different kind of long-term asset. Taken structurally, <em>anchored in culture</em> is not a set of forms to deploy but <strong>a question to keep open during the early decisions of a project</strong>&nbsp;: what does this ground — its climate, its history, its way of gathering people, its way of producing food or shelter — oblige us to reconsider in the programme itself, in the order of decisions, in what we will not do?</p>
+        <p>The two readings do not yield the same buildings. They do not yield the same returns either. The first absorbs cultural references at the level of the envelope&nbsp;; <strong>the second lets them work in the conception, where they shape what gets built and what does not.</strong></p>
+        <p>The three projects that follow document how this question has been kept open, in three contexts that posed it differently. They are not arranged as variations on a theme. They trace a movement — from a context where the ground <em>situates</em> a programme, to a context where it <em>structures</em> it, to a context where it <em>organises the very grammar</em> of the building itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6 · CASE STUDY · DIJON — first movement, white background
+       ========================================================= -->
+  <section class="case-study" id="nav-dijon">
+
+    <div class="case-header">
+      <div class="case-header-left">
+        <div class="case-num" data-reveal>First movement · Régénération</div>
+        <h2 data-reveal>Cité Internationale de la Gastronomie et du Vin — <em>where the ground situates a programme.</em></h2>
+      </div>
+      <dl class="case-header-right">
+        <div class="case-fact"><dt>Location</dt><dd>Hôtel-Dieu, Dijon, France</dd></div>
+        <div class="case-fact"><dt>Programme</dt><dd>Mixed cultural &amp; commercial district — hotel school, cinemas, hotel, retail, eco-district</dd></div>
+        <div class="case-fact"><dt>Surface</dt><dd>6.5 ha · ~85,000 m² with eco-district</dd></div>
+        <div class="case-fact"><dt>Partner</dt><dd>Eiffage — developer, builder, operator</dd></div>
+        <div class="case-fact"><dt>Status</dt><dd>Inaugurated May 2022</dd></div>
+      </dl>
+    </div>
+
+    <!-- Image dominante -->
+    <figure class="case-image-full" data-reveal>
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/06/CIGV-Dijon-A-Bechu-04-22-022.jpg"
+           alt="Cité Internationale de la Gastronomie et du Vin — exterior view"
+           loading="lazy">
+      <figcaption>The Hôtel-Dieu reconfigured — gastronomy as the organising principle of the programme itself, not as a marketing surface.</figcaption>
+    </figure>
+
+    <!-- Chiffre clé -->
+    <div class="oppic-section oppic-section--narrow" style="padding-bottom:0;">
+      <div class="note-prose" data-reveal style="display: grid; grid-template-columns: auto 1fr; gap: 50px; align-items: baseline;">
+        <div style="text-align: left;">
+          <div style="font-size: clamp(72px, 9vw, 140px); font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; color: var(--noir);">6.5</div>
+          <div style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gris-texte); font-weight: 500; margin-top: 8px;">Hectares of dormant heritage land</div>
+        </div>
+        <div>
+          <p class="lead" style="margin-bottom: 0;">Six and a half hectares of dormant heritage land in the centre of Dijon, transformed into a mixed programme&nbsp;: a hotel school (Ferrandi), two Pathé multiplexes with nine screens, a four-star Hilton with 125 rooms, shops, restaurants, a wine merchant, an entrepreneurial hub with offices, and an eco-district extending the operation to roughly 85,000 m².</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texte 1 -->
+    <div class="oppic-section oppic-section--narrow">
+      <div class="note-prose" data-reveal>
+        <p>The temptation, on a site of this size, is to treat the cultural identity of the place — Burgundian gastronomy and viticulture — as a marketing surface&nbsp;: a name, a façade material, a choice of colours. <strong>The Cité is not built that way.</strong> Gastronomy is the organising principle of the programme itself.</p>
+        <p>The hotel school is not a cultural sign placed inside the building&nbsp;; it forms the people who will run the place. The shops are not a leasing strategy presented as cultural anchorage&nbsp;; they stage the regional production economy that gives the operation its reason for being there rather than somewhere else. The mixed programme is not a financial diversification arranged after the fact&nbsp;; it is the spatial translation of an ecosystem that already existed in the region and that the project has gathered into one place.</p>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="case-gallery" data-reveal>
+      <div class="case-gal-col">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/10/CIGV-Dijon-A-Bechu-©Fernando-Javier-Urquijo-82-scaled.jpg"
+             alt="CIGV — interior atmosphere by Fernando Javier Urquijo"
+             loading="lazy">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/10/CIGV-Dijon-A-Bechu-©Fernando-Javier-Urquijo-77-scaled.jpg"
+             alt="CIGV — programmatic mix at street level"
+             loading="lazy">
+      </div>
+      <div class="case-gal-col">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/06/CIGV-Dijon-A-Bechu-04-22-039-scaled.jpg"
+             alt="CIGV — historical clocher framed by contemporary metal lamellae"
+             loading="lazy">
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/10/CIGV-Dijon-A-Bechu-©Fernando-Javier-Urquijo-59-scaled.jpg"
+             alt="CIGV — detail by Fernando Javier Urquijo"
+             loading="lazy">
+      </div>
+    </div>
+    <p style="max-width: var(--note-w); margin: -40px auto 60px; padding: 0 var(--page-pad); font-size: 11px; color: var(--gris-texte); letter-spacing: 0.02em; text-align: center; font-style: italic;">© Fernando Javier Urquijo</p>
+
+    <!-- Pull quote -->
+    <div class="case-pullquote" data-reveal>
+      <blockquote>A district built on a stylistic reference can be replicated&nbsp;; <em>a district built around a regional economy cannot.</em> The latter holds its value because its programme cannot be detached from its ground.</blockquote>
+      <cite>Culture as structure — not as decoration</cite>
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       6.5 · CHARNIÈRE — When the ground does more than situate
+       ========================================================= -->
+  <section class="oppic-intro oppic-charniere">
+    <div class="oppic-intro-inner">
+      <span class="section-eyebrow" data-reveal>Hinge</span>
+      <h2 class="section-title" data-reveal>When the ground does <em>more than situate.</em></h2>
+      <div class="note-prose" data-reveal>
+        <p class="lead">In Dijon, the ground situates. It gives the programme its economic logic and its long-term reason to be where it is. <strong>In other contexts, the ground does more than this.</strong></p>
+        <p>Climate, prevailing winds, available materials, ways of gathering shade and managing scarcity stop being technical parameters consulted late in a project&nbsp;; they become <strong>constraints of conception, as structuring as the programme itself</strong>. The further one moves from temperate Europe, the less the distinction holds between <em>the brief</em> and <em>what the brief had to take into account from the beginning</em>.</p>
+        <p>The second project documents what changes when the ground starts asking questions that cannot be answered after the building has been drawn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7 · CASE STUDY · A.S.A.R.I — second movement, dark background
+       ========================================================= -->
+  <section class="case-lisch" id="nav-asari">
+
+    <div class="case-header">
+      <div class="case-header-left">
+        <div class="case-num" data-reveal>Second movement · Climate as structure</div>
+        <h2 data-reveal>A.S.A.R.I. — <em>where the ground structures the programme.</em></h2>
+      </div>
+      <dl class="case-header-right">
+        <div class="case-fact"><dt>Location</dt><dd>Foum el Oued, Morocco — where the Sahara meets the Atlantic</dd></div>
+        <div class="case-fact"><dt>Programme</dt><dd>African Sustainable Agriculture Research Institute</dd></div>
+        <div class="case-fact"><dt>Commissioned by</dt><dd>Phosboucraa Foundation · OCP</dd></div>
+        <div class="case-fact"><dt>Note</dt><dd>First stone of the future Mohamed VI Polytechnic University of Laâyoune</dd></div>
+        <div class="case-fact"><dt>Status</dt><dd>Inaugurated early 2022 · Off-grid</dd></div>
+      </dl>
+    </div>
+
+    <div class="case-images-row">
+      <figure data-reveal>
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/06/1-MAIN-IMAGE-Bechu-Associes-ASARI-@Fabio-Mantovani-5-scaled.jpg"
+             alt="A.S.A.R.I. — covered promenade and Sahrawi-coloured sun-shading fabric"
+             loading="lazy">
+        <figcaption>The covered promenade — steel cables and a sun-shading fabric whose colour is drawn from the Sahrawi tradition.</figcaption>
+      </figure>
+      <figure data-reveal>
+        <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/07/Bechu-Associes-ASARI-@Fabio-Mantovani-29-scaled.jpg"
+             alt="A.S.A.R.I. — research units along the spine"
+             loading="lazy">
+        <figcaption>Research units along a single spine — orientation set in response to the dominant north-northeast wind.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Texte 1 + chiffre -->
+    <div class="oppic-section oppic-section--narrow" style="padding-bottom:0;">
+      <div class="note-prose" data-reveal style="display: grid; grid-template-columns: auto 1fr; gap: 50px; align-items: baseline; color: var(--blanc);">
+        <div style="text-align: left;">
+          <div style="font-size: clamp(72px, 9vw, 140px); font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; color: var(--blanc);">80<span style="font-size: 0.4em; font-weight: 400;"> cm</span></div>
+          <div style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500; margin-top: 8px;">Earth on the roofs · thermal inertia</div>
+        </div>
+        <div>
+          <p class="lead" style="margin-bottom: 0; color: rgba(255,255,255,0.95);">The project was not conceived as a building first and a sustainability strategy later. <strong style="color: var(--blanc);">It was conceived as a reading of its site.</strong> Before any architectural choice, the orientation of the ensemble was decided in response to the dominant wind from the north-northeast, the shifting of sand, the position of the sea.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="oppic-section oppic-section--narrow">
+      <div class="note-prose" data-reveal>
+        <p>A covered promenade in steel cables and a sun-shading fabric — <strong>its colour drawn from the Sahrawi tradition</strong> — connects the research units along a single spine. The colour is not a sign placed on the building&nbsp;; it is a structural protection from solar radiation that simultaneously anchors the ensemble in its cultural ground. The two functions cannot be separated.</p>
+        <p>The same logic governs the architecture itself. Eighty centimetres of earth on the roofs give the buildings the thermal inertia required to function without mechanical cooling. Interior patios use the prevailing winds to ventilate workspaces and laboratories naturally. The exterior façades are dimensioned through parametric design, calculated to respond to the precise solar exposure of each lit surface — a method that draws on the contemporary tools of computation but produces an architecture that the inhabitants of this coast would recognise.</p>
+        <p><em>"Inspired by the knowledge of the ancients, nourished by our parametric design tools"</em>&nbsp;: the formula is not rhetorical. <strong>It describes the actual sequence of decisions.</strong></p>
+      </div>
+    </div>
+
+    <!-- Vue large pleine largeur -->
+    <figure class="case-image-full" data-reveal style="margin-top: 60px;">
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/07/Bechu-Associes-ASARI-@Fabio-Mantovani-2-scaled-e1721140138935.jpg"
+           alt="A.S.A.R.I. — open-air living lab"
+           loading="lazy">
+      <figcaption style="color: rgba(255,255,255,0.55);">The outdoor spaces extend the same approach — an open-air living lab where the agricultural research the centre hosts can be staged in the conditions it studies. <em>The architecture does not house the programme — it demonstrates it.</em> © Fabio Mantovani</figcaption>
+    </figure>
+
+  </section>
+
+  <!-- =========================================================
+       7.5 · CHARNIÈRE — When refusing imported models becomes the model
+       ========================================================= -->
+  <section class="oppic-intro oppic-charniere" id="nav-hinge-2">
+    <div class="oppic-intro-inner">
+      <span class="section-eyebrow" data-reveal>Hinge</span>
+      <h2 class="section-title" data-reveal>When the refusal of imported models <em>becomes the model itself.</em></h2>
+      <div class="note-prose" data-reveal>
+        <p class="lead">A.S.A.R.I. shows that climate can structure a programme — that the elements of a place can shape the building rather than be shaped by it.</p>
+        <p>The next step in the same line of thought asks something more demanding&nbsp;: <strong>can the social culture of a place, its way of gathering, transmitting, and learning, become the organising principle of a building, and not only its decorative frame?</strong> The distinction matters. Architecture that draws from a local heritage produces references that can be admired. Architecture that lets that heritage organise its very grammar produces buildings that <em>could not have been designed in the absence of that heritage</em>. The third project moves to that point.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       8 · CASE STUDY · ISM DAKAR — third movement, white background
+       ========================================================= -->
+  <section class="case-study" id="nav-dakar">
+
+    <div class="case-header">
+      <div class="case-header-left">
+        <div class="case-num" data-reveal>Third movement · Architecture as pedagogy</div>
+        <h2 data-reveal>ISM Dakar — <em>where the ground organises the very grammar of the building.</em></h2>
+      </div>
+      <dl class="case-header-right">
+        <div class="case-fact"><dt>Location</dt><dd>Dakar, Senegal — latitude 14.7° north</dd></div>
+        <div class="case-fact"><dt>Programme</dt><dd>Institut Supérieur de Management — campus for 3,000 students</dd></div>
+        <div class="case-fact"><dt>Constraint</dt><dd>Constrained urban site · intense year-round solar gain</dd></div>
+        <div class="case-fact"><dt>Distinction</dt><dd>First vertical campus in West Africa</dd></div>
+        <div class="case-fact"><dt>Photography</dt><dd>© Fabio Mantovani</dd></div>
+      </dl>
+    </div>
+
+    <!-- Image dominante — Dakar nocturne verticale -->
+    <figure class="case-image-full" data-reveal>
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2016/09/Bechu-Associes-ISM-Dakar-Fabio-Mantovani-24.jpg"
+           alt="ISM Dakar — terracotta brise-soleil exoskeleton at dusk"
+           loading="lazy">
+      <figcaption>The terracotta brise-soleil exoskeleton at dusk — verticality as the consequence of a logic that places the palaver tree at the centre, not as a stylistic option. © Fabio Mantovani</figcaption>
+    </figure>
+
+    <!-- Chiffre clé -->
+    <div class="oppic-section oppic-section--narrow" style="padding-bottom:0;">
+      <div class="note-prose" data-reveal style="display: grid; grid-template-columns: auto 1fr; gap: 50px; align-items: baseline;">
+        <div style="text-align: left;">
+          <div style="font-size: clamp(72px, 9vw, 140px); font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; color: var(--noir);">59.2<span style="font-size: 0.4em; font-weight: 400;">%</span></div>
+          <div style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gris-texte); font-weight: 500; margin-top: 8px;">Reduction in annual direct solar gain</div>
+        </div>
+        <div>
+          <p class="lead" style="margin-bottom: 0;">A new campus for the Institut Supérieur de Management in Dakar, designed to receive three thousand students. <strong>The project does not begin with form. It begins with a figure&nbsp;: the <em>arbre à palabres</em>, the palaver tree</strong> — the place under which conversation circulates freely, where village life is discussed and where elders pass knowledge to children. <em>The school before the school.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texte 1 -->
+    <div class="oppic-section oppic-section--narrow">
+      <div class="note-prose" data-reveal>
+        <p>This is not invoked as a metaphor or as the name of an atrium&nbsp;; <strong>it organises the principal façade and the disposition of every space on the campus</strong>. The whole reads as an educational village structured around a central reference point, the way a settlement organises itself around the tree that gives it its civic centre.</p>
+        <p>Verticality, here, is not a stylistic option. The site is too small to accommodate three thousand students horizontally. The architectural response was to ask whether the constraint could be turned into a pedagogical opportunity rather than a spatial compromise. <strong>Each level of the building extends outdoor terraces — open spaces conceived as suspended versions of the original tree</strong>, places of pause, study, and informal exchange. The building's vertical organisation is therefore not an imitation of glass towers found elsewhere&nbsp;; it is the consequence of the same logic that placed the palaver tree at the centre, applied to a site that could not accept it on the ground.</p>
+      </div>
+    </div>
+
+    <!-- Image rooftop horizontale -->
+    <figure class="case-image-full" data-reveal>
+      <img src="https://api.bechuetassocies.com/wp-content/uploads/2016/09/Bechu-Associes-ISM-Dakar-Fabio-Mantovani-43-1.jpg"
+           alt="ISM Dakar — rooftop terrace, suspended palaver tree"
+           loading="lazy">
+      <figcaption>Rooftop terrace — a suspended version of the original tree. The shading sail covers 89% of the roof surface. © Fabio Mantovani</figcaption>
+    </figure>
+
+    <!-- Texte 2 -->
+    <div class="oppic-section oppic-section--narrow" style="padding-top:60px;">
+      <div class="note-prose" data-reveal>
+        <p>The performance follows from the grammar. The southern façade is sculpted volumetrically to create deep shaded recesses&nbsp;; an exoskeleton of vertical terracotta brise-soleil protects the east, south and west elevations&nbsp;; a shading sail covers eighty-nine per cent of the roof. The result is a documented reduction of <strong>59.2 per cent in annual direct solar gain</strong> compared to an unprotected volume of the same constructibility. The common spaces operate without mechanical cooling. <em>None of these decisions can be detached from the figure that organises the campus.</em></p>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="case-pullquote" data-reveal>
+      <blockquote>This campus does not replicate models from elsewhere. <em>It follows a deeply contextual approach, designed in Dakar, for Dakar, and with Africa.</em></blockquote>
+      <cite>The sentence reads as a manifesto. It describes an operational reality.</cite>
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       9 · ADJACENT PRACTICE — five further projects in grid
+       ========================================================= -->
+  <section class="adjacent-practice" id="nav-adjacent">
+    <div class="adjacent-practice-inner">
+      <span class="section-eyebrow" data-reveal>Adjacent practice</span>
+      <h2 class="section-title" data-reveal>Five further projects <em>working the same line.</em></h2>
+
+      <div class="note-prose" data-reveal style="margin-bottom: 60px;">
+        <p>The line drawn through these three projects does not stop at them. It continues, in adjacent registers, through five further operations — the regeneration of a heritage hospital site, the reinvention of a residential morphology in a city dominated by towers, the transformation of a tertiary asset reaching the end of its first life, the introduction of structural timber into one of Europe's densest mineral business districts, the careful biophilic reading of a coastal hospitality programme.</p>
+      </div>
+
+      <div class="adjacent-grid">
+
+        <!-- Clos Saint-Louis -->
+        <article class="adjacent-card" data-reveal>
+          <figure class="adjacent-card__media">
+            <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/10/1-MAIN-IMAGE-Bechu-Associes-Clos-Saint-Louis-21-scaled.jpg"
+                 alt="Le Clos Saint-Louis — Saint-Germain-en-Laye"
+                 loading="lazy">
+          </figure>
+          <div class="adjacent-card__body">
+            <div class="adjacent-card__head">
+              <h3>Le Clos Saint-Louis</h3>
+              <span class="adjacent-card__loc">Saint-Germain-en-Laye, France · construction underway</span>
+            </div>
+            <p class="adjacent-card__quote"><em>Regenerating a nineteenth-century hospital site into a mixed urban quarter — health, residential, retail, culture, hospitality — requires deciding, in advance, what is being preserved by transforming a heritage and what is being accepted as lost&nbsp;; that decision is taken once, at the start, and governs everything that follows.</em></p>
+            <dl class="adjacent-card__facts">
+              <div><dt>Surface</dt><dd>53,865 m²</dd></div>
+              <div><dt>Developers</dt><dd>OGIC · Marignan · SODES · ORPEA</dd></div>
+              <div><dt>Certifications</dt><dd>NF Habitat · HQE Excellent · BREEAM Very Good · Osmoz · E+C-</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- Wadi Hills -->
+        <article class="adjacent-card" data-reveal>
+          <figure class="adjacent-card__media">
+            <img src="https://api.bechuetassocies.com/wp-content/uploads/2026/05/Bechu-Associes-Wadi-Hills-5.jpg"
+                 alt="Wadi Hills — Beirut"
+                 loading="lazy">
+          </figure>
+          <div class="adjacent-card__body">
+            <div class="adjacent-card__head">
+              <h3>Wadi Hills</h3>
+              <span class="adjacent-card__loc">Beirut, Lebanon · delivered 2012</span>
+            </div>
+            <p class="adjacent-card__quote"><em>To refuse the generic tower in a city that had made the tower its standard is a choice one does not defend with argument but with the quality of life one is able to make possible — a dense village fabric produces an intimacy that verticality, in this configuration, simply removes.</em></p>
+            <dl class="adjacent-card__facts">
+              <div><dt>Surface</dt><dd>26,000 m²</dd></div>
+              <div><dt>Developer</dt><dd>Millennium</dd></div>
+              <div><dt>Programme</dt><dd>Collective housing — low-rise <em>village urbain</em></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- Mondo / Le Bancelles -->
+        <article class="adjacent-card" data-reveal>
+          <figure class="adjacent-card__media">
+            <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/06/Bechu-Associes-MONDO-©Nicolas-Grosmond-52-1-scaled.jpg"
+                 alt="Mondo / Le Bancelles — Paris"
+                 loading="lazy">
+          </figure>
+          <div class="adjacent-card__body">
+            <div class="adjacent-card__head">
+              <h3>Mondo / Le Bancelles</h3>
+              <span class="adjacent-card__loc">Paris, France · delivered 2024</span>
+            </div>
+            <p class="adjacent-card__quote"><em>Transforming a tired tertiary asset into a sustainable building is not done by adding labels — it requires deciding, in advance, what must be demolished so that a new logic of light, space, and biophilia can become possible.</em></p>
+            <dl class="adjacent-card__facts">
+              <div><dt>Surface</dt><dd>31,000 m²</dd></div>
+              <div><dt>Owner</dt><dd>Gecina</dd></div>
+              <div><dt>Certifications</dt><dd>LEED Gold · HQE Excellent · WELL Gold · BiodiverCity · Wiredscore Gold</dd></div>
+              <div><dt>Photography</dt><dd>© Nicolas Grosmond</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- Inspire -->
+        <article class="adjacent-card" data-reveal>
+          <figure class="adjacent-card__media">
+            <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/06/©Nicolas-Grosmond-INSPIRE-NOV2025-33-rwk-1.jpg"
+                 alt="Inspire — Puteaux La Défense"
+                 loading="lazy">
+          </figure>
+          <div class="adjacent-card__body">
+            <div class="adjacent-card__head">
+              <h3>Inspire</h3>
+              <span class="adjacent-card__loc">Puteaux, La Défense, France · delivered 2025</span>
+            </div>
+            <p class="adjacent-card__quote"><em>The first timber-framed building in France's densest business district owed its rupture neither to posture nor to gesture — only to a constructive logic that had to be defended project after project, until at a given moment it became possible.</em></p>
+            <dl class="adjacent-card__facts">
+              <div><dt>Surface</dt><dd>22,300 m²</dd></div>
+              <div><dt>Developer</dt><dd>BNP Paribas Immobilier Promotion</dd></div>
+              <div><dt>Occupier</dt><dd>Allianz Trade</dd></div>
+              <div><dt>Construction</dt><dd>Glulam · CLT · low-carbon concrete core</dd></div>
+              <div><dt>Certifications</dt><dd>HQE Excellent · BREEAM Excellent · BBCA · BiodiverCity ABBB</dd></div>
+              <div><dt>Photography</dt><dd>© Nicolas Grosmond</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- Miramar Arzon -->
+        <article class="adjacent-card" data-reveal>
+          <figure class="adjacent-card__media">
+            <img src="https://api.bechuetassocies.com/wp-content/uploads/2024/09/Bechu-Associes-Residences-Miramar-54-1-scaled.jpg"
+                 alt="Miramar — Arzon"
+                 loading="lazy">
+          </figure>
+          <div class="adjacent-card__body">
+            <div class="adjacent-card__head">
+              <h3>Miramar Arzon</h3>
+              <span class="adjacent-card__loc">Arzon, France · delivered 2015</span>
+            </div>
+            <p class="adjacent-card__quote"><em>Biophilia is not invoked, it is organised — a five-star hospitality programme anchored in its coastal site is recognisable to the fact that one could not move it elsewhere without losing what makes its operation viable. Where the architecture of the building meets the architecture of the experience inside it, the work was carried jointly with Volume ABC, our partner studio for interior architecture.</em></p>
+            <dl class="adjacent-card__facts">
+              <div><dt>Surface</dt><dd>14,834 m²</dd></div>
+              <div><dt>Developer</dt><dd>SAS Miramar Immobilier</dd></div>
+              <div><dt>Programme</dt><dd>Five-star resort restructuring · spa &amp; thalassotherapy</dd></div>
+              <div><dt>Architecture</dt><dd>Bechu &amp; Associés</dd></div>
+              <div><dt>Interior architecture</dt><dd>Volume ABC</dd></div>
+            </dl>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       10 · CLOSING READING — What three projects, eight readings, leave us with
+       ========================================================= -->
+  <section class="oppic-2026" id="nav-closing">
+    <div class="oppic-2026-inner">
+      <span class="section-eyebrow" data-reveal>Closing reading</span>
+
+      <h2 class="section-title" data-reveal style="margin-top: 20px; margin-bottom: 50px;">What three projects, eight readings, <em>leave us with.</em></h2>
+
+      <div class="note-prose" data-reveal>
+        <p class="lead">Working on land at this scale changes what an architectural decision is. On a single building, an early choice can often be revised later, at a cost that the project absorbs. <strong>On a programme that runs across millions of square metres, decisions taken in the first weeks govern what is possible in the next twenty years.</strong></p>
+        <p>Cultural anchorage, sustainability targets, programmatic mix, the relation of the building to its ground — none of these can be added at a later stage. They are either present in the early conception, or they are absent from the asset.</p>
+      </div>
+
+      <div class="key-statement" data-reveal>
+        What these three projects have in common is not a vocabulary, nor a sustainability standard, nor a regional reference. <em>It is the moment at which the questions were asked.</em> The brief was never executed before being interrogated. The cultural reading was never validated before being tested against the climate, the social grammar, the long-term economy. The sequence holds across geographies that share almost nothing else.
+      </div>
+
+      <div class="note-prose" data-reveal>
+        <p>A practice that holds this sequence as a discipline is recognisable to one thing&nbsp;: <strong>it brings a method to the room before it brings images</strong>. The conversation that opens here does not need to begin with renderings or precedents. It begins with the questions that, once answered well, govern what the renderings will eventually have to show.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       11 · BECHU & ASSOCIÉS — practice held across four generations
+       ========================================================= -->
+  <section class="oppic-agence" id="nav-practice">
+    <div class="oppic-agence-inner">
+      <span class="section-eyebrow" data-reveal>The practice</span>
+      <h2 class="section-title" data-reveal>A practice held across <em>four generations.</em></h2>
+
+      <!-- Chiffres -->
+      <div class="agence-figures">
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="2000"><span class="ag-fig-suffix">+</span></span>
+          <span class="ag-fig-l">Projects</span>
+        </div>
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="56"></span>
+          <span class="ag-fig-l">Awards</span>
+        </div>
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="42"></span>
+          <span class="ag-fig-l">Collaborators</span>
+        </div>
+        <div class="agence-figure" data-reveal>
+          <span class="ag-fig-n" data-count="30"></span>
+          <span class="ag-fig-l">Countries</span>
+        </div>
+      </div>
+
+      <div class="agence-text">
+        <p class="lead" data-reveal>For more than a hundred years, the Bechu family has built places that last. Today in its fourth generation, the practice brings together urbanists, architects, heritage architects and designers around a shared conviction&nbsp;: <strong>architecture must hold complexity — living programmes, inhabited estates, demanding climates, long-horizon investment decisions — without diluting it.</strong></p>
+        <p data-reveal>Working with landowners and investors at the moment they shift from land aggregation to direct development is a particular registration of the practice. It calls for an architectural partner who can read the terrain before drawing on it, structure a development sequence rather than execute single buildings, and integrate cultural and climatic anchorage in the early decisions of a programme rather than at the level of its surface treatments. <strong>This is the line of work the three projects above document — and the line through which the practice approaches development at the scale of millions of square metres in environments where the ground asks more of architecture than situation.</strong></p>
+        <p data-reveal>This tradition extends across registers&nbsp;: housing, tertiary, hospitality, urban regeneration, cultural facilities, heritage monuments. It is supported by a dedicated practice in interior architecture, <strong>Volume ABC</strong>, which intervenes on the programmes — hospitality, high-end residential, mixed-use commercial bases — where the architecture of the building and the architecture of the experience inside it cannot be separated. Across all these registers, one constant&nbsp;: <strong>the discipline of a shared protocol as the condition of the result.</strong></p>
+
+        <div class="agence-citation" data-reveal>
+          "For a project to last, it must come from its ground — and each of our decisions is guided by the responsibility we hold toward the living."
+          <cite>Clémence Bechu — Managing Director</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       12 · CTA · An opening, not a brief
+       ========================================================= -->
+  <section class="oppic-cta" id="nav-opening">
+    <span class="section-eyebrow" data-reveal>An opening, not a brief</span>
+    <h2 data-reveal>This document is <em>a first reading.</em></h2>
+    <div data-reveal>
+      <p>What can be deepened in the conversation that follows&nbsp;: the documented method of structuring a development programme on parcels of metropolitan scale, the integration of cultural and climatic anchorage in early programmatic decisions, and the protocol through which an architectural practice can hold across multiple operations on a single landowner's portfolio over a long horizon.</p>
+      <p>We are available for an exchange in the format that suits your calendar.</p>
+    </div>
+    <div class="oppic-cta-actions" data-reveal>
+      <a class="contact-link" href="mailto:contact@bechuetassocies.com">contact@bechuetassocies.com</a>
+      <a class="contact-link" href="https://www.bechuetassocies.com">bechuetassocies.com</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       13 · FOOTER
+       ========================================================= -->
+  <footer class="oppic-foot">
+    <span>Bechu & Associés — 82 rue Lecourbe, Paris 15</span>
+    <span>Note · May 2026</span>
+    <span>© Bechu & Associés</span>
+  </footer>
+
+  <!-- Download as PDF button -->
+  <button class="oppic-pdf" type="button" aria-label="Download this page as PDF" onclick="window.print();">
+    <span class="label">Download as PDF</span>
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <polyline points="3,8 8,13 13,8" fill="none"></polyline>
+      <line x1="8" y1="2" x2="8" y2="13"></line>
+      <line x1="2" y1="15" x2="14" y2="15"></line>
+    </svg>
+  </button>
+
+  <!-- Back to top -->
+  <button class="oppic-totop" type="button" aria-label="Back to top">
+    <span class="label">Back to top</span>
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <polyline points="3,8 8,3 13,8" fill="none"></polyline>
+      <line x1="8" y1="3" x2="8" y2="14"></line>
+    </svg>
+  </button>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var REDUCED_MOTION = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var page = document.querySelector('.oppic-page');
+
+  /* ── Back to top ── */
+  var toTop = document.querySelector('.oppic-totop');
+  if (toTop) {
+    var onScroll = function() {
+      if (window.scrollY > 600) toTop.classList.add('is-visible');
+      else toTop.classList.remove('is-visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ── Mini-nav apparaît au scroll ── */
+  function updateScrolled() {
+    if (!page) return;
+    if (window.scrollY > 400) page.classList.add('is-scrolled');
+    else page.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', updateScrolled, { passive: true });
+  updateScrolled();
+
+  /* ── Scroll-spy mini-nav ── */
+  var mininav = document.querySelector('.mininav');
+  var mininavItems = mininav ? Array.prototype.slice.call(mininav.querySelectorAll('.mininav__item')) : [];
+  var mininavSections = mininavItems.map(function(item) {
+    var anchor = item.querySelector('a');
+    if (!anchor) return null;
+    var href = anchor.getAttribute('href');
+    return { item: item, target: href ? document.querySelector(href) : null };
+  }).filter(function(e) { return e && e.target; });
+
+  function updateActive() {
+    if (!mininavSections.length) return;
+    var anchorY = window.innerHeight * 0.33;
+    var best = null;
+    var bestDelta = Infinity;
+    mininavSections.forEach(function(entry) {
+      var top = entry.target.getBoundingClientRect().top;
+      if (top - anchorY <= 0) {
+        var delta = Math.abs(top - anchorY);
+        if (delta < bestDelta) { bestDelta = delta; best = entry; }
+      }
+    });
+    mininavItems.forEach(function(i) { i.classList.remove('is-active'); });
+    if (best) best.item.classList.add('is-active');
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+
+  /* Smooth-scroll mini-nav avec offset */
+  mininavItems.forEach(function(item) {
+    var a = item.querySelector('a');
+    if (!a) return;
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      var target = href ? document.querySelector(href) : null;
+      if (!target) return;
+      e.preventDefault();
+      var top = window.scrollY + target.getBoundingClientRect().top - 70;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  /* ── Animation des chiffres ── */
+  function formatNumber(n) {
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function animateCount(el) {
+    if (el.dataset.animDone === '1') return;
+    el.dataset.animDone = '1';
+
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (isNaN(target)) return;
+
+    var suffixEl = el.querySelector('.ag-fig-suffix');
+    var suffix = suffixEl ? suffixEl.outerHTML : '';
+    var negative = target < 0;
+    var absTarget = Math.abs(target);
+    var prefix = el.textContent.indexOf('−') === 0 || el.textContent.indexOf('-') === 0 || negative ? '−' : '';
+
+    if (REDUCED_MOTION) {
+      el.innerHTML = prefix + (target === -8 ? '8%' : formatNumber(absTarget)) + suffix;
+      return;
+    }
+
+    var duration = 1800;
+    var start = performance.now();
+
+    function tick(now) {
+      var t = Math.min(1, (now - start) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var val = absTarget * eased;
+      // Cas spécial -8% (formattage différent)
+      if (target === -8) {
+        el.innerHTML = prefix + Math.round(val) + '%' + suffix;
+      } else {
+        el.innerHTML = prefix + formatNumber(val) + suffix;
+      }
+      if (t < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        if (target === -8) {
+          el.innerHTML = prefix + absTarget + '%' + suffix;
+        } else {
+          el.innerHTML = prefix + formatNumber(absTarget) + suffix;
+        }
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ── Reveal on scroll + chiffres ── */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          // Si l'élément contient ou est un compteur, on l'anime
+          if (e.target.hasAttribute('data-count')) {
+            animateCount(e.target);
+          } else {
+            var counters = e.target.querySelectorAll('[data-count]');
+            counters.forEach(animateCount);
+          }
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+      io.observe(el);
+    });
+    // Sécurité : observer aussi tous les compteurs au cas où ils ne soient pas dans un [data-reveal]
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+      if (!el.closest('[data-reveal]')) io.observe(el);
+    });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+    document.querySelectorAll('[data-count]').forEach(animateCount);
+  }
+
+})();
+</script>
+
+</body>
+</html>
