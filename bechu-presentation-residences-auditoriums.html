@@ -1,0 +1,2912 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bechu &amp; Associés — Résidences étudiantes et auditoriums</title>
+<meta name="description" content="Vingt-cinq ans de pratique sur deux typologies souvent croisées — 9 résidences étudiantes, 14 auditoriums. Document de référence, Bechu &amp; Associés et Volume ABC.">
+
+<style>
+/* ================================================================
+   RÉSIDENCES ÉTUDIANTES & AUDITORIUMS — Bechu & Associés + Volume ABC
+   Document de référence (concours / RDV commercial)
+   Tout-en-un : HTML + CSS + JS dans un seul fichier (GitHub Pages)
+   ================================================================ */
+
+/* === Police officielle Bechu — Altform === */
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Light.otf') format('opentype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-LightItalic.otf') format('opentype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-RegularItalic.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/Altform-BoldItalic.otf') format('opentype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+:root {
+  --noir: #1B1B1B;
+  --blanc: #FFFFFF;
+  --gris-fin: rgba(27,27,27,0.08);
+  --gris-trait: rgba(27,27,27,0.15);
+  --gris-texte: rgba(27,27,27,0.55);
+  --gris-soft: #F5F4F1;
+  --img-bg: #efefef;
+  --page-pad: 40px;
+  --max-w: 1600px;
+  --text-w: 1100px;
+  --note-w: 780px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Altform', 'DM Sans', 'Nunito', 'Helvetica Neue', sans-serif;
+  color: var(--noir);
+  background: var(--blanc);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.page {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ================================================================
+   COVER PAGE — visible only @media print (page de garde A4)
+   ================================================================ */
+.print-cover { display: none; }
+
+/* ================================================================
+   1 · BANDEAU DE TÊTE — logo + identité + Volume ABC
+   ================================================================ */
+.top-band {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px var(--page-pad);
+  /* Réserve à droite pour le bouton PDF fixed */
+  padding-right: calc(var(--page-pad) + 240px);
+  border-bottom: 1px solid var(--gris-fin);
+}
+.top-band__logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+.top-band__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.3;
+}
+.top-band__primary {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--noir);
+}
+.top-band__primary .specialty {
+  color: var(--gris-texte);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+.top-band__primary .specialty::before { content: " — "; }
+.top-band__secondary .specialty::before { content: " — "; }
+.top-band__secondary {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 400;
+}
+.top-band__secondary em {
+  font-style: normal;
+  color: var(--noir);
+  font-weight: 500;
+}
+.top-band__meta {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ================================================================
+   2bis · HERO ILLUSTRATIF — placeholder large entre titre et intro
+   ================================================================ */
+.hero-illu {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--page-pad) 0;
+}
+.hero-illu .ref-img {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+}
+.hero-illu .ref-img .img-placeholder {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background: var(--img-bg);
+  border: 1px solid var(--gris-trait);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--gris-texte);
+  position: relative;
+}
+.hero-illu .ref-img img {
+  position: absolute;
+  inset: -10% 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  display: none;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+.hero-illu .ref-img.filled img { display: block; }
+.hero-illu .ref-img.filled .img-placeholder { display: none; }
+.hero-illu figcaption {
+  display: none;
+}
+
+/* ================================================================
+   2 · TITRE PRINCIPAL
+   ================================================================ */
+.lede-section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 110px var(--page-pad) 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.lede-section .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: block;
+}
+.lede-section h1 {
+  font-size: clamp(40px, 5.2vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.lede-section h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gris-texte);
+}
+.lede-section .lede {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.65;
+  color: var(--noir);
+  font-weight: 400;
+  max-width: 460px;
+  margin-left: auto;
+}
+.lede-section .lede em {
+  font-style: italic;
+  color: var(--gris-texte);
+}
+
+/* ================================================================
+   3 · INTRO ÉDITORIALE — fond clair
+   ================================================================ */
+.intro {
+  background: var(--gris-soft);
+  padding: 100px var(--page-pad);
+  border-top: 1px solid var(--gris-fin);
+  border-bottom: 1px solid var(--gris-fin);
+}
+.intro-inner {
+  max-width: var(--note-w);
+  margin: 0 auto;
+}
+.intro .section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: block;
+}
+.intro h2 {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+.intro h2 em { font-style: italic; font-weight: 300; color: var(--gris-texte); }
+.intro p {
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.75;
+  color: var(--noir);
+  margin-bottom: 1.4em;
+  font-weight: 400;
+}
+.intro p.lead {
+  font-size: clamp(18px, 1.35vw, 21px);
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 1.6em;
+  letter-spacing: -0.005em;
+}
+.intro p em { font-style: italic; }
+.intro p strong { font-weight: 600; }
+
+/* ================================================================
+   3bis · MININAV — sticky, apparaît au scroll
+   ================================================================ */
+.mininav {
+  position: sticky;
+  top: 0;
+  background: var(--blanc);
+  border-top: 1px solid var(--noir);
+  border-bottom: 1px solid var(--gris-fin);
+  z-index: 90;
+  padding: 14px var(--page-pad);
+  /* Réserve à droite pour le bouton PDF fixed */
+  padding-right: calc(var(--page-pad) + 240px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.page.is-scrolled .mininav {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mininav__list {
+  list-style: none;
+  display: flex;
+  gap: 34px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.mininav__list .label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-right: 8px;
+}
+.mininav__item a {
+  font-size: 13px;
+  color: var(--gris-texte);
+  font-weight: 400;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.mininav__item a:hover { color: var(--noir); }
+.mininav__item.is-active a {
+  color: var(--noir);
+  border-bottom-color: var(--noir);
+  font-weight: 500;
+}
+.mininav__num {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gris-texte);
+  letter-spacing: 0.05em;
+}
+.mininav__item.is-active .mininav__num {
+  color: var(--noir);
+}
+
+/* ================================================================
+   4 · SOMMAIRE — deux ancres typographiques
+   ================================================================ */
+.sommaire {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 100px var(--page-pad);
+  border-bottom: 1px solid var(--noir);
+}
+.sommaire .label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 50px;
+  display: block;
+}
+.sommaire .anchors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.sommaire .anchor a {
+  display: block;
+  padding: 28px 0;
+  border-top: 1px solid var(--noir);
+  border-bottom: 1px solid var(--gris-fin);
+  transition: padding-left 0.25s ease;
+}
+.sommaire .anchor a:hover {
+  padding-left: 12px;
+}
+.sommaire .anchor .num {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  color: var(--gris-texte);
+  margin-bottom: 16px;
+  display: block;
+  text-transform: uppercase;
+}
+.sommaire .anchor h3 {
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.sommaire .anchor .count {
+  font-size: 12px;
+  color: var(--gris-texte);
+  letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   5 · SECTION HEADER (I / II)
+   ================================================================ */
+.section-opener {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 120px var(--page-pad) 60px;
+}
+.section-opener .chapter {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: inline-block;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--noir);
+  min-width: 200px;
+}
+.section-opener h2 {
+  font-size: clamp(36px, 4.2vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 28px;
+  max-width: 900px;
+}
+.section-opener h2 em { font-style: italic; font-weight: 300; color: var(--gris-texte); }
+.section-opener .section-lede {
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.6;
+  color: var(--noir);
+  max-width: 720px;
+  margin-top: 24px;
+}
+.section-opener .section-lede em { color: var(--gris-texte); font-style: italic; }
+
+/* sous-titres internes : Projets livrés / En cours / etc. */
+.subsection-head {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 60px var(--page-pad) 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: baseline;
+  border-top: 1px solid var(--noir);
+}
+.subsection-head h3 {
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+.subsection-head h3 em { font-style: italic; font-weight: 300; color: var(--gris-texte); }
+.subsection-head .count {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--gris-texte);
+}
+
+/* ================================================================
+   6 · FICHE PROJET — la brique répétée 23 fois
+   ================================================================ */
+.fiche {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 70px var(--page-pad);
+  border-top: 1px solid var(--gris-fin);
+}
+.fiche-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 50px;
+}
+.fiche-head-left .fiche-num {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 22px;
+  display: block;
+}
+.fiche-head-left h4 {
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.fiche-head-left h4 em { font-style: italic; font-weight: 300; color: var(--gris-texte); }
+.fiche-head-left .subtitle {
+  font-size: clamp(14px, 1vw, 16px);
+  color: var(--gris-texte);
+  font-style: italic;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.fiche-facts {
+  display: grid;
+  gap: 0;
+  max-width: 460px;
+  margin-left: auto;
+  width: 100%;
+}
+.fiche-facts .row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 20px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--gris-fin);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.fiche-facts .row:first-child { border-top: 1px solid var(--gris-fin); }
+.fiche-facts dt {
+  color: var(--gris-texte);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+.fiche-facts dd {
+  color: var(--noir);
+  font-weight: 400;
+}
+
+/* Bloc images de fiche — système justified-row :
+   chaque vignette flex-grow = aspect ratio. Toutes les images d'une même
+   ligne partagent la même hauteur ; les largeurs varient selon le cadrage.
+   Pas de fond placeholder visible une fois remplie. */
+.fiche-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 22px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+}
+.fiche-images > .ref-img {
+  flex: var(--ar, 1.5) 1 0;
+  min-width: 260px;
+}
+.fiche-images--single > .ref-img,
+.fiche-images--small > .ref-img {
+  flex-basis: 100%;
+}
+.fiche-images--small > .ref-img {
+  max-width: 56%;
+}
+.fiche-images--triple > .ref-img {
+  min-width: 140px;
+}
+
+.ref-img {
+  position: relative;
+}
+.ref-img .img-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: var(--img-bg);
+  border: 1px solid var(--gris-trait);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--gris-texte);
+}
+.ref-img img {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+.ref-img.filled .img-placeholder { display: none; }
+.ref-img.filled img { display: block; }
+
+/* Fade-in + lift discret à l'entrée en vue */
+.ref-img.filled {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+.ref-img.filled.is-in {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ref-img.filled { opacity: 1; transition: none; }
+}
+
+.ref-img figcaption {
+  display: none;
+}
+
+/* texte de présentation */
+.fiche-body {
+  max-width: var(--note-w);
+}
+.fiche-body p {
+  font-size: clamp(14.5px, 1.02vw, 17px);
+  line-height: 1.72;
+  color: var(--noir);
+  margin-bottom: 1.2em;
+}
+.fiche-body p em { font-style: italic; }
+.fiche-body p strong { font-weight: 600; }
+.fiche-body p.kicker {
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.55;
+  margin-bottom: 1.2em;
+}
+
+/* ================================================================
+   7 · PIED DE PAGE
+   ================================================================ */
+.page-foot {
+  border-top: 1px solid var(--noir);
+  margin-top: 120px;
+  padding: 80px var(--page-pad) 50px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: start;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-foot .foot-logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+.page-foot .contact {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.page-foot .contact strong {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.page-foot .mention {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  font-weight: 500;
+  text-align: right;
+  align-self: end;
+  max-width: 320px;
+  margin-left: auto;
+  line-height: 1.6;
+}
+
+/* ================================================================
+   8 · BOUTON TÉLÉCHARGER PDF — fixed top-right
+   ================================================================ */
+.pdf-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--noir);
+  color: var(--blanc);
+  border: 1px solid var(--noir);
+  padding: 12px 22px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.pdf-btn:hover {
+  background: var(--blanc);
+  color: var(--noir);
+}
+.pdf-btn svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ================================================================
+   9 · REVEAL — animations discrètes
+   ================================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   10 · RESPONSIVE
+   ================================================================ */
+@media (max-width: 1100px) {
+  .lede-section { grid-template-columns: 1fr; gap: 40px; padding: 80px var(--page-pad) 50px; }
+  .lede-section .lede { margin-left: 0; }
+  .fiche-head { grid-template-columns: 1fr; gap: 40px; }
+  .fiche-facts { margin-left: 0; max-width: 100%; }
+  .sommaire .anchors { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 800px) {
+  :root { --page-pad: 24px; }
+  .top-band {
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    padding: 14px var(--page-pad);
+    padding-right: calc(var(--page-pad) + 56px);
+    align-items: center;
+  }
+  .top-band__logo img { height: 28px; }
+  .top-band__primary { font-size: 10.5px; letter-spacing: 0.18em; }
+  .top-band__primary .specialty {
+    display: block;
+    font-size: 9.5px;
+    margin-top: 3px;
+    letter-spacing: 0.12em;
+  }
+  .top-band__primary .specialty::before { content: ""; }
+  .top-band__secondary { font-size: 9px; letter-spacing: 0.12em; }
+  .top-band__secondary .specialty {
+    display: block;
+    margin-top: 1px;
+  }
+  .top-band__secondary .specialty::before { content: ""; }
+  .top-band__meta { display: none; }
+  .lede-section { padding: 70px var(--page-pad) 40px; }
+  .intro { padding: 70px var(--page-pad); }
+  .sommaire { padding: 70px var(--page-pad); }
+  .section-opener { padding: 80px var(--page-pad) 40px; }
+  .subsection-head { grid-template-columns: 1fr; gap: 6px; padding: 50px var(--page-pad) 16px; }
+  .mininav { padding: 10px 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .mininav::-webkit-scrollbar { display: none; }
+  .mininav__list { flex-wrap: nowrap; gap: 22px; padding: 0 var(--page-pad); padding-right: calc(var(--page-pad) + 56px); width: max-content; }
+  .mininav__list .label { display: none; }
+  .mininav__item { flex-shrink: 0; }
+  .mininav__item a { font-size: 12px; }
+  /* Indicateur visuel de scroll : dégradé blanc à droite pour montrer qu'il reste du contenu */
+  .mininav { position: sticky; }
+  .mininav::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 64px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(255,255,255,0), var(--blanc) 70%);
+    z-index: 1;
+  }
+  .fiche { padding: 50px var(--page-pad); }
+  .fiche-images { grid-template-columns: 1fr; gap: 18px; }
+  .page-foot { grid-template-columns: 1fr; gap: 30px; padding: 60px var(--page-pad) 40px; }
+  .page-foot .foot-logo img { height: 32px; }
+  .page-foot .mention { text-align: left; margin-left: 0; }
+  .pdf-btn { top: 12px; right: 12px; padding: 10px 14px; font-size: 10px; letter-spacing: 0.18em; gap: 8px; }
+  .pdf-btn .label-long { display: none; }
+}
+
+/* ================================================================
+   11 · PRINT — feuille de style A4
+   ================================================================ */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm 20mm 16mm;
+    /* pied de page d'impression — supporté par Chrome / Edge */
+    @bottom-left {
+      content: "Bechu & Associés — Résidences étudiantes & auditoriums";
+      font-family: 'Altform', sans-serif;
+      font-size: 8pt;
+      color: #777;
+      letter-spacing: 0.02em;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-family: 'Altform', sans-serif;
+      font-size: 8pt;
+      color: #777;
+      letter-spacing: 0.02em;
+    }
+  }
+  /* Première page : pas de pied de page (page de garde) */
+  @page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Masquer l'UI non imprimable */
+  .pdf-btn,
+  .mininav,
+  .sommaire,
+  .hero-illu {
+    display: none !important;
+  }
+
+  /* Désactiver animations / reveal */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* ─────── PAGE DE GARDE ─────── */
+  .print-cover {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 210mm;
+    height: 297mm;
+    padding: 28mm 22mm;
+    page-break-after: always;
+    box-sizing: border-box;
+    background: #fff;
+  }
+  .print-cover .cover-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10mm;
+  }
+  .print-cover .cover-logo img {
+    height: 24mm;
+    width: auto;
+    display: block;
+  }
+  .print-cover .cover-top__id {
+    font-size: 11pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 600;
+    line-height: 1.4;
+    padding-top: 2mm;
+  }
+  .print-cover .cover-top__id .specialty {
+    display: block;
+    color: #555;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    font-size: 9pt;
+    margin-top: 2mm;
+  }
+  .print-cover .cover-top .with {
+    color: #777;
+    font-weight: 400;
+    letter-spacing: 0.13em;
+    margin-top: 6mm;
+    display: block;
+    font-size: 8.5pt;
+  }
+  .print-cover .cover-top .with em {
+    font-style: normal;
+    color: #333;
+    font-weight: 500;
+  }
+  .print-cover .cover-rule {
+    height: 1px;
+    background: #000;
+    margin: 8mm 0 12mm;
+  }
+  .print-cover .cover-center h1 {
+    font-size: 32pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 8mm;
+  }
+  .print-cover .cover-center .sub {
+    font-size: 13pt;
+    color: #555;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 130mm;
+  }
+  .print-cover .cover-meta {
+    font-size: 9pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20mm;
+  }
+  .print-cover .cover-meta .mention {
+    text-align: right;
+    max-width: 90mm;
+    line-height: 1.55;
+  }
+
+  /* ─────── Top-band print ─────── */
+  .top-band {
+    display: none !important;
+  }
+
+  /* ─────── Lede / titre print ─────── */
+  .lede-section {
+    padding: 0 0 6mm 0 !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 14mm;
+    page-break-after: avoid;
+  }
+  .lede-section h1 { font-size: 22pt !important; line-height: 1.05 !important; }
+  .lede-section .lede { font-size: 10.5pt !important; line-height: 1.45 !important; }
+  .lede-section .eyebrow { font-size: 7.5pt !important; }
+
+  /* ─────── Intro print ─────── */
+  .intro {
+    background: #fff !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 8mm;
+  }
+  .intro h2 { font-size: 16pt !important; line-height: 1.1 !important; margin-bottom: 5mm !important; }
+  .intro p { font-size: 10pt !important; line-height: 1.5 !important; margin-bottom: 0.9em !important; }
+  .intro p.lead { font-size: 11.5pt !important; line-height: 1.45 !important; }
+  .intro .section-eyebrow { font-size: 7.5pt !important; margin-bottom: 4mm !important; }
+
+  /* ─────── Section openers ─────── */
+  .section-opener {
+    padding: 0 0 6mm 0 !important;
+    page-break-after: avoid;
+  }
+  .section-opener .chapter {
+    font-size: 8pt !important;
+    margin-bottom: 4mm !important;
+    padding-bottom: 2mm !important;
+    min-width: 0 !important;
+  }
+  .section-opener h2 { font-size: 20pt !important; line-height: 1.1 !important; margin-bottom: 4mm !important; }
+  .section-opener .section-lede { font-size: 10pt !important; line-height: 1.45 !important; }
+
+  /* Section II : nouvelle page */
+  #section-auditoriums {
+    page-break-before: always;
+  }
+
+  .subsection-head {
+    padding: 6mm 0 3mm 0 !important;
+    border-top: 1px solid #000 !important;
+    page-break-after: avoid;
+    grid-template-columns: 1fr auto;
+    gap: 8mm;
+  }
+  .subsection-head h3 { font-size: 12pt !important; }
+
+  /* ─────── Fiche projet print ─────── */
+  .fiche {
+    padding: 6mm 0 !important;
+    border-top: 1px solid rgba(0,0,0,0.15) !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .fiche-head {
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm !important;
+    margin-bottom: 5mm !important;
+    page-break-after: avoid;
+  }
+  .fiche-head-left h4 { font-size: 14pt !important; line-height: 1.1 !important; }
+  .fiche-head-left .fiche-num { font-size: 7.5pt !important; margin-bottom: 3mm !important; }
+  .fiche-head-left .subtitle { font-size: 9pt !important; }
+
+  .fiche-facts { max-width: 100% !important; margin-left: 0; }
+  .fiche-facts .row {
+    padding: 1.6mm 0 !important;
+    grid-template-columns: 30mm 1fr;
+    gap: 6mm;
+    font-size: 9pt !important;
+    line-height: 1.3;
+    border-bottom-color: rgba(0,0,0,0.12) !important;
+  }
+  .fiche-facts .row:first-child { border-top-color: rgba(0,0,0,0.12) !important; }
+  .fiche-facts dt { font-size: 7pt !important; letter-spacing: 0.15em !important; }
+  .fiche-facts dd { font-size: 9pt !important; }
+
+  .fiche-images {
+    gap: 4mm !important;
+    margin-bottom: 4mm !important;
+  }
+  /* Forcer la visibilité des images : l'IntersectionObserver ne s'exécute
+     pas pour les éléments hors viewport lors d'un print, donc on neutralise
+     l'opacité/transform du reveal. */
+  .ref-img.filled,
+  .ref-img.filled.is-in,
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .ref-img.filled img { display: block !important; }
+  .ref-img img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .ref-img .img-placeholder {
+    background: #fafafa !important;
+    border-color: rgba(0,0,0,0.1) !important;
+    color: rgba(0,0,0,0.35) !important;
+    font-size: 8pt !important;
+  }
+  .ref-img figcaption {
+    font-size: 7pt !important;
+    margin-top: 1.5mm !important;
+    color: rgba(0,0,0,0.5) !important;
+  }
+
+  .fiche-body { max-width: 100% !important; }
+  .fiche-body p {
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.7em !important;
+    orphans: 3;
+    widows: 3;
+  }
+  .fiche-body p.kicker { font-size: 10.5pt !important; line-height: 1.4 !important; }
+
+  /* Pied de page document */
+  .page-foot { display: none !important; }
+
+  /* Liens : neutralisés */
+  a { color: #000 !important; text-decoration: none !important; }
+  a[href]::after { content: ""; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     PAGE DE GARDE — visible uniquement à l'impression
+     ========================================================= -->
+<section class="print-cover" aria-hidden="true">
+  <div class="cover-top">
+    <div class="cover-logo">
+      <img src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/logo-behchu-associes-symbole.png" alt="Bechu &amp; Associés">
+    </div>
+    <div class="cover-top__id">
+      Bechu &amp; Associés
+      <span class="specialty">Architecture &amp; urbanisme</span>
+      <span class="with">avec <em>Volume ABC</em> — architecture d'intérieur</span>
+    </div>
+  </div>
+
+  <div class="cover-rule"></div>
+
+  <div class="cover-center">
+    <h1>Résidences étudiantes<br>et auditoriums.</h1>
+    <p class="sub">Sélection de références — vingt-cinq ans de pratique sur deux typologies souvent croisées.</p>
+  </div>
+
+  <div class="cover-meta">
+    <div><span id="cover-date">2026</span></div>
+    <div class="mention">
+      Document confidentiel<br>
+      Bechu &amp; Associés / Volume ABC<br>
+      Usage commercial restreint
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     BOUTON PDF — fixe en haut à droite
+     ========================================================= -->
+<button class="pdf-btn" type="button" onclick="window.print()" aria-label="Télécharger en PDF">
+  <svg viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M3 1.5h7L13 4.5V14.5H3V1.5z"></path>
+    <path d="M10 1.5V4.5H13"></path>
+    <path d="M5.5 8.5h5M5.5 10.5h5M5.5 12h3.5"></path>
+  </svg>
+  <span class="label-long">Télécharger en PDF</span>
+</button>
+
+<main class="page is-scrolled">
+
+  <!-- =========================================================
+       1 · BANDEAU DE TÊTE
+       ========================================================= -->
+  <header class="top-band">
+    <div class="top-band__logo">
+      <img src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/logo-behchu-associes-symbole.png" alt="Bechu &amp; Associés">
+    </div>
+    <div class="top-band__identity">
+      <div class="top-band__primary">
+        Bechu &amp; Associés<span class="specialty">Architecture &amp; urbanisme</span>
+      </div>
+      <div class="top-band__secondary">
+        avec <em>Volume ABC</em><span class="specialty">architecture d'intérieur</span>
+      </div>
+    </div>
+    <div class="top-band__meta">
+      Document de référence · 2026
+    </div>
+  </header>
+
+  <!-- =========================================================
+       2 · TITRE PRINCIPAL
+       ========================================================= -->
+  <section class="lede-section">
+    <div>
+      <span class="eyebrow">Note sectorielle · 2026</span>
+      <h1 data-reveal="" class="is-visible">Résidences étudiantes<br>et <em>auditoriums.</em></h1>
+    </div>
+    <p class="lede is-visible" data-reveal="">Une longue pratique sur deux typologies souvent croisées. Neuf résidences étudiantes, quatorze auditoriums — en France et à l'international, depuis le campus CELAP de Pudong jusqu'aux Tours Mercuriales de Bagnolet.</p>
+  </section>
+
+  <!-- =========================================================
+       HERO ILLUSTRATIF — image large entre titre et intro
+       (placeholder, l'URL réelle se colle dans l'attribut src)
+       ========================================================= -->
+  <section class="hero-illu" aria-label="Image d&#39;ouverture">
+    <figure class="ref-img filled is-in" data-id="IMG-HERO-A" style="--ar: 1.503;">
+      <div class="img-placeholder">IMG-HERO-A</div>
+      <img alt="Maison des Arts &amp; Métiers — Cité Internationale Universitaire de Paris" data-placeholder="IMG-HERO-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/BA-residence-Arts-Metiers-Barboux-Gregory-6.jpg" style="transform: translate3d(0px, 8%, 0px);">
+      <figcaption>IMG-HERO-A — image d'ouverture (vue large — par exemple Tunnel/Canon de lumière CIGV Dijon, ou auditorium CELAP, ou Maison des Arts &amp; Métiers)</figcaption>
+    </figure>
+  </section>
+
+  <!-- =========================================================
+       MININAV — sticky, apparaît au scroll
+       ========================================================= -->
+  <nav class="mininav" aria-label="Navigation interne">
+    <ul class="mininav__list">
+      <li><span class="label">Sommaire</span></li>
+      <li class="mininav__item" data-target="agence"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#agence"><span class="mininav__num">00</span><span>L'agence</span></a></li>
+      <li class="mininav__item" data-target="intro"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#intro"><span class="mininav__num">01</span><span>Introduction</span></a></li>
+      <li class="mininav__item" data-target="section-residences"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#section-residences"><span class="mininav__num">02</span><span>Résidences étudiantes</span></a></li>
+      <li class="mininav__item" data-target="res-livres"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#res-livres"><span class="mininav__num">—</span><span>Projets livrés</span></a></li>
+      <li class="mininav__item" data-target="res-encours"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#res-encours"><span class="mininav__num">—</span><span>En cours</span></a></li>
+      <li class="mininav__item" data-target="res-coliving"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#res-coliving"><span class="mininav__num">—</span><span>Co-living</span></a></li>
+      <li class="mininav__item" data-target="section-auditoriums"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#section-auditoriums"><span class="mininav__num">03</span><span>Auditoriums</span></a></li>
+      <li class="mininav__item is-active" data-target="aud-integres"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#aud-integres"><span class="mininav__num">—</span><span>Intégrés</span></a></li>
+      <li class="mininav__item" data-target="aud-theatraux"><a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#aud-theatraux"><span class="mininav__num">—</span><span>Théâtraux</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- DÉBUT SECTION L'AGENCE — à insérer avant l'intro typologique -->
+  <style>
+  /* ─── Section L'agence — réutilise les variables et classes existantes ─── */
+  .agence-hero {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+  }
+  .agence-hero .ref-img {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+  }
+  .agence-hero .ref-img .img-placeholder {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    background: var(--img-bg);
+    border: 1px solid var(--gris-trait);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--gris-texte);
+  }
+  .agence-hero .ref-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  .agence-hero .ref-img.filled { position: relative; }
+  .agence-hero .ref-img.filled .img-placeholder { display: none; }
+  .agence-hero .ref-img.filled img { display: block; }
+  .agence-hero figcaption { display: none; }
+
+  .agence-opener {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 80px var(--page-pad) 40px;
+  }
+  .agence-opener .chapter {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-weight: 500;
+    margin-bottom: 28px;
+    display: inline-block;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--noir);
+    min-width: 200px;
+  }
+  .agence-opener h2 {
+    font-size: clamp(36px, 4.2vw, 64px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 40px;
+  }
+  .agence-manifesto {
+    font-size: clamp(20px, 1.7vw, 28px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    max-width: 920px;
+    color: var(--noir);
+  }
+  .agence-manifesto em { font-style: italic; color: var(--gris-texte); }
+
+  .agence-body {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 20px var(--page-pad) 50px;
+  }
+  .agence-body-inner {
+    max-width: var(--note-w);
+  }
+  .agence-body-inner p {
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.75;
+    color: var(--noir);
+    margin-bottom: 1.4em;
+  }
+  .agence-body-inner p em {
+    font-style: italic;
+    color: var(--noir);
+  }
+
+  .agence-quote {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 30px var(--page-pad) 70px;
+  }
+  .agence-quote blockquote {
+    max-width: 1100px;
+    font-size: clamp(24px, 2.4vw, 38px);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: var(--noir);
+    padding-top: 36px;
+    border-top: 1px solid var(--noir);
+    text-wrap: pretty;
+  }
+  .agence-quote .attribution {
+    display: block;
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .agence-stats {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 50px var(--page-pad);
+    border-top: 1px solid var(--noir);
+    border-bottom: 1px solid var(--noir);
+  }
+  .agence-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .agence-stats__cell {
+    padding: 10px 24px 10px 0;
+    border-right: 1px solid var(--gris-fin);
+  }
+  .agence-stats__cell:last-child { border-right: none; }
+  .agence-stats__num {
+    font-size: clamp(48px, 6.5vw, 96px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--noir);
+    margin-bottom: 14px;
+    display: block;
+    font-variant-numeric: lining-nums tabular-nums;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .agence-stats.is-counting .agence-stats__num,
+  .agence-stats.is-done .agence-stats__num {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .agence-stats__num { opacity: 1; transition: none; }
+  }
+  .agence-stats__label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .agence-domains {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 70px var(--page-pad) 50px;
+  }
+  .agence-domains h3,
+  .agence-distinctions h3,
+  .agence-volumeabc h3 {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-weight: 500;
+    margin-bottom: 36px;
+  }
+  .agence-domains__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+    row-gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .agence-domains__list li {
+    font-size: clamp(17px, 1.3vw, 22px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--gris-fin);
+    color: var(--noir);
+  }
+  .agence-domains__list li em {
+    font-style: italic;
+    color: var(--gris-texte);
+    font-weight: 400;
+  }
+
+  .agence-distinctions {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 30px var(--page-pad) 70px;
+  }
+  .agence-distinctions__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--noir);
+  }
+  .agence-distinctions__list li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    column-gap: 32px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--gris-fin);
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.5;
+  }
+  .agence-distinctions__year {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-weight: 500;
+    padding-top: 3px;
+  }
+  .agence-distinctions__body strong {
+    font-weight: 600;
+    color: var(--noir);
+  }
+  .agence-distinctions__body .ctx {
+    color: var(--gris-texte);
+  }
+
+  .agence-volumeabc-wrap {
+    background: var(--gris-soft);
+    border-top: 1px solid var(--gris-fin);
+    border-bottom: 1px solid var(--gris-fin);
+    padding: 80px 0 90px;
+  }
+  .agence-volumeabc {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .agence-volumeabc h3 {
+    margin-bottom: 24px;
+  }
+  .agence-volumeabc h4 {
+    font-size: clamp(24px, 2.4vw, 34px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .agence-volumeabc h4 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gris-texte);
+  }
+  .agence-volumeabc p {
+    font-size: clamp(14.5px, 1vw, 16.5px);
+    line-height: 1.7;
+    color: var(--noir);
+    margin-bottom: 1.2em;
+  }
+  .agence-volumeabc__refs h5 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  .agence-volumeabc__refs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--gris-trait);
+  }
+  .agence-volumeabc__refs li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gris-trait);
+    font-size: clamp(13.5px, 0.95vw, 15.5px);
+    line-height: 1.5;
+  }
+  .agence-volumeabc__refs li strong {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .agence-volumeabc__refs li .meta {
+    color: var(--gris-texte);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+  .agence-volumeabc__foot {
+    grid-column: 1 / -1;
+    margin-top: 50px;
+    padding-top: 28px;
+    border-top: 1px solid var(--gris-trait);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+    font-weight: 500;
+  }
+
+  @media (max-width: 1100px) {
+    .agence-volumeabc { grid-template-columns: 1fr; gap: 50px; }
+    .agence-stats__grid { grid-template-columns: 1fr 1fr; }
+    .agence-stats__cell { border-right: none; border-bottom: 1px solid var(--gris-fin); padding-bottom: 28px; padding-top: 28px; }
+    .agence-stats__cell:nth-child(2) { border-right: none; }
+  }
+  @media (max-width: 800px) {
+    .agence-opener { padding: 60px var(--page-pad) 30px; }
+    .agence-quote { padding: 20px var(--page-pad) 50px; }
+    .agence-stats { padding: 30px var(--page-pad); }
+    .agence-stats__grid { grid-template-columns: 1fr 1fr; gap: 0; }
+    .agence-domains { padding: 50px var(--page-pad) 30px; }
+    .agence-domains__list { grid-template-columns: 1fr; }
+    .agence-distinctions { padding: 20px var(--page-pad) 50px; }
+    .agence-distinctions__list li { grid-template-columns: 70px 1fr; column-gap: 18px; padding: 18px 0; }
+    .agence-volumeabc-wrap { padding: 50px 0 60px; }
+  }
+
+  /* ─── Print A4 ─── */
+  @media print {
+    #agence { page-break-before: always; break-before: page; }
+    .agence-hero,
+    .agence-opener,
+    .agence-body,
+    .agence-quote,
+    .agence-stats,
+    .agence-domains,
+    .agence-distinctions,
+    .agence-volumeabc-wrap {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    /* Image + titre + manifeste regroupés sur la première page d'impression */
+    .agence-opener { page-break-before: avoid; page-break-after: avoid; padding-top: 4mm !important; padding-bottom: 3mm !important; }
+    .agence-hero { page-break-after: avoid; padding-top: 0 !important; padding-bottom: 0 !important; }
+    .agence-hero + .agence-opener { page-break-before: avoid; }
+    .agence-body { padding-top: 0 !important; padding-bottom: 5mm !important; }
+
+    .agence-hero .ref-img { aspect-ratio: 21 / 9; }
+    .agence-hero .ref-img .img-placeholder {
+      background: #fafafa !important;
+      border-color: rgba(0,0,0,0.1) !important;
+      color: rgba(0,0,0,0.35) !important;
+      font-size: 8pt !important;
+    }
+    .agence-opener .chapter { font-size: 8pt !important; padding-bottom: 2mm !important; margin-bottom: 4mm !important; min-width: 0 !important; }
+    .agence-opener h2 { font-size: 22pt !important; line-height: 1.05 !important; margin-bottom: 5mm !important; }
+    .agence-manifesto { font-size: 13pt !important; line-height: 1.3 !important; }
+
+    .agence-body-inner p { font-size: 10pt !important; line-height: 1.5 !important; margin-bottom: 0.9em !important; }
+    .agence-quote { padding: 4mm 0 6mm !important; }
+    .agence-quote blockquote { font-size: 15pt !important; line-height: 1.25 !important; padding-top: 4mm !important; }
+    .agence-quote .attribution { font-size: 8pt !important; margin-top: 4mm !important; }
+
+    .agence-stats { padding: 4mm 0 !important; }
+    .agence-stats__num { font-size: 28pt !important; }
+    .agence-stats__label { font-size: 7.5pt !important; }
+    .agence-stats__cell { padding: 0 4mm !important; }
+
+    .agence-domains { padding: 6mm 0 4mm !important; }
+    .agence-domains h3,
+    .agence-distinctions h3,
+    .agence-volumeabc h3 { font-size: 7.5pt !important; margin-bottom: 4mm !important; }
+    .agence-domains__list li { font-size: 11pt !important; padding: 3mm 0 !important; }
+
+    .agence-distinctions { padding: 2mm 0 6mm !important; }
+    .agence-distinctions__list li { font-size: 9.5pt !important; padding: 3mm 0 !important; grid-template-columns: 22mm 1fr; column-gap: 6mm; }
+    .agence-distinctions__year { font-size: 7.5pt !important; }
+
+    .agence-volumeabc-wrap {
+      background: #f7f6f3 !important;
+      padding: 6mm 0 6mm !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .agence-volumeabc { grid-template-columns: 1fr 1fr; gap: 10mm; padding: 0 !important; }
+    .agence-volumeabc h4 { font-size: 14pt !important; margin-bottom: 4mm !important; }
+    .agence-volumeabc p { font-size: 9.5pt !important; line-height: 1.45 !important; }
+    .agence-volumeabc__refs h5 { font-size: 7.5pt !important; margin-bottom: 3mm !important; }
+    .agence-volumeabc__refs li { font-size: 9pt !important; padding: 2mm 0 !important; }
+    .agence-volumeabc__refs li .meta { font-size: 8.5pt !important; }
+    .agence-volumeabc__foot { margin-top: 5mm !important; padding-top: 3mm !important; font-size: 7.5pt !important; }
+  }
+  </style>
+
+  <section id="agence">
+
+    <!-- Titre + manifeste -->
+    <header class="agence-opener">
+      <span class="chapter">Préambule</span>
+      <h2 data-reveal="" class="is-visible">L'agence.</h2>
+      <p class="agence-manifesto is-visible" data-reveal="">Depuis plus de cent ans, la famille Bechu construit des lieux qui durent. Aujourd'hui à sa quatrième génération, l'agence réunit urbanistes, architectes, architectes du patrimoine et designers, engagés dans la transformation durable des territoires.</p>
+    </header>
+
+    <!-- Présentation -->
+    <div class="agence-body">
+      <div class="agence-body-inner">
+        <p data-reveal="" class="is-visible">À l'heure où les villes font face à des mutations profondes — climatiques, technologiques, sociétales et démographiques — l'agence considère que l'architecture a un rôle central à jouer&nbsp;: non seulement accompagner ces transitions, mais les rendre visibles, concrètes et désirables.</p>
+        <p data-reveal="" class="is-visible">En quinze ans de recherche et d'expérimentation, nous avons développé de nouveaux outils de conception pour contribuer à ce que nous appelons les <em>villes régénératives</em>, fondées sur trois principes&nbsp;: l'<em>adaptation</em> aux évolutions climatiques et sociétales, l'<em>atténuation</em> de l'empreinte carbone par des approches low-tech et circulaires, et la <em>biodiversité</em>, en réintégrant le vivant au cœur des environnements urbains.</p>
+        <p data-reveal="" class="is-visible">Cette vision guide l'ensemble de nos projets — logements, bureaux, hôtellerie, équipements culturels, sportifs ou d'éducation — en France et à l'international, souvent dans des contextes complexes de transformation de l'existant.</p>
+      </div>
+    </div>
+
+    <!-- Citation -->
+    <div class="agence-quote">
+      <blockquote data-reveal="" class="is-visible">
+        «&nbsp;Pour être durable, un projet doit naître de ses racines, et chacun de nos choix, guidé par la responsabilité que nous avons envers le vivant.&nbsp;»
+        <span class="attribution">— Clémence Bechu</span>
+      </blockquote>
+    </div>
+
+    <!-- Chiffres-clés -->
+    <div class="agence-stats is-counting is-done">
+      <div class="agence-stats__grid">
+        <div class="agence-stats__cell">
+          <span class="agence-stats__num" data-count-to="100" data-count-suffix="+"><span class="num-value">100</span><span class="num-suffix" style="font-size:0.55em;vertical-align:0.15em;">+</span></span>
+          <span class="agence-stats__label">Années d'exercice</span>
+        </div>
+        <div class="agence-stats__cell">
+          <span class="agence-stats__num" data-count-to="4"><span class="num-value">4</span></span>
+          <span class="agence-stats__label">Générations d'architectes</span>
+        </div>
+        <div class="agence-stats__cell">
+          <span class="agence-stats__num" data-count-to="1500" data-count-format="fr"><span class="num-value">1 500</span></span>
+          <span class="agence-stats__label">Réalisations en France</span>
+        </div>
+        <div class="agence-stats__cell">
+          <span class="agence-stats__num" data-count-to="400"><span class="num-value">400</span></span>
+          <span class="agence-stats__label">Projets à l'international</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Domaines d'intervention -->
+    <div class="agence-domains">
+      <h3>Domaines d'intervention</h3>
+      <ul class="agence-domains__list">
+        <li>Architecture &amp; urbanisme</li>
+        <li>Patrimoine &amp; monuments historiques</li>
+        <li>Logement &amp; opérations mixtes</li>
+        <li>Tertiaire haut de gamme</li>
+        <li>Hôtellerie &amp; équipements culturels</li>
+        <li>Architecture d'intérieur &amp; design <em>(Volume ABC)</em></li>
+      </ul>
+    </div>
+
+    <!-- Distinctions phares -->
+    <div class="agence-distinctions">
+      <h3>Distinctions phares</h3>
+      <ul class="agence-distinctions__list">
+        <li>
+          <span class="agence-distinctions__year">2025</span>
+          <span class="agence-distinctions__body"><strong>Grand Prix AFEX</strong> — <span class="ctx">projet ASARI, African Sustainable Agriculture Research Institute</span></span>
+        </li>
+        <li>
+          <span class="agence-distinctions__year">2023</span>
+          <span class="agence-distinctions__body"><strong>Le Geste d'Or, Grand Prix du Maître d'Œuvre</strong> — <span class="ctx">10 projets sur 10 ans</span></span>
+        </li>
+        <li>
+          <span class="agence-distinctions__year">2023</span>
+          <span class="agence-distinctions__body"><strong>Pierre d'Or, catégorie Innovation verte RSE</strong> — <span class="ctx">Clémence Bechu</span></span>
+        </li>
+        <li>
+          <span class="agence-distinctions__year">2019</span>
+          <span class="agence-distinctions__body"><strong>Prix Versailles, catégorie Restaurants</strong> — <span class="ctx">Pavillon Gabriel (Volume ABC)</span></span>
+        </li>
+        <li>
+          <span class="agence-distinctions__year">2005</span>
+          <span class="agence-distinctions__body"><strong>Luban Price</strong> — <span class="ctx">CELAP Pudong (plus haute distinction architecturale chinoise)</span></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Encart Volume ABC -->
+    <div class="agence-volumeabc-wrap">
+      <div class="agence-volumeabc">
+        <div class="agence-volumeabc__text">
+          <h3>Entité sœur</h3>
+          <h4>Volume ABC <em>— architecture d'intérieur &amp; design.</em></h4>
+          <p>Volume ABC est notre agence d'architecture d'intérieur partenaire, dirigée par Aliénor Bechu, diplômée de l'École Camondo. L'agence intervient en pleine complémentarité avec Bechu &amp; Associés sur les projets mixtes — sièges tertiaires, équipements culturels, hôtellerie, résidences premium — permettant ainsi de maîtriser les deux échelles, architecture et intérieur, au sein d'une même conduite de projet.</p>
+          <p>Aliénor est entourée de ses deux associés expérimentés, Donald Bovy et Geneviève Pernin.</p>
+        </div>
+        <div class="agence-volumeabc__refs">
+          <h5>Références récentes en architecture intérieure</h5>
+          <ul>
+            <li><strong>Pavillon Gabriel</strong><span class="meta">Prix Versailles 2019, catégorie Restaurants</span></li>
+            <li><strong>One / Canal+</strong><span class="meta">Siège digital, aménagement intérieur</span></li>
+            <li><strong>Bergère</strong><span class="meta">Siège CNEP, aménagement des espaces communs</span></li>
+            <li><strong>Résidence Altiplano Toulouse</strong><span class="meta">Co-living premium (Greystar)</span></li>
+          </ul>
+        </div>
+        <div class="agence-volumeabc__foot">VOLUMEABC.FR</div>
+      </div>
+    </div>
+
+  </section>
+  <!-- FIN SECTION L'AGENCE -->
+
+  <!-- =========================================================
+       3 · INTRODUCTION ÉDITORIALE — 6 paragraphes du .docx
+       ========================================================= -->
+  <section class="intro" id="intro">
+    <div class="intro-inner">
+      <span class="section-eyebrow is-visible" data-reveal="">Introduction</span>
+      <h2 data-reveal="" class="is-visible">Deux typologies <em>souvent croisées.</em></h2>
+
+      <p class="lead is-visible" data-reveal="">Bechu &amp; Associés et Volume ABC interviennent sur les programmes de résidences étudiantes et d'auditoriums depuis de nombreuses années, en France et à l'international — deux typologies souvent croisées dans nos opérations mixtes (campus, hôtellerie, sièges sociaux, équipements culturels).</p>
+
+      <p data-reveal="" class="is-visible">Côté résidences étudiantes, nos deux agences ont conçu, réhabilité ou aménagé près de <strong>3&nbsp;500 logements et chambres étudiantes</strong> en différents projets emblématiques&nbsp;: du campus universitaire international CELAP à Pudong («&nbsp;ENA chinoise&nbsp;», 42 hectares, Luban Price 2005) à la plus grande résidence de la Cité Internationale Universitaire de Paris (Maison des Arts &amp; Métiers, 514 logements, 17&nbsp;000&nbsp;m²), en passant par la transformation pionnière de bureaux en résidence étudiante rue Lecourbe en 2014 («&nbsp;Bechu réhabilite Bechu&nbsp;», ex-INC — précurseur de la reconversion tertiaire-résidentiel post-Covid), les écoquartiers mixtes de Strasbourg-Heyritz, l'écoquartier de la Cité Internationale de la Gastronomie et du Vin de Dijon, de Philosophia Aubervilliers, et le futur projet exceptionnel de transformation des Tours Mercuriales à Bagnolet (1&nbsp;680 chambres étudiantes et para-hôtelières).</p>
+
+      <p data-reveal="" class="is-visible">Côté auditoriums, nos deux agences ont conçu, restructuré ou aménagé plus de vingt salles de prise de parole — auditoriums, amphithéâtres, salles de conférences, théâtres et ballrooms. Du grand auditorium d'assises syndicales nationales (FFB, 7-9 rue La Pérouse, 750 places) à l'auditorium institutionnel du campus CELAP à Pudong (Shanghai) où Xi Jinping est intervenu à plusieurs reprises, en passant par les auditoriums prime du tertiaire haut de gamme parisien (Bergère, Intown, New Corner, One/Canal+) et les équipements théâtraux historiques (Olympia, Théâtre des 3 Baudets).</p>
+
+      <p data-reveal="" class="is-visible">Ces deux expériences couvrent <em>tous les contextes architecturaux</em>&nbsp;: construction neuve (Conservatoire de Pudong CELAP, siège technique Dassault Aviation, écoquartiers Heyritz / CIGV / Philosophia), patrimoine protégé (Monuments Historiques de la Place Vendôme, du 14 Bergère, du Pavillon Hittorff, Champs-Élysées), surélévation et transformation IGH (Mercuriales Bagnolet, Iléo, New Corner), réhabilitation lourde (Maison des Arts &amp; Métiers à la CIUP, Olympia, Lecourbe), reconversion tertiaire-résidentiel précurseuse, et aménagement intérieur avec Volume ABC.</p>
+
+      <p data-reveal="" class="is-visible">À chaque fois, une exigence environnementale élevée (HQE, BBC Effinergie, NF Habitat HQE™, BREEAM, WELL Gold, Patrimoine Habitat Environnement...) ainsi qu'une attention rigoureuse au confort acoustique en milieu urbain dense (bord de boulevard périphérique pour la CIUP, modulation par volets motorisés certifiée LASA pour Intown).</p>
+
+      <p data-reveal="" class="is-visible">Vous trouverez ci-après une sélection de références documentées.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4 · SOMMAIRE
+       ========================================================= -->
+  <section class="sommaire" aria-label="Sommaire">
+    <span class="label">Sommaire</span>
+    <div class="anchors">
+      <div class="anchor">
+        <a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#section-residences">
+          <span class="num">Premier ensemble</span>
+          <h3>Résidences étudiantes</h3>
+          <span class="count">9 projets — livrés, en cours, co-living premium</span>
+        </a>
+      </div>
+      <div class="anchor">
+        <a href="file:///C:/Users/alisson/Downloads/R_sidences__tudiantes_et_Auditoriums_FINAL.html#section-auditoriums">
+          <span class="num">Second ensemble</span>
+          <h3>Auditoriums</h3>
+          <span class="count">14 projets — auditoriums intégrés, équipements théâtraux</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       =====================================================
+       SECTION I — RÉSIDENCES ÉTUDIANTES
+       =====================================================
+       ========================================================= -->
+  <section id="section-residences">
+
+    <header class="section-opener">
+      <span class="chapter">Premier ensemble</span>
+      <h2 data-reveal="" class="is-visible">Résidences étudiantes.</h2>
+      <p class="section-lede is-visible" data-reveal="">Près de 3&nbsp;500 logements et chambres conçus, réhabilités ou aménagés. <em>Construction neuve, reconversion tertiaire-résidentiel, transformation IGH, intégration à des écoquartiers mixtes — et, avec Volume ABC, l'aménagement intérieur du co-living premium nouvelle génération.</em></p>
+    </header>
+
+    <!-- ─── Sous-section : Projets livrés ─── -->
+    <div class="subsection-head" id="res-livres">
+      <h3>Projets livrés <em>— six références</em></h3>
+      <span class="count">6 projets</span>
+    </div>
+
+    <!-- FICHE 01 · CELAP -->
+    <article class="fiche" id="res-01">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 01 / 09</span>
+          <h4 data-reveal="" class="is-visible">CELAP <em>— China Executive Leadership Academy Pudong.</em></h4>
+          <p class="subtitle">Campus universitaire international, surnommé «&nbsp;ENA chinoise&nbsp;» — Luban Price 2005.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Pudong, Shanghai, Chine (rive est du Huangpu)</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>China Executive Leadership Academy of Pudong — Comité Central du PCC / Mairie de Shanghai</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés (Anthony Bechu) · Architecte associé&nbsp;: Tom Sheehan · Intérieurs&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2005 (livré été 2005 — 25 mois entre concept et inauguration)</dd></div>
+          <div class="row"><dt>Surface</dt><dd>72&nbsp;000&nbsp;m² SDP sur 42 hectares</dd></div>
+          <div class="row"><dt>Programme</dt><dd>15 bâtiments — université, logements étudiants intégrés, auditorium, équipements sportifs, parc et jardins</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-01-A" style="--ar: 1.500;">
+          <div class="img-placeholder">IMG-RES-01-A</div>
+          <img alt="CELAP Pudong — vue du campus" data-placeholder="IMG-RES-01-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Campus-CELAP-Photographie-Fernando-Javier-Urquijo-Main.jpg">
+          <figcaption>CELAP Pudong — vue du campus (table de peintre laquée rouge, 300&nbsp;m)</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-01-B" style="--ar: 1.811;">
+          <div class="img-placeholder">IMG-RES-01-B</div>
+          <img alt="CELAP Pudong — logements étudiants intégrés" data-placeholder="IMG-RES-01-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Campus-CELAP-Photographie-Fernando-Javier-Urquijo-logements-3.jpg">
+          <figcaption>IMG-RES-01-B — CELAP Pudong — logements étudiants intégrés / parc et jardin chinois réinterprété</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Campus formant les cadres de la Haute Administration Chinoise (équivalent ENA) et les élites économiques chinoises (équivalent INSEAD). Concours international 2003 remporté face à Foster + Partners, Cox Gaessler et autres grandes agences.</p>
+        <p>Programme de 15 bâtiments incluant université, logements étudiants intégrés au campus, équipements sportifs, parc et jardins (canaux, ponts, jardin chinois réinterprété), parking enterré sous jardin. Concept signature&nbsp;: «&nbsp;architecture-fusion&nbsp;» avec bâtiments universitaires en table de peintre de 300&nbsp;m de long, laquée rouge cramoisi, formant en vue d'avion le pictogramme chinois du chiffre «&nbsp;un&nbsp;» (l'institut numéro un de la nation). Composition urbaine d'esprit français — rigueur de Versailles, «&nbsp;grand paysage dans le petit paysage&nbsp;» — superposée à la dialectique chinoise traditionnelle. <strong>Luban Price 2005</strong>, plus haute distinction architecturale chinoise. Xi Jinping y est intervenu à plusieurs reprises&nbsp;; lettre de félicitations de Hu Jintao à l'ouverture en 2005, inscription calligraphiée par Jiang Zemin.</p>
+      </div>
+    </article>
+
+    <!-- FICHE 02 · Heyritz -->
+    <article class="fiche" id="res-02">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 02 / 09</span>
+          <h4 data-reveal="" class="is-visible">Écoquartier du Heyritz <em>— le premier écoquartier de Strasbourg.</em></h4>
+          <p class="subtitle">Résidence étudiante intégrée à un ensemble urbain mixte XXL, certifié THPE&nbsp;+ BBC Effinergie.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Heyritz, 67100 Strasbourg&nbsp;</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Nexity Georges V — gestion résidence&nbsp;: MACSF puis Twenty Campus</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés&nbsp;
+&nbsp;Paysagiste&nbsp;: Villes &amp; Paysages / Thierry Muller</dd></div>
+          <div class="row"><dt>Année</dt><dd>2013 — résidence ouverte septembre 2013</dd></div>
+          <div class="row"><dt>Surface</dt><dd>Ensemble Bechu&nbsp;: 28&nbsp;783&nbsp;m² SDP (40&nbsp;192&nbsp;m² toutes surfaces) · Résidence&nbsp;: 8&nbsp;000&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>280-282 studios étudiants + hôtel 3* Holiday Inn Express 147 chambres + 209 logements + commerces + 514 places de parking</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-02-A" style="--ar: 1.250;">
+          <div class="img-placeholder">IMG-RES-02-A</div>
+          <img alt="Heyritz — vue d&#39;ensemble du parc habité" data-placeholder="IMG-RES-02-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Heyritz-5-1.jpg">
+          <figcaption>IMG-RES-02-A — Heyritz — vue d'ensemble du «&nbsp;parc habité&nbsp;» / canaux solaires nord-sud</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-02-B" style="--ar: 1.250;">
+          <div class="img-placeholder">IMG-RES-02-B</div>
+          <img alt="Heyritz — résidence étudiante MACSF" data-placeholder="IMG-RES-02-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Heyritz-8.jpg">
+          <figcaption>IMG-RES-02-B — Heyritz — résidence étudiante MACSF (282 studios) / façade</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Premier écoquartier de Strasbourg, certifié THPE + BBC Effinergie. Résidence étudiante intégrée à un ensemble urbain mixte XXL.</p>
+        <p>Concept signature «&nbsp;parc habité&nbsp;» et «&nbsp;canaux solaires&nbsp;» nord-sud préservant les vues sur le centre historique. Maillon fondateur de la mutation «&nbsp;Strasbourg Deux-Rives&nbsp;» (250 ha jusqu'à Kehl). Programme combiné&nbsp;: 282 studios MACSF + hôtel 3* Holiday Inn Express 147 chambres + 209 logements + commerces + 514 places de parking — un ensemble urbain dense pensé comme une seule pièce de ville, où la résidence étudiante n'est ni une enclave ni un produit, mais un constituant ordinaire d'un quartier mixte.</p>
+      </div>
+    </article>
+
+    <!-- FICHE 03 · Lecourbe -->
+    <article class="fiche" id="res-03">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 03 / 09</span>
+          <h4 data-reveal="" class="is-visible">Résidence Lecourbe <em>— «&nbsp;Bechu réhabilite Bechu&nbsp;».</em></h4>
+          <p class="subtitle">Précurseur de la reconversion tertiaire-résidentiel — 2014, six ans avant la généralisation post-Covid.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>76-84 rue Lecourbe, 75015 Paris&nbsp;</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Gecina (GEC7) — exploitant&nbsp;: Campuséa → YouFirst Campus → YUGO Paris Lecourbe</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés&nbsp;
+bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></div>
+          <div class="row"><dt>Année</dt><dd>2014 — mission DIAG-PRO-DET-AOR</dd></div>
+          <div class="row"><dt>Surface</dt><dd>4&nbsp;800&nbsp;m² (6&nbsp;054&nbsp;m² avant réhabilitation)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>104 logements / 131 chambres / 107 unités · HQE + BBC-Effinergie Rénovation + Patrimoine Habitat Environnement</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-03-A" style="--ar: 1.811;">
+          <div class="img-placeholder">IMG-RES-03-A</div>
+          <img alt="Lecourbe — façade après réhabilitation" data-placeholder="IMG-RES-03-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-residence-etudiante-lecourbe-3.jpg">
+          <figcaption>IMG-RES-03-A — Lecourbe — façade après réhabilitation / geste des miroirs reflétant les jardins</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-03-B" style="--ar: 0.667;">
+          <div class="img-placeholder">IMG-RES-03-B</div>
+          <img alt="Lecourbe — patio intérieur" data-placeholder="IMG-RES-03-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-residence-etudiante-lecourbe-8.jpg">
+          <figcaption>IMG-RES-03-B — Lecourbe — patio intérieur créé pour éclairer le cœur du volume mono-orienté</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Bechu réhabilite à 35 ans d'intervalle son propre ouvrage, l'ancien siège de l'INC (1966-2022), dans le berceau urbain de l'agence.</p>
+        <p><strong>Précurseur de la reconversion tertiaire-résidentiel</strong> — 2014, six ans avant la généralisation post-Covid. Création de deux patios intérieurs pour éclairer le cœur d'un volume mono-orienté, geste signature de miroirs en façade pour refléter les jardins alentour, ITE laine de roche 16&nbsp;cm, ECS 50&nbsp;% solaire, toiture végétalisée. Triple certification HQE Bâtiment durable + BBC-Effinergie Rénovation + Patrimoine Habitat Environnement, conforme au Plan Climat de la Ville de Paris.</p>
+      </div>
+    </article>
+
+    <!-- FICHE 04 · Philosophia -->
+    <article class="fiche" id="res-04">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 04 / 09</span>
+          <h4 data-reveal="" class="is-visible">Résidence Philosophia <em>— Jardin Philosophia.</em></h4>
+          <p class="subtitle">Reconversion d'une friche industrielle minérale en grand îlot mixte végétalisé.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>167 avenue Jean Jaurès, 93300 Aubervilliers (quartier Paul Bert)</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Progerim S.A. puis Crédit Agricole Immobilier Promotion — gestion résidence&nbsp;: Fac Habitat</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés</dd></div>
+          <div class="row"><dt>Année</dt><dd>2015 (1<sup>re</sup> tranche) — 2016 (2<sup>e</sup> tranche) · mission ESQ-PC-DCE-VISA-Suivi</dd></div>
+          <div class="row"><dt>Surface</dt><dd>30&nbsp;519&nbsp;m² SDP · Résidence étudiante&nbsp;: 148 chambres (5&nbsp;389&nbsp;m²)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>167 logements accession + 43 logements sociaux + 148 chambres étudiantes Fac Habitat + crèche + cabinet médical + supérette</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-04-A" style="--ar: 1.500;">
+          <div class="img-placeholder">IMG-RES-04-A</div>
+          <img alt="Philosophia — bâtiments R+7" data-placeholder="IMG-RES-04-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Philosophia-25.jpg">
+          <figcaption>IMG-RES-04-A — Philosophia — bâtiments R+7, façades modernes et épurées</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-04-B" style="--ar: 1.500;">
+          <div class="img-placeholder">IMG-RES-04-B</div>
+          <img alt="Philosophia — parc en cœur d&#39;îlot" data-placeholder="IMG-RES-04-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Philosophia-19.jpg">
+          <figcaption>IMG-RES-04-B — Philosophia — parc en cœur d'îlot / jardin partagé</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">«&nbsp;Un ensemble exemplaire sur les thèmes de l'éco-construction, de l'éco-gestion, du confort et de la santé.&nbsp;»</p>
+        <p>Reconversion d'une friche industrielle minérale en grand îlot mixte végétalisé pour le Crédit Agricole Immobilier&nbsp;: 167 logements en accession + 43 logements sociaux + 148 chambres étudiantes Fac Habitat + crèche + cabinet médical de 414&nbsp;m² + supérette, organisés autour d'un parc en cœur d'îlot. <strong>Triple labellisation HQE + BBC Effinergie + Habitat &amp; Environnement + Qualitel</strong> sur l'ensemble des logements. Bâtiments R+7 à façades modernes et épurées.</p>
+      </div>
+    </article>
+
+    <!-- FICHE 05 · Maison des Arts & Métiers -->
+    <article class="fiche" id="res-05">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 05 / 09</span>
+          <h4 data-reveal="" class="is-visible">Maison des Arts &amp; Métiers <em>— Cité Internationale Universitaire de Paris.</em></h4>
+          <p class="subtitle">La plus grande résidence de la CIUP — 514 logements, 17&nbsp;000&nbsp;m².</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>1 avenue Pierre Masse, 75014 Paris — Cité Internationale Universitaire de Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Fondation des Arts &amp; Métiers (Arts &amp; Métiers Alumni) — MOA déléguée&nbsp;: REHAM Développement</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés — architecte associé&nbsp;: Brelan d'Arch</dd></div>
+          <div class="row"><dt>Année</dt><dd>2018</dd></div>
+          <div class="row"><dt>Surface</dt><dd>17&nbsp;000&nbsp;m² — 514 logements sur deux bâtiments (Ancienne Maison 1950, Nouvelle Maison 1961, reliées par une passerelle au-dessus du périphérique)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Quadruple certif. NF Habitat + NF Habitat HQE™ + Habitat &amp; Environnement + Qualitel</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-05-A" style="--ar: 1.500;">
+          <div class="img-placeholder">IMG-RES-05-A</div>
+          <img alt="Maison Arts &amp; Métiers — Ancienne Maison réhabilitée" data-placeholder="IMG-RES-05-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/BA-residence-Arts-Metiers-Barboux-Gregory-10.jpg">
+          <figcaption>IMG-RES-05-A — Maison Arts &amp; Métiers — Ancienne Maison réhabilitée (Cassan, Bourgoin, Paul)</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-05-B" style="--ar: 1.503;">
+          <div class="img-placeholder">IMG-RES-05-B</div>
+          <img alt="Maison Arts &amp; Métiers — salon partagé" data-placeholder="IMG-RES-05-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/BA-residence-Arts-Metiers-Barboux-Gregory-5.jpg">
+          <figcaption>IMG-RES-05-B — Maison Arts &amp; Métiers — salon partagé / programmation street art REHAB&nbsp;#2</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Réhabilitation lourde de la plus grande résidence de la CIUP, accueillant les élèves-ingénieurs ENSAM (gadzarts) — une trentaine de nationalités.</p>
+        <p>Conservation de la seule structure primaire, réaménagement intérieur total, traitement acoustique soigné en bord de périphérique. Œuvre originale signée Urbain Cassan, Max Bourgoin et Georges Paul — dialogue avec Le Corbusier (Fondation Suisse, Maison du Brésil), Dudok, Claude Parent et Charlotte Perriand, déjà présents sur le site. Pré-chantier marqué par l'opération <strong>«&nbsp;REHAB&nbsp;#2&nbsp;»</strong>&nbsp;: cent artistes urbains investissent cinq niveaux le temps d'un mois — programmation pérenne de street art dans les salons partagés depuis la livraison.</p>
+      </div>
+    </article>
+
+    <!-- FICHE 06 · CIGV Dijon -->
+    <article class="fiche" id="res-06">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 06 / 09</span>
+          <h4 data-reveal="" class="is-visible">Cité Internationale de la Gastronomie et du Vin <em>— Écoquartier de l'ancien Hôpital Saint-Esprit.</em></h4>
+          <p class="subtitle">Résidence universitaire intégrée à la première Cité de la gastronomie française.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Dijon (21) — 6,5&nbsp;ha en secteur sauvegardé · ancien Hôpital Saint-Esprit (fondé en 1204)</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Eiffage</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés (mandataire, urbaniste et coordinateur) · ACMH&nbsp;: Alain-Charles Perrot &amp; Florent Richard · Locaux&nbsp;: Chambaud, Studio Mustard, Archigroup</dd></div>
+          <div class="row"><dt>Année</dt><dd>2022 — inauguré le 6 mai 2022</dd></div>
+          <div class="row"><dt>Surface</dt><dd>85&nbsp;000&nbsp;m² au total · Écoquartier&nbsp;: 53&nbsp;388&nbsp;m² · 1 résidence universitaire (Bât.&nbsp;G)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>CIGV + cinémas Pathé + Hilton 4* + commerces gastronomie + Écoquartier (2 résidences séniors, 1 universitaire, 1 tourisme, 4 accession, 3 sociaux)</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-06-A" style="--ar: 1.400;">
+          <div class="img-placeholder">IMG-RES-06-A</div>
+          <img alt="Cité Internationale de la Gastronomie et du Vin — Dijon" data-placeholder="IMG-RES-06-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/cite.jpg">
+          <figcaption>IMG-RES-06-A — CIGV Dijon — «&nbsp;Tunnel / Canon de lumière&nbsp;» en acier rouille, articulation patrimoine / contemporain</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-06-B" style="--ar: 1.811;">
+          <div class="img-placeholder">IMG-RES-06-B</div>
+          <img alt="Écoquartier CIGV — Dijon" data-placeholder="IMG-RES-06-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-CIGV-Ecoquartier-2.jpg">
+          <figcaption>IMG-RES-06-B — CIGV Dijon — résidence universitaire (Bât.&nbsp;G) au sein de l'écoquartier de 53&nbsp;388&nbsp;m²</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Première Cité de la gastronomie française du réseau de quatre (Lyon, Paris-Rungis, Tours, Dijon) — un million de visiteurs par an visés.</p>
+        <p>Programme XXL&nbsp;: CIGV (31&nbsp;612&nbsp;m², dont 12&nbsp;850&nbsp;m² patrimoniaux réhabilités) avec espaces d'exposition, école hôtelière Ferrandi, Espace 1204 (CIAP), deux cinémas Pathé (9 salles, 1&nbsp;200 places), Hôtel Hilton 4* (125 chambres), huit commerces gastronomie, trois restaurants, Village by CA, et écoquartier de 53&nbsp;388&nbsp;m² incluant résidences séniors, universitaire, tourisme, accession et sociaux. Logements certifiés NF Habitat HQE, tertiaires BREEAM Very Good (neuf) / Good (ancien). Lien direct avec deux inscriptions UNESCO&nbsp;: Climats du vignoble de Bourgogne (2015) et Repas gastronomique des Français (2010). Concept architectural signature&nbsp;: le «&nbsp;Tunnel / Canon de lumière&nbsp;», bâtiment-sas contemporain articulant patrimoine et architecture contemporaine.</p>
+      </div>
+    </article>
+
+    <!-- ─── Sous-section : Projets en cours ─── -->
+    <div class="subsection-head" id="res-encours">
+      <h3>Projets en cours <em>— deux opérations en chantier ou en conception.</em></h3>
+      <span class="count">2 projets</span>
+    </div>
+
+    <!-- FICHE 07 · Mercuriales -->
+    <article class="fiche" id="res-07">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 07 / 09</span>
+          <h4 data-reveal="" class="is-visible">Mercuriales Twin Project <em>— transformation des Tours Levant &amp; Ponant.</em></h4>
+          <p class="subtitle">L'un des plus grands ensembles français de logement étudiant et para-hôtelier.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Bagnolet (Seine-Saint-Denis, 93) — entrée de l'A3, en proue de Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Hemisphere + Bain Capital</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés</dd></div>
+          <div class="row"><dt>Année</dt><dd>En cours</dd></div>
+          <div class="row"><dt>Surface</dt><dd>66&nbsp;000&nbsp;m² au total</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Tour Levant&nbsp;: résidence étudiante ~990 chambres · Tour Ponant&nbsp;: résidence gérée para-hôtelière ~690 chambres</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-07-A" style="--ar: 1.715;">
+          <div class="img-placeholder">IMG-RES-07-A</div>
+          <img alt="Tours Mercuriales — perspective" data-placeholder="IMG-RES-07-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Mercuriales-Twin-perspective-7-copie-2.jpg">
+          <figcaption>IMG-RES-07-A — Mercuriales — vue des deux tours jumelles depuis l'entrée de l'A3 (silhouette est-parisienne)</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-07-B" style="--ar: 0.956;">
+          <div class="img-placeholder">IMG-RES-07-B</div>
+          <img alt="Tours Mercuriales — perspective" data-placeholder="IMG-RES-07-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Mercuriales-Twin-perspective-4-copie.jpg">
+          <figcaption>IMG-RES-07-B — Mercuriales — socle ouvert / rooftop avec restaurant panoramique / faille végétalisée</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Transformation d'une icône tertiaire des années 1970 — les deux Tours Mercuriales de Bagnolet, hautes de 124&nbsp;m — en un grand ensemble étudiant et para-hôtelier.</p>
+        <p>Programme&nbsp;: socle ouvert (commerces, cafés, restaurants, salle de sport, lieux de rencontre), rooftop avec restaurant panoramique, espaces paysagers intégrés (jardins, belvédères, faille végétalisée, toits-jardins). <strong>Première opération française de cette échelle</strong> sur le couplage student housing + apart-hôtel sous deux tours jumelles emblématiques. Repère stratégique pour le portfolio Bechu&nbsp;: transformation IGH + reconversion tertiaire-résidentiel + double signature étudiant / para-hôtelier.</p>
+      </div>
+    </article>
+
+    <!-- FICHE 08 · Toshiba Puteaux -->
+    <article class="fiche" id="res-08">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 08 / 09</span>
+          <h4 data-reveal="" class="is-visible">Toshiba <em>— rue Volta / rue Ampère / rue Pressensé.</em></h4>
+          <p class="subtitle">Opération mixte sur l'ancien site industriel Toshiba — résidence étudiante + résidence séniors + crèche + logements.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Puteaux (Hauts-de-Seine, 92800)</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Cogedim</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés</dd></div>
+          <div class="row"><dt>Année</dt><dd>En cours · cible certifié environnemental</dd></div>
+          <div class="row"><dt>Surface</dt><dd>—</dd></div>
+          <div class="row"><dt>Programme</dt><dd>210 logements résidence étudiante + crèche + résidence séniors (89 logements + 3 accession) + 69 logements + bureaux</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images fiche-images--small">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-08-A" style="--ar: 1.130;">
+          <div class="img-placeholder">IMG-RES-08-A</div>
+          <img alt="Toshiba Puteaux — vue d&#39;ensemble urbaine" data-placeholder="IMG-RES-08-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Toshiba.jpg">
+          <figcaption>Toshiba Puteaux — vue d'ensemble urbaine du nouvel îlot mixte</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Opération mixte sur l'ancien site industriel Toshiba</p>
+        <p>Programme mixte d'envergure incluant 210 logements en résidence étudiante, une crèche, une résidence pour personnes âgées (89 logements + 3 en accession), 69 logements et des bureaux. Cible certifié environnemental.</p>
+      </div>
+    </article>
+
+    <!-- ─── Sous-section : Co-living premium / Volume ABC ─── -->
+    <div class="subsection-head" id="res-coliving">
+      <h3>Co-living premium <em>— Volume ABC.</em></h3>
+      <span class="count">1 projet</span>
+    </div>
+
+    <!-- FICHE 09 · Canvas — Ivry Gagarine -->
+    <article class="fiche" id="res-09">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Résidences · 09 / 09</span>
+          <h4 data-reveal="" class="is-visible">Canvas <em>— Ivry Gagarine.</em></h4>
+          <p class="subtitle">Première acquisition française de Greystar dans le segment résidence étudiante, exploitée sous l'enseigne Canvas by Greystar.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Lot 9 ZAC Gagarine-Truillot, rue Saint-Just, 94200 Ivry-sur-Seine (Val-de-Marne)</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Greystar — exploitée sous l'enseigne Canvas by Greystar</dd></div>
+          <div class="row"><dt>Architecte du bâti</dt><dd>Brenac &amp; Gonzalez &amp; Associés</dd></div>
+          <div class="row"><dt>Architecture intérieure</dt><dd>Volume ABC&nbsp;</dd></div>
+          <div class="row"><dt>Année</dt><dd>Inaugurée officiellement le 11 avril 2026</dd></div>
+          <div class="row"><dt>Surface</dt><dd>8&nbsp;300&nbsp;m² SDP · 310 à 341 chambres sur 18 étages · 550&nbsp;m² d'espaces communs</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Studios 17-26&nbsp;m² + lounge, coworking, salles d'études + rooftop panoramique sur Paris</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-RES-09-A" style="--ar: 1.619;">
+          <div class="img-placeholder">IMG-RES-09-A</div>
+          <img alt="Ivry Gagarine — co-living Volume ABC" data-placeholder="IMG-RES-09-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Volume-ABC-Ivry-Gagarine-©Nicolas-Grosmond-2026-30.jpg">
+          <figcaption>IMG-RES-09-A — Canvas Ivry Gagarine — lounge / coworking / salles d'études (550&nbsp;m² d'espaces communs)</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-RES-09-B" style="--ar: 1.390;">
+          <div class="img-placeholder">IMG-RES-09-B</div>
+          <img alt="Ivry Gagarine — co-living Volume ABC" data-placeholder="IMG-RES-09-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Volume-ABC-Ivry-Gagarine-©Nicolas-Grosmond-2026-23.jpg">
+          <figcaption>IMG-RES-09-B — Canvas Ivry Gagarine — rooftop panoramique avec vue sur Paris / studio type</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p class="kicker">Première acquisition française de Greystar dans le segment résidence étudiante — exploitée sous l'enseigne <strong>Canvas by Greystar</strong>.</p>
+        <p>Volume ABC en <strong>mission solo</strong> sur l'aménagement intérieur des 310-341 studios (17 à 26&nbsp;m²), des 550&nbsp;m² d'espaces communs (lounge, coworking, salles d'études) et du rooftop panoramique avec vue sur Paris. Bâti signé Brenac &amp; Gonzalez &amp; Associés, 8&nbsp;300&nbsp;m² SDP sur 18 étages. L'opération s'inscrit dans la nouvelle <strong>agrocité Gagarine-Truillot</strong> d'Ivry — éco-quartier de 1&nbsp;400 logements en cours d'aménagement par l'EPA Orsa, sur l'emprise de l'ancienne cité Gagarine démolie. Le programme partage son socle d'infrastructure avec le nouveau campus de l'ESIEA voisin (8&nbsp;500&nbsp;m², 2&nbsp;000 étudiants, ouvert septembre 2025).</p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- =========================================================
+       =====================================================
+       SECTION II — AUDITORIUMS
+       =====================================================
+       ========================================================= -->
+  <section id="section-auditoriums">
+
+    <header class="section-opener">
+      <span class="chapter">Second ensemble</span>
+      <h2 data-reveal="" class="is-visible">Auditoriums.</h2>
+      <p class="section-lede is-visible" data-reveal="">Plus de vingt salles de prise de parole conçues, restructurées ou aménagées. <em>Auditoriums institutionnels et tertiaires prime, salles de conférences en patrimoine protégé, équipements théâtraux et culturels historiques — avec, à chaque fois, une mission d'architecture intérieure menée par Volume ABC.</em></p>
+    </header>
+
+    <!-- ─── Sous-section : Auditoriums intégrés — projets livrés ─── -->
+    <div class="subsection-head" id="aud-integres">
+      <h3>Auditoriums intégrés <em>— projets livrés.</em></h3>
+      <span class="count">12 projets</span>
+    </div>
+
+    <!-- FICHE A01 · FFB -->
+    <article class="fiche" id="aud-01">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 01 / 14</span>
+          <h4 data-reveal="" class="is-visible">Fédération Française du Bâtiment <em>— siège national.</em></h4>
+          <p class="subtitle">Grand auditorium d'assises syndicales nationales, 750 places.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>7-9 rue La Pérouse, 75016 Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Fédération Française du Bâtiment — siège national</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés</dd></div>
+          <div class="row"><dt>Année</dt><dd>2001</dd></div>
+          <div class="row"><dt>Surface</dt><dd>10&nbsp;000&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Grand auditorium 750 places intégré au siège fédéral</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-AUD-01-A" style="--ar: 1.266;">
+          <div class="img-placeholder">IMG-AUD-01-A</div>
+          <img alt="FFB — Fédération Française du Bâtiment" data-placeholder="IMG-AUD-01-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-FFB-Federation-Francaise-Batiment-8.jpg">
+          <figcaption>IMG-AUD-01-A — FFB — salle d'auditorium 750 places, vue d'ensemble depuis la scène</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-AUD-01-B" style="--ar: 1.345;">
+          <div class="img-placeholder">IMG-AUD-01-B</div>
+          <img alt="FFB — amphithéâtre" data-placeholder="IMG-AUD-01-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-FFB-Federation-Francaise-Batiment-9.jpg">
+          <figcaption>IMG-AUD-01-B — FFB — siège national 7-9 rue La Pérouse, vue extérieure / hall d'accès</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Grand auditorium d'assises syndicales nationales intégré au siège fédéral de la FFB, dans un immeuble parisien de 10&nbsp;000&nbsp;m². Capacité de 750 places — l'une des plus grandes salles d'auditorium intégrées à un siège professionnel à Paris, dimensionnée pour accueillir les congrès, conférences et événements internes de la Fédération.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A02 · Dassault Aviation -->
+    <article class="fiche" id="aud-02">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 02 / 14</span>
+          <h4 data-reveal="" class="is-visible">Dassault Aviation <em>— Saint-Cloud.</em></h4>
+          <p class="subtitle">Auditorium d'entreprise intégré au siège technique du groupe Dassault.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>78 quai Marcel Dassault, 92210 Saint-Cloud — bord de Seine</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Dassault Aviation / Sogeprom (MOA déléguée)</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2001</dd></div>
+          <div class="row"><dt>Surface</dt><dd>26&nbsp;500&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Siège technique + auditorium d'entreprise</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-AUD-02-A" style="--ar: 1.000;">
+          <div class="img-placeholder">IMG-AUD-02-A</div>
+          <img alt="Dassault Aviation — amphithéâtre" data-placeholder="IMG-AUD-02-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Dassault-Amphi-2.jpg">
+          <figcaption>IMG-AUD-02-A — Dassault Aviation — auditorium d'entreprise / vue intérieure</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-AUD-02-B" style="--ar: 0.984;">
+          <div class="img-placeholder">IMG-AUD-02-B</div>
+          <img alt="Dassault Aviation — amphithéâtre" data-placeholder="IMG-AUD-02-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Dassault-Amphi-1.jpg">
+          <figcaption>IMG-AUD-02-B — Dassault Aviation — siège technique, façade quai Marcel Dassault</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium d'entreprise intégré au siège technique du groupe Dassault Aviation, sur 26&nbsp;500&nbsp;m² en bord de Seine. Mission Bechu en architecture, Volume ABC en architecture intérieure — un standard d'entreprise du secteur aéronautique, dimensionné pour les communications internes et institutionnelles du groupe.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A03 · CELAP auditorium -->
+    <article class="fiche" id="aud-03">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 03 / 14</span>
+          <h4 data-reveal="" class="is-visible">CELAP <em>— auditorium institutionnel, Pudong.</em></h4>
+          <p class="subtitle">Auditorium institutionnel de l'«&nbsp;ENA chinoise&nbsp;» — Luban Price 2006.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Pudong, Shanghai, Chine</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Comité Central du PCC / Mairie de Shanghai</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecte associé&nbsp;: Tom Sheehan · Intérieurs&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2005 — Luban Price 2006</dd></div>
+          <div class="row"><dt>Surface</dt><dd>72&nbsp;000&nbsp;m² SDP sur 42 hectares</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium institutionnel intégré au campus universitaire</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled is-in" data-id="IMG-AUD-03-A" style="--ar: 1.273;">
+          <div class="img-placeholder">IMG-AUD-03-A</div>
+          <img alt="CELAP — intérieur" data-placeholder="IMG-AUD-03-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Campus-CELAP-Photographie-Fernando-Javier-Urquijo-interieur-1.jpg">
+          <figcaption>IMG-AUD-03-A — CELAP — auditorium institutionnel, salle de prise de parole</figcaption>
+        </figure>
+        <figure class="ref-img filled is-in" data-id="IMG-AUD-03-B" style="--ar: 1.530;">
+          <div class="img-placeholder">IMG-AUD-03-B</div>
+          <img alt="CELAP — amphithéâtre" data-placeholder="IMG-AUD-03-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Campus-CELAP-Photographie-Fernando-Javier-Urquijo-amphitheatre.jpg">
+          <figcaption>IMG-AUD-03-B — CELAP — campus de 42 ha, table de peintre laquée rouge accueillant l'auditorium</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium institutionnel de l'«&nbsp;ENA chinoise&nbsp;» — campus en forme de table de peintre laquée rouge de 300&nbsp;m, qui accueille les hauts cadres du PCC. <strong>Hu Jintao, Jiang Zemin et Xi Jinping y ont parlé à plusieurs reprises.</strong> Le campus, livré en 2005, a reçu le Luban Price 2006 — plus haute distinction architecturale chinoise.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A04 · Place Vendôme -->
+    <article class="fiche" id="aud-04">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 04 / 14</span>
+          <h4 data-reveal="">Place Vendôme <em>— hôtels particuliers Monuments Historiques.</em></h4>
+          <p class="subtitle">Auditorium au cœur d'un programme XXL de réhabilitation patrimoniale.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>19-25 place Vendôme + rue Cambon + rue des Capucines, 75001 Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Galaxie Vendôme&nbsp; · promoteur&nbsp;: Vinci Immobilier</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés (mandataire) · ACMH&nbsp;: Alain-Charles Perrot · Intérieurs&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2007 (1<sup>re</sup> livraison) à 2022 (Castanier)</dd></div>
+          <div class="row"><dt>Surface</dt><dd>60&nbsp;000&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>3 hôtels particuliers MH (Évreux 1707, Castanier et Desvieux 1726) derrière la façade Hardouin-Mansart · aujourd'hui White &amp; Case + Potel &amp; Chabot</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-04-A" style="--ar: 1.273;">
+          <div class="img-placeholder">IMG-AUD-04-A</div>
+          <img alt="Place Vendôme" data-placeholder="IMG-AUD-04-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Vendome-Main.jpg">
+          <figcaption>IMG-AUD-04-A — Place Vendôme — auditorium intégré dans le programme patrimonial</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-04-B" style="--ar: 1.426;">
+          <div class="img-placeholder">IMG-AUD-04-B</div>
+          <img alt="Place Vendôme — amphithéâtre" data-placeholder="IMG-AUD-04-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Vendome-Amphi-1-copie.jpg">
+          <figcaption>IMG-AUD-04-B — Place Vendôme — façade Hardouin-Mansart, hôtels particuliers MH réhabilités</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium au cœur d'un programme XXL de réhabilitation patrimoniale — trois hôtels particuliers classés Monuments Historiques (Évreux 1707, Castanier et Desvieux 1726) derrière la façade Hardouin-Mansart. Mission longue (2007-2022), du premier ensemble livré au dernier (Castanier). Aujourd'hui occupés par <strong>White &amp; Case</strong> et <strong>Potel &amp; Chabot</strong>. Bechu mandataire, ACMH Alain-Charles Perrot, intérieurs Volume ABC.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A05 · Bergère -->
+    <article class="fiche" id="aud-05">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 05 / 14</span>
+          <h4 data-reveal="">Bergère <em>— siège du Comptoir National d'Escompte (CNEP, ex-BNP Paribas).</em></h4>
+          <p class="subtitle">Premier chantier de réhabilitation d'un Monument Historique en France à obtenir la certification HQE.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>14-20 rue Bergère / 1-5 rue du Conservatoire, 75009 Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>BNP Paribas — MOA déléguée&nbsp;: BNP Paribas Immobilier</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2009</dd></div>
+          <div class="row"><dt>Surface</dt><dd>48&nbsp;099&nbsp;m² (chantier total)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium 199 places de 280&nbsp;m² enterré sous une cour MH</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-05-A" style="--ar: 1.266;">
+          <div class="img-placeholder">IMG-AUD-05-A</div>
+          <img alt="BNP Bergère" data-placeholder="IMG-AUD-05-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-BNP-Bergere-18.jpg">
+          <figcaption>IMG-AUD-05-A — Bergère — auditorium 199 places enterré sous cour MH (280&nbsp;m²)</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-05-B" style="--ar: 1.117;">
+          <div class="img-placeholder">IMG-AUD-05-B</div>
+          <img alt="BNP Bergère — amphithéâtre" data-placeholder="IMG-AUD-05-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-BNP-Bergere-Amphi.jpg">
+          <figcaption>IMG-AUD-05-B — Bergère — cour MH du Comptoir National d'Escompte / 14-20 rue Bergère</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium 199 places de 280&nbsp;m², <strong>enterré sous une cour classée Monument Historique</strong>. Le chantier d'ensemble (48&nbsp;099&nbsp;m²) est le <strong>premier chantier de réhabilitation d'un Monument Historique en France à obtenir la certification HQE</strong>. Maîtrise d'œuvre Bechu pour le bâti, Volume ABC pour les intérieurs.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A06 · Iléo -->
+    <article class="fiche" id="aud-06">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 06 / 14</span>
+          <h4 data-reveal="">Iléo <em>— «&nbsp;entre Ciel et Eau&nbsp;».</em></h4>
+          <p class="subtitle">Auditorium dans une restructuration lourde d'IGH R+12 (ex-tour Renault des années 70).</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>27 quai Alphonse Le Gallo, 92100 Boulogne-Billancourt — face au parc de Saint-Cloud</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>REM (groupe La Française)</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecte associé&nbsp;: Studio SBA · Intérieurs&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2011</dd></div>
+          <div class="row"><dt>Surface</dt><dd>18&nbsp;600&nbsp;m² · IGH R+12 (47,91&nbsp;m)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium intégré · 5 certifications environnementales (HQE + BBC + Effinergie Rénovation + BREEAM + WELL)</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-06-A" style="--ar: 1.000;">
+          <div class="img-placeholder">IMG-AUD-06-A</div>
+          <img alt="Iléo" data-placeholder="IMG-AUD-06-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-ILEO-11.jpg">
+          <figcaption>IMG-AUD-06-A — Iléo — auditorium intégré, vue intérieure</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-06-B" style="--ar: 1.830;">
+          <div class="img-placeholder">IMG-AUD-06-B</div>
+          <img alt="Iléo — amphithéâtre" data-placeholder="IMG-AUD-06-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Ileo-Amphi-1.jpg">
+          <figcaption>IMG-AUD-06-B — Iléo — façade double peau sérigraphiée / IGH R+12 face au parc de Saint-Cloud</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium intégré à la restructuration lourde d'un IGH R+12 (47,91&nbsp;m) — ex-tour Renault des années 70, requalifiée en immeuble de bureaux haut de gamme face au parc de Saint-Cloud. <strong>Façade double peau sérigraphiée</strong>, cinq certifications environnementales&nbsp;: HQE + BBC + Effinergie Rénovation + BREEAM + WELL — un cumul rare à cette date sur un IGH en transformation.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A07 · Intown -->
+    <article class="fiche" id="aud-07">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 07 / 14</span>
+          <h4 data-reveal="">Intown <em>— quartier Saint-Lazare.</em></h4>
+          <p class="subtitle">Auditorium 198 places en rez-de-jardin à acoustique modulable par volets coulissants motorisés, validés en laboratoire LASA.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>10 place de Budapest, 75009 Paris — angle rue de Londres, quartier Saint-Lazare</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>SCOR Auber / Bouygues Immobilier (CPI) — locataire&nbsp;: Banque de France</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecte associé&nbsp;: François Leclercq Architectes · Intérieurs&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2017 — Trophée Or Cadre de Vie FIMBACTE 2017</dd></div>
+          <div class="row"><dt>Surface</dt><dd>20&nbsp;150&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium 198 places · HQE Exceptionnel + BREEAM Very Good + BBC Effinergie Rénovation</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-07-A" style="--ar: 1.400;">
+          <div class="img-placeholder">IMG-AUD-07-A</div>
+          <img alt="Intown" data-placeholder="IMG-AUD-07-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-INTOWN-14.jpg">
+          <figcaption>IMG-AUD-07-A — Intown — auditorium 198 places en rez-de-jardin / volets coulissants motorisés (LASA)</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-07-B" style="--ar: 1.333;">
+          <div class="img-placeholder">IMG-AUD-07-B</div>
+          <img alt="Intown SCOR — auditorium" data-placeholder="IMG-AUD-07-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Intown-SCOR-Auditorium-3.jpg">
+          <figcaption>IMG-AUD-07-B — Intown — 10 place de Budapest, façade quartier Saint-Lazare</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium 198 places en rez-de-jardin à <strong>acoustique modulable par volets coulissants motorisés</strong>, performances validées en laboratoire LASA — une signature technique rare sur le tertiaire parisien. Triple certification HQE Exceptionnel + BREEAM Very Good + BBC Effinergie Rénovation. Trophée Or Cadre de Vie FIMBACTE 2017. Locataire principal&nbsp;: Banque de France.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A08 · Pavillon Gabriel -->
+    <article class="fiche" id="aud-08">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 08 / 14</span>
+          <h4 data-reveal="">Pavillon Gabriel <em>— Carré de l'Élysée.</em></h4>
+          <p class="subtitle">Auditorium souterrain à 18&nbsp;m sous le niveau de la Seine, sous un Pavillon Hittorff de 1841.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>5 avenue Gabriel, 75008 Paris — Jardins des Champs-Élysées</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Potel &amp; Chabot (concession Ville de Paris)</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2018 — Lauréat continental du Prix Versailles 2019, catégorie Restaurants</dd></div>
+          <div class="row"><dt>Surface</dt><dd>4&nbsp;500&nbsp;m² SDP</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium souterrain · scène 65&nbsp;m² · 8&nbsp;m sous plafond · 800 cocktail / 600 dîner / 350-450 assis</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-08-A" style="--ar: 1.400;">
+          <div class="img-placeholder">IMG-AUD-08-A</div>
+          <img alt="Pavillon Gabriel" data-placeholder="IMG-AUD-08-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Pavillon-gabriel-6.jpg">
+          <figcaption>IMG-AUD-08-A — Pavillon Gabriel — auditorium souterrain à 18&nbsp;m sous Seine, structure type Eiffel</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-08-B" style="--ar: 1.778;">
+          <div class="img-placeholder">IMG-AUD-08-B</div>
+          <img alt="Pavillon Gabriel — auditorium" data-placeholder="IMG-AUD-08-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Pavillon-Gabriel-Auditorium.jpg">
+          <figcaption>IMG-AUD-08-B — Pavillon Gabriel — Pavillon Hittorff 1841, Jardins des Champs-Élysées</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium souterrain à <strong>18&nbsp;m sous le niveau de la Seine</strong>, structure type Eiffel, scène de 65&nbsp;m², 8&nbsp;m sous plafond. Capacité 800 cocktail / 600 dîner / 350-450 assis. Installé sous un <strong>Pavillon Hittorff (1841)</strong> en plein Carré de l'Élysée. Lauréat continental du Prix Versailles 2019, catégorie Restaurants.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A09 · New Corner -->
+    <article class="fiche" id="aud-09">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 09 / 14</span>
+          <h4 data-reveal="">New Corner <em>— «&nbsp;Bechu rénove Bechu&nbsp;».</em></h4>
+          <p class="subtitle">Amphithéâtre novateur dans 1&nbsp;700&nbsp;m² de services au RDC — surélévation R+3 → R+8.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>2 avenue du Stade de France, 93210 La Plaine Saint-Denis — proue de la Place des Droits de l'Homme</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>GDG Investissements</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecte associé&nbsp;: Wilmotte &amp; Associés · Intérieurs&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2020</dd></div>
+          <div class="row"><dt>Surface</dt><dd>13&nbsp;481&nbsp;m² (surélévation R+3 → R+8, gain +8&nbsp;844&nbsp;m²)</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Amphithéâtre · HQE Très Performant + BREEAM Excellent + WELL Gold + Effinergie+ + BBC Effinergie Rénovation</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images fiche-images--triple">
+        <figure class="ref-img filled" data-id="IMG-AUD-09-A" style="--ar: 0.667;">
+          <div class="img-placeholder">IMG-AUD-09-A</div>
+          <img alt="New Corner — façade, surélévation R+3 → R+8" data-placeholder="IMG-AUD-09-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-New-corner-rw-2-scaled.jpg">
+          <figcaption>New Corner — surélévation R+3 → R+8, proue de la Place des Droits de l'Homme</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-09-B" style="--ar: 0.667;">
+          <div class="img-placeholder">IMG-AUD-09-B</div>
+          <img alt="New Corner — amphithéâtre" data-placeholder="IMG-AUD-09-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-new-corner-Amphi-1.jpg">
+          <figcaption>New Corner — amphithéâtre (1&nbsp;700&nbsp;m² de services RDC)</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-09-C" style="--ar: 1.500;">
+          <div class="img-placeholder">IMG-AUD-09-C</div>
+          <img alt="New Corner — amphithéâtre, second cadrage" data-placeholder="IMG-AUD-09-C" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-new-corner-Amphi-2.jpg">
+          <figcaption>New Corner — amphithéâtre, second cadrage</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>«&nbsp;Amphithéâtre novateur&nbsp;» dans 1&nbsp;700&nbsp;m² de services au RDC (source CBRE), au sein d'une <strong>surélévation R+3 → R+8</strong> (gain de +8&nbsp;844&nbsp;m²) sur 13&nbsp;481&nbsp;m² totaux. Bechu rénove un ouvrage de l'agence. <strong>Quintuple certification</strong>&nbsp;: HQE Très Performant + BREEAM Excellent + WELL Gold + Effinergie+ + BBC Effinergie Rénovation.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A10 · One / Canal+ -->
+    <article class="fiche" id="aud-10">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 10 / 14</span>
+          <h4 data-reveal="">One <em>— siège de Canal+.</em></h4>
+          <p class="subtitle">Auditorium au cœur de la «&nbsp;place de village&nbsp;» du siège digital et durable de Canal+.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>48-56 rue Camille Desmoulins, 92130 Issy-les-Moulineaux</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Bouygues Immobilier / Primonial REIM / Sogecap</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2021</dd></div>
+          <div class="row"><dt>Surface</dt><dd>42&nbsp;000&nbsp;m² SDP</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium intégré · Bâtiment Hybride à Économie Positive (BHEP) labellisé Solar Impulse</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-10-A" style="--ar: 1.336;">
+          <div class="img-placeholder">IMG-AUD-10-A</div>
+          <img alt="One" data-placeholder="IMG-AUD-10-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-One-rw-21.jpg">
+          <figcaption>IMG-AUD-10-A — One Canal+ — auditorium au cœur de la «&nbsp;place de village&nbsp;»</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-10-B" style="--ar: 1.333;">
+          <div class="img-placeholder">IMG-AUD-10-B</div>
+          <img alt="One — amphithéâtre" data-placeholder="IMG-AUD-10-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-ONE-Amphi-2.jpg">
+          <figcaption>IMG-AUD-10-B — One Canal+ — siège digital et durable BHEP labellisé Solar Impulse</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Auditorium au cœur de la «&nbsp;place de village&nbsp;» du siège digital et durable de Canal+. Premier projet réalisé sur le modèle BHEP (Bâtiment Hybride à Économie Positive) labellisé Solar Impulse. Bechu rénove à 30 ans d'intervalle son propre Forum 52 (1992) .</p>
+      </div>
+    </article>
+
+    <!-- FICHE A11 · 123 Grenelle -->
+    <article class="fiche" id="aud-11">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 11 / 14</span>
+          <h4 data-reveal="">123 Grenelle <em>—&nbsp; auditorium intégré.</em></h4>
+          <p class="subtitle">Volume ABC en mission complète conception + exécution sur l'auditorium (136&nbsp;m²).</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Bleecker / SARL Gabrieli</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2022</dd></div>
+          <div class="row"><dt>Surface</dt><dd>11&nbsp;769&nbsp;m² · auditorium 136&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Auditorium intégré · mission complète Conception + Exécution sur la salle elle-même</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-11-A" style="--ar: 1.000;">
+          <div class="img-placeholder">IMG-AUD-11-A</div>
+          <img alt="123 Grenelle" data-placeholder="IMG-AUD-11-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-123-Grenelle-rw-3.jpg">
+          <figcaption>IMG-AUD-11-A — 123 Grenelle — auditorium 136&nbsp;m², mission Conception + Exécution Volume ABC</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-11-B" style="--ar: 1.778;">
+          <div class="img-placeholder">IMG-AUD-11-B</div>
+          <img alt="123 Grenelle — auditorium" data-placeholder="IMG-AUD-11-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-123-Grenelle-Auditorium-2.jpg">
+          <figcaption>IMG-AUD-11-B — 123 Grenelle — détail intérieur / espace public du tertiaire</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Volume ABC en mission complète Conception + Exécution sur l'auditorium lui-même (136&nbsp;m²) à l'intérieur d'un programme tertiaire de 11&nbsp;769&nbsp;m². Maîtrise d'œuvre Bechu pour le bâti.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A12 · Econocom -->
+    <article class="fiche" id="aud-12">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 12 / 14</span>
+          <h4 data-reveal="">Econocom Showroom <em>— «&nbsp;The Hub.Paris&nbsp;».</em></h4>
+          <p class="subtitle">Salle polyvalente intégrée au flagship post-Covid d'Econocom (5&nbsp;100&nbsp;m²).</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Puteaux (Hauts-de-Seine, 92800), à proximité de La Défense</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Econocom (Groupe Econocom — première entreprise générale du digital en Europe)</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Volume ABC (Architecture intérieure)</dd></div>
+          <div class="row"><dt>Année</dt><dd>2020 (livraison technique) — 2021 (inauguration commerciale)</dd></div>
+          <div class="row"><dt>Surface</dt><dd>5&nbsp;100&nbsp;m² · salle polyvalente 112&nbsp;m²</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Showroom de test produits / innovations, espace formation, cantine 0 déchet, salle polyvalente</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images fiche-images--triple">
+        <figure class="ref-img filled" data-id="IMG-AUD-12-A" style="--ar: 1.499;">
+          <div class="img-placeholder">IMG-AUD-12-A</div>
+          <img alt="Econocom Hub.Paris — salle polyvalente" data-placeholder="IMG-AUD-12-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Volume-ABC-Econocom-Amphi-3.jpg">
+          <figcaption>Econocom Hub.Paris — salle polyvalente 112&nbsp;m²</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-12-B" style="--ar: 1.499;">
+          <div class="img-placeholder">IMG-AUD-12-B</div>
+          <img alt="Econocom Hub.Paris — amphithéâtre" data-placeholder="IMG-AUD-12-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Volume-ABC-Econocom-Amphi-2.jpg">
+          <figcaption>Econocom Hub.Paris — amphithéâtre, second cadrage</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-12-C" style="--ar: 1.499;">
+          <div class="img-placeholder">IMG-AUD-12-C</div>
+          <img alt="Econocom Hub.Paris — amphithéâtre" data-placeholder="IMG-AUD-12-C" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Volume-ABC-Econocom-Amphi-1.jpg">
+          <figcaption>Econocom Hub.Paris — amphithéâtre, troisième cadrage</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Flagship post-Covid d'Econocom, première entreprise générale du digital en Europe — 5&nbsp;100&nbsp;m² avec showroom de test produits et innovations, espace formation, cantine 0 déchet, et <strong>salle polyvalente de 112&nbsp;m²</strong>. Mission Volume ABC conception + exécution.</p>
+      </div>
+    </article>
+
+    <!-- ─── Sous-section : Équipements théâtraux ─── -->
+    <div class="subsection-head" id="aud-theatraux">
+      <h3>Équipements théâtraux et culturels <em>— projets livrés.</em></h3>
+      <span class="count">2 projets</span>
+    </div>
+
+    <!-- FICHE A13 · Olympia -->
+    <article class="fiche" id="aud-13">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 13 / 14</span>
+          <h4 data-reveal="">Reconstruction de l'Olympia <em>— Paris 9<sup>e</sup>.</em></h4>
+          <p class="subtitle">Prouesse technique de reconstruction-déplacement de l'une des plus iconiques salles de concert françaises.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Paris 9<sup>e</sup></dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Théâtre de l'Olympia</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2017</dd></div>
+          <div class="row"><dt>Surface</dt><dd>—</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Reconstruction-déplacement de la salle de concert historique</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-13-A" style="--ar: 1.493;">
+          <div class="img-placeholder">IMG-AUD-13-A</div>
+          <img alt="Olympia" data-placeholder="IMG-AUD-13-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Olympia-18.jpg">
+          <figcaption>IMG-AUD-13-A — Olympia — salle de concert reconstruite / vue depuis le parterre</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-13-B" style="--ar: 1.202;">
+          <div class="img-placeholder">IMG-AUD-13-B</div>
+          <img alt="Olympia — salle" data-placeholder="IMG-AUD-13-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-Olympia-Amphi.jpg">
+          <figcaption>IMG-AUD-13-B — Olympia — façade iconique boulevard des Capucines</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p><strong>Prouesse technique de reconstruction-déplacement</strong> du Théâtre de l'Olympia — l'une des plus iconiques salles de concert françaises. Maîtrise d'œuvre Bechu &amp; Associés, architecture intérieure Volume ABC.</p>
+      </div>
+    </article>
+
+    <!-- FICHE A14 · 3 Baudets -->
+    <article class="fiche" id="aud-14">
+      <header class="fiche-head">
+        <div class="fiche-head-left">
+          <span class="fiche-num">Auditoriums · 14 / 14</span>
+          <h4 data-reveal="">3 Baudets <em>— réhabilitation d'une salle historique du music-hall parisien.</em></h4>
+          <p class="subtitle">Théâtre des 3 Baudets, Paris.</p>
+        </div>
+        <dl class="fiche-facts">
+          <div class="row"><dt>Lieu</dt><dd>Paris</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>SGIM</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecture intérieure&nbsp;: Volume ABC</dd></div>
+          <div class="row"><dt>Année</dt><dd>2009</dd></div>
+          <div class="row"><dt>Surface</dt><dd>—</dd></div>
+          <div class="row"><dt>Programme</dt><dd>Réhabilitation d'une salle historique du music-hall parisien</dd></div>
+        </dl>
+      </header>
+
+      <div class="fiche-images">
+        <figure class="ref-img filled" data-id="IMG-AUD-14-A" style="--ar: 0.949;">
+          <div class="img-placeholder">IMG-AUD-14-A</div>
+          <img alt="Théâtre des 3 Baudets" data-placeholder="IMG-AUD-14-A" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-3-Baudets-1.jpg">
+          <figcaption>IMG-AUD-14-A — 3 Baudets — salle de music-hall réhabilitée, vue parterre / scène</figcaption>
+        </figure>
+        <figure class="ref-img filled" data-id="IMG-AUD-14-B" style="--ar: 1.256;">
+          <div class="img-placeholder">IMG-AUD-14-B</div>
+          <img alt="Théâtre des 3 Baudets — salle" data-placeholder="IMG-AUD-14-B" src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/Bechu-Associes-3-Baudets-10.jpg">
+          <figcaption>IMG-AUD-14-B — 3 Baudets — façade / hall / détail patrimonial</figcaption>
+        </figure>
+      </div>
+
+      <div class="fiche-body">
+        <p>Réhabilitation du <strong>Théâtre des 3 Baudets</strong>, salle historique du music-hall parisien. Maîtrise d'œuvre Bechu &amp; Associés, architecture intérieure Volume ABC.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- =========================================================
+       PIED DE PAGE
+       ========================================================= -->
+  <footer class="page-foot">
+    <div class="foot-logo">
+      <img src="./R_sidences _tudiantes et Auditoriums et présa agencev3_files/logo-bechu-associes-complet-avec-marge.png" alt="Bechu &amp; Associés">
+    </div>
+    <div class="contact">BECHU &amp; ASSOCIÉS · Architecture et urbanisme — 82 rue Lecourbe, 75015 Paris <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dfef2f3e9fcfee9ddfff8fef5e8f8e9fceeeef2fef4f8eeb3fef2f0">[email&nbsp;protected]</a> · +33&nbsp;(0)1&nbsp;47 34 97 91</div>
+    <div class="mention">
+      Document de référence<br>
+      Usage commercial restreint<br>
+      Bechu &amp; Associés / Volume ABC · 2026
+    </div>
+  </footer>
+
+</main>
+
+<script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  (function(){
+    function s(img){
+      var f=img.closest('.ref-img');if(!f)return;
+      var v=img.getAttribute('src');
+      if(v&&v.trim()!==''){
+        f.classList.add('filled');
+        // Aspect-ratio token pour le système justified-row
+        function setAr(){
+          if(img.naturalWidth && img.naturalHeight){
+            f.style.setProperty('--ar', (img.naturalWidth/img.naturalHeight).toFixed(3));
+          }
+        }
+        if(img.complete && img.naturalWidth) setAr();
+        else img.addEventListener('load', setAr, { once: true });
+      } else {
+        f.classList.remove('filled');
+      }
+    }
+    var imgs=document.querySelectorAll('.ref-img img');
+    imgs.forEach(s);
+    if('MutationObserver' in window){var mo=new MutationObserver(function(ms){ms.forEach(function(m){s(m.target);});});imgs.forEach(function(i){mo.observe(i,{attributes:true,attributeFilter:['src']});});}
+  })();
+</script>
+
+<script>
+  // Fade-in des images au scroll
+  (function () {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.ref-img.filled').forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.ref-img.filled').forEach(function (el) { io.observe(el); });
+  })();
+
+  // Compteur animé pour les chiffres-clés "L'agence"
+  (function () {
+    var stats = document.querySelector('.agence-stats');
+    if (!stats) return;
+    var nums = stats.querySelectorAll('.agence-stats__num');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function format(value, mode) {
+      var rounded = Math.round(value);
+      if (mode === 'fr') {
+        // Espace insécable comme séparateur des milliers
+        return rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u202F');
+      }
+      return rounded.toString();
+    }
+
+    function run() {
+      stats.classList.add('is-counting');
+      nums.forEach(function (el, i) {
+        var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var mode = el.getAttribute('data-count-format') || '';
+        var valueEl = el.querySelector('.num-value');
+        var suffixEl = el.querySelector('.num-suffix');
+        if (reduced) {
+          if (valueEl) valueEl.textContent = format(target, mode);
+          if (suffixEl) suffixEl.textContent = suffix;
+          return;
+        }
+        var duration = 1600;
+        var delay = i * 140;
+        var start = performance.now() + delay;
+        function frame(now) {
+          var t = (now - start) / duration;
+          if (t < 0) { requestAnimationFrame(frame); return; }
+          if (t >= 1) {
+            if (valueEl) valueEl.textContent = format(target, mode);
+            if (suffixEl) suffixEl.textContent = suffix;
+            return;
+          }
+          // easeOutCubic
+          var eased = 1 - Math.pow(1 - t, 3);
+          if (valueEl) valueEl.textContent = format(target * eased, mode);
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      });
+      stats.classList.add('is-done');
+    }
+
+    if (!('IntersectionObserver' in window)) { run(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          run();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(stats);
+
+    // Finalisation avant impression : on saute à la valeur finale
+    window.addEventListener('beforeprint', function () {
+      stats.classList.add('is-counting', 'is-done');
+      nums.forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var mode = el.getAttribute('data-count-format') || '';
+        var valueEl = el.querySelector('.num-value');
+        var suffixEl = el.querySelector('.num-suffix');
+        if (valueEl) valueEl.textContent = format(target, mode);
+        if (suffixEl) suffixEl.textContent = suffix;
+      });
+    });
+  })();
+
+  // Avant impression : on force le reveal de tous les éléments cachés par animation
+  // (l'IntersectionObserver ne tourne pas sur les éléments hors viewport, et Chrome
+  // imprime le DOM courant — donc images + textes en opacity:0 disparaissent.)
+  (function () {
+    function finalize() {
+      document.querySelectorAll('.ref-img.filled').forEach(function (el) {
+        el.classList.add('is-in');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.transition = 'none';
+      });
+      document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        el.classList.add('is-visible');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      // Forcer le chargement de toutes les images encore en attente
+      document.querySelectorAll('.ref-img img').forEach(function (img) {
+        if (img.loading === 'lazy') img.loading = 'eager';
+      });
+    }
+    window.addEventListener('beforeprint', finalize);
+    // Compatibilité Safari / Edge : matchMedia print event
+    if (window.matchMedia) {
+      var mq = window.matchMedia('print');
+      if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) finalize(); });
+      else if (mq.addListener) mq.addListener(function (e) { if (e.matches) finalize(); });
+    }
+    // Sur clic du bouton "Télécharger en PDF", on finalise AVANT que window.print() ne snapshot.
+    var btn = document.querySelector('.pdf-btn');
+    if (btn) btn.addEventListener('click', finalize, true);
+  })();
+  (function () {
+    var heroImg = document.querySelector('.hero-illu .ref-img img');
+    var heroFig = document.querySelector('.hero-illu .ref-img');
+    if (!heroImg || !heroFig) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ticking = false;
+    function update() {
+      var rect = heroFig.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      // progression : -1 quand l'image vient d'entrer par le bas, +1 quand elle sort par le haut
+      var center = rect.top + rect.height / 2;
+      var progress = (center - vh / 2) / (vh / 2 + rect.height / 2);
+      progress = Math.max(-1, Math.min(1, progress));
+      var shift = -progress * 8; // %
+      heroImg.style.transform = 'translate3d(0,' + shift + '%,0)';
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+    }
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  })();
+</script>
+
+<script>
+  // Reveal on scroll — léger, IntersectionObserver
+  (function () {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+  })();
+
+  // Mininav — apparaît après avoir scrollé au-delà du titre,
+  // marque l'item actif selon la section en vue
+  (function () {
+    var page = document.querySelector('.page');
+    var nav = document.querySelector('.mininav');
+    var lede = document.querySelector('.lede-section');
+    if (!page || !nav) return;
+
+    function checkScroll() {
+      var threshold = lede ? lede.offsetTop + lede.offsetHeight - 40 : 240;
+      if (window.scrollY > threshold) page.classList.add('is-scrolled');
+      else page.classList.remove('is-scrolled');
+    }
+    checkScroll();
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll);
+
+    // Active item — observe les sections cibles
+    var items = Array.prototype.slice.call(document.querySelectorAll('.mininav__item[data-target]'));
+    var map = {};
+    items.forEach(function (it) {
+      var id = it.getAttribute('data-target');
+      var target = document.getElementById(id);
+      if (target) map[id] = { item: it, target: target };
+    });
+    if (!('IntersectionObserver' in window)) return;
+
+    var active = null;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var id = entry.target.id;
+        if (entry.isIntersecting) {
+          if (active && active !== id) {
+            var prev = map[active];
+            if (prev) prev.item.classList.remove('is-active');
+          }
+          active = id;
+          if (map[id]) map[id].item.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    Object.keys(map).forEach(function (id) { io.observe(map[id].target); });
+  })();
+
+  // Date de couverture mise à jour au clic Imprimer (format "Mois AAAA" en français)
+  (function () {
+    var btn = document.querySelector('.pdf-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      try {
+        var d = new Date();
+        var mois = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+        var label = mois[d.getMonth()] + ' ' + d.getFullYear();
+        var slot = document.getElementById('cover-date');
+        if (slot) slot.textContent = label;
+      } catch (e) { /* fallback : laisse "2026" */ }
+    });
+  })();
+</script>
+
+
+</body></html>
