@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -786,277 +785,856 @@ img { max-width: 100%; display: block; }
   .pdf-btn .label-long { display: none; }
 }
 
+/* Pages d'ouverture de section — visibles uniquement à l'impression */
+.print-opener { display: none; }
+
 /* ================================================================
    11 · PRINT — feuille de style A4
    ================================================================ */
 @media print {
+
+  /* ════════════════════════════════════════════════════════════════
+     0 · @page — A4 portrait, livret éditorial contemporain
+     ════════════════════════════════════════════════════════════════ */
   @page {
     size: A4 portrait;
-    margin: 18mm 16mm 20mm 16mm;
-    /* pied de page d'impression — supporté par Chrome / Edge */
+    margin: 22mm 18mm 18mm 18mm;
+
     @bottom-left {
-      content: "Bechu & Associés — Résidences étudiantes & auditoriums";
+      content: "BECHU & ASSOCIÉS · Résidences étudiantes & auditoriums · Document confidentiel";
       font-family: 'Altform', sans-serif;
-      font-size: 8pt;
-      color: #777;
-      letter-spacing: 0.02em;
+      font-size: 7pt;
+      color: #888;
+      letter-spacing: 0.05em;
+      vertical-align: top;
+      padding-top: 6mm;
     }
     @bottom-right {
-      content: counter(page) " / " counter(pages);
+      content: counter(page);
       font-family: 'Altform', sans-serif;
       font-size: 8pt;
-      color: #777;
-      letter-spacing: 0.02em;
+      font-weight: 500;
+      color: #1B1B1B;
+      vertical-align: top;
+      padding-top: 6mm;
     }
   }
-  /* Première page : pas de pied de page (page de garde) */
+
   @page :first {
-    margin: 0;
-    @bottom-left { content: ""; }
-    @bottom-right { content: ""; }
+    margin: 22mm 18mm 18mm 18mm;
+    @bottom-left  { content: none; }
+    @bottom-right { content: none; }
   }
 
+  /* ════════════════════════════════════════════════════════════════
+     1 · Reset général d'impression
+     ════════════════════════════════════════════════════════════════ */
   html, body {
     background: #fff !important;
-    color: #000 !important;
-    font-size: 10.5pt;
-    line-height: 1.4;
+    color: #1B1B1B !important;
+    font-family: 'Altform', sans-serif !important;
+    font-size: 10pt;
+    line-height: 1.5;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Masquer l'UI non imprimable */
+  /* Compteur global de fiches : 01 → 23 sur l'ensemble des deux sections */
+  body { counter-reset: ficheglobal 0; }
+  .fiche { counter-increment: ficheglobal; }
+
+  /* Masquer toute l'UI écran qui n'a pas de sens à l'impression */
   .pdf-btn,
   .mininav,
   .sommaire,
-  .hero-illu {
+  .hero-illu,
+  .top-band,
+  .lede-section,
+  .intro,
+  .section-opener,
+  .subsection-head,
+  .page-foot,
+  .no-print,
+  .web-only,
+  .agence-hero,
+  [data-id="IMG-AGENCE-01"] {
     display: none !important;
   }
 
-  /* Désactiver animations / reveal */
-  [data-reveal] {
+  /* Animations / reveal neutralisés */
+  [data-reveal],
+  .ref-img.filled,
+  .ref-img.filled.is-in {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
 
-  /* ─────── PAGE DE GARDE ─────── */
+  a { color: inherit !important; text-decoration: none !important; }
+  a[href]::after { content: "" !important; }
+
+  /* ════════════════════════════════════════════════════════════════
+     2 · COUVERTURE — typographique, alignée à gauche, sans image
+     (structure ré-écrite par le snippet JS — voir #print-cover-mount)
+     ════════════════════════════════════════════════════════════════ */
   .print-cover {
     display: flex !important;
     flex-direction: column;
-    justify-content: space-between;
-    width: 210mm;
-    height: 297mm;
-    padding: 28mm 22mm;
+    width: 174mm;
+    height: 257mm;
+    margin: 0;
+    padding: 0;
     page-break-after: always;
     box-sizing: border-box;
     background: #fff;
+    position: relative;
+    overflow: hidden;
   }
-  .print-cover .cover-top {
-    display: flex;
-    align-items: flex-start;
-    gap: 10mm;
+
+  /* Bandeau institutionnel haut */
+  .print-cover .cv-band {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 0.5pt solid #1B1B1B;
+    padding: 0 0 5mm 0;
+    flex: 0 0 auto;
   }
-  .print-cover .cover-logo img {
-    height: 24mm;
-    width: auto;
-    display: block;
-  }
-  .print-cover .cover-top__id {
-    font-size: 11pt;
-    letter-spacing: 0.18em;
+  .print-cover .cv-band__left {
+    font-family: 'Altform', sans-serif;
+    font-size: 9pt;
+    font-weight: 500;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #000;
-    font-weight: 600;
-    line-height: 1.4;
-    padding-top: 2mm;
+    color: #1B1B1B;
+    line-height: 1;
   }
-  .print-cover .cover-top__id .specialty {
-    display: block;
-    color: #555;
+  .print-cover .cv-band__right {
+    font-family: 'Altform', sans-serif;
+    font-size: 9pt;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #888;
+    line-height: 1;
+  }
+
+  /* Zone centrale */
+  .print-cover .cv-center {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    padding: 8mm 0;
+  }
+  .print-cover .cv-eyebrow {
+    font-family: 'Altform', sans-serif;
+    font-size: 10pt;
     font-weight: 400;
     letter-spacing: 0.15em;
-    font-size: 9pt;
-    margin-top: 2mm;
-  }
-  .print-cover .cover-top .with {
-    color: #777;
-    font-weight: 400;
-    letter-spacing: 0.13em;
-    margin-top: 6mm;
-    display: block;
-    font-size: 8.5pt;
-  }
-  .print-cover .cover-top .with em {
-    font-style: normal;
-    color: #333;
-    font-weight: 500;
-  }
-  .print-cover .cover-rule {
-    height: 1px;
-    background: #000;
-    margin: 8mm 0 12mm;
-  }
-  .print-cover .cover-center h1 {
-    font-size: 32pt;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin-bottom: 8mm;
-  }
-  .print-cover .cover-center .sub {
-    font-size: 13pt;
-    color: #555;
-    font-style: italic;
-    line-height: 1.4;
-    max-width: 130mm;
-  }
-  .print-cover .cover-meta {
-    font-size: 9pt;
-    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #555;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 20mm;
+    color: #888;
+    margin: 0 0 22pt 0;
+    display: block;
   }
-  .print-cover .cover-meta .mention {
-    text-align: right;
-    max-width: 90mm;
+  .print-cover .cv-title {
+    font-family: 'Altform', sans-serif;
+    color: #1B1B1B;
+    margin: 0;
+    padding: 0;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+  }
+  .print-cover .cv-title .cv-line {
+    display: block;
+    font-size: 62pt;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 0.9;
+    color: #1B1B1B;
+  }
+  .print-cover .cv-title .cv-amp {
+    display: block;
+    font-size: 48pt;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+    color: #BBB;
+    margin: 4pt 0 4pt 0;
+    font-style: normal;
+  }
+  .print-cover .cv-rule {
+    display: block;
+    width: 70px;
+    height: 2pt;
+    background: #1B1B1B;
+    margin: 30pt 0 22pt 0;
+  }
+  .print-cover .cv-sub {
+    font-family: 'Altform', sans-serif;
+    font-size: 11pt;
+    font-weight: 400;
     line-height: 1.55;
+    color: #555;
+    margin: 0;
+    max-width: 65%;
+    text-align: left;
+  }
+  .print-cover .cv-sub strong {
+    font-weight: 500;
+    color: #1B1B1B;
   }
 
-  /* ─────── Top-band print ─────── */
-  .top-band {
+  /* Pied de page institutionnel */
+  .print-cover .cv-foot {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: 0.5pt solid #1B1B1B;
+    padding: 14pt 0 0 0;
+    flex: 0 0 auto;
+  }
+  .print-cover .cv-foot__left {
+    font-family: 'Altform', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #555;
+    text-align: left;
+  }
+  .print-cover .cv-foot__left .cv-email {
+    color: #888;
+  }
+  .print-cover .cv-foot__right {
+    font-family: 'Altform', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    line-height: 1.7;
+    text-align: right;
+  }
+  .print-cover .cv-foot__right .cv-conf {
+    font-size: 6.5pt;
+    font-weight: 400;
+    display: block;
+  }
+
+  /* Cacher l'ancienne structure de couverture si le JS n'a pas tourné */
+  .print-cover .cover-top,
+  .print-cover .cover-rule,
+  .print-cover .cover-center,
+  .print-cover .cover-meta {
     display: none !important;
   }
-
-  /* ─────── Lede / titre print ─────── */
-  .lede-section {
-    padding: 0 0 6mm 0 !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 14mm;
-    page-break-after: avoid;
+  /* …mais la rendre visible si on n'a pas le mount JS (fallback) */
+  .print-cover:not(:has(.cv-band)) .cover-top,
+  .print-cover:not(:has(.cv-band)) .cover-center,
+  .print-cover:not(:has(.cv-band)) .cover-meta {
+    display: flex !important;
   }
-  .lede-section h1 { font-size: 22pt !important; line-height: 1.05 !important; }
-  .lede-section .lede { font-size: 10.5pt !important; line-height: 1.45 !important; }
-  .lede-section .eyebrow { font-size: 7.5pt !important; }
 
-  /* ─────── Intro print ─────── */
-  .intro {
-    background: #fff !important;
-    border: none !important;
+  /* ════════════════════════════════════════════════════════════════
+     3 · PAGES D'OUVERTURE DE SECTION — numéro géant + titre grand
+     ════════════════════════════════════════════════════════════════ */
+  .print-opener {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 245mm;
+    page-break-before: always;
+    page-break-after: always;
+    break-before: page;
+    break-after: page;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+  .print-opener .po-num {
+    display: block;
+    font-family: 'Altform', sans-serif;
+    font-size: 140pt;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: #EEE;
+    line-height: 1;
+    margin: 0;
+    text-align: left;
+  }
+  .print-opener .po-title {
+    display: block;
+    font-family: 'Altform', sans-serif;
+    font-size: 44pt;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #1B1B1B;
+    line-height: 1.05;
+    margin: -40pt 0 0 0;
+    text-align: left;
+  }
+  .print-opener .po-sub {
+    display: block;
+    font-family: 'Altform', sans-serif;
+    font-size: 12pt;
+    font-weight: 400;
+    font-style: italic;
+    color: #666;
+    margin: 20pt 0 0 0;
+    text-align: left;
+    letter-spacing: 0.01em;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     4 · SECTION L'AGENCE — typographique, sans image hero
+     ════════════════════════════════════════════════════════════════ */
+  #agence { page-break-before: auto !important; }
+
+  .agence-opener,
+  .agence-body,
+  .agence-quote,
+  .agence-stats,
+  .agence-domains,
+  .agence-distinctions,
+  .agence-volumeabc-wrap {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 22pt !important;
+  }
+
+  .agence-opener {
     padding: 0 !important;
-    margin-bottom: 8mm;
+    margin: 0 0 24pt 0 !important;
   }
-  .intro h2 { font-size: 16pt !important; line-height: 1.1 !important; margin-bottom: 5mm !important; }
-  .intro p { font-size: 10pt !important; line-height: 1.5 !important; margin-bottom: 0.9em !important; }
-  .intro p.lead { font-size: 11.5pt !important; line-height: 1.45 !important; }
-  .intro .section-eyebrow { font-size: 7.5pt !important; margin-bottom: 4mm !important; }
-
-  /* ─────── Section openers ─────── */
-  .section-opener {
-    padding: 0 0 6mm 0 !important;
-    page-break-after: avoid;
-  }
-  .section-opener .chapter {
+  .agence-opener .chapter {
+    font-family: 'Altform', sans-serif !important;
     font-size: 8pt !important;
-    margin-bottom: 4mm !important;
-    padding-bottom: 2mm !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: #888 !important;
+    border: none !important;
+    padding: 0 0 6pt 0 !important;
+    margin: 0 0 8pt 0 !important;
+    display: block;
     min-width: 0 !important;
   }
-  .section-opener h2 { font-size: 20pt !important; line-height: 1.1 !important; margin-bottom: 4mm !important; }
-  .section-opener .section-lede { font-size: 10pt !important; line-height: 1.45 !important; }
-
-  /* Section II : nouvelle page */
-  #section-auditoriums {
-    page-break-before: always;
+  .agence-opener h2 {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 26pt !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.05 !important;
+    color: #1B1B1B !important;
+    margin: 0 0 14pt 0 !important;
+  }
+  .agence-manifesto {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 13pt !important;
+    font-weight: 300 !important;
+    line-height: 1.4 !important;
+    color: #1B1B1B !important;
+    letter-spacing: -0.005em !important;
+    margin: 0 !important;
   }
 
-  .subsection-head {
-    padding: 6mm 0 3mm 0 !important;
-    border-top: 1px solid #000 !important;
-    page-break-after: avoid;
-    grid-template-columns: 1fr auto;
-    gap: 8mm;
+  .agence-body-inner p {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 10pt !important;
+    font-weight: 400 !important;
+    line-height: 1.55 !important;
+    color: #1B1B1B !important;
+    margin: 0 0 0.9em !important;
+    text-align: justify;
+    hyphens: auto;
   }
-  .subsection-head h3 { font-size: 12pt !important; }
+  .agence-body-inner p em { font-style: italic; }
+  .agence-body-inner p strong { font-weight: 500; }
 
-  /* ─────── Fiche projet print ─────── */
-  .fiche {
-    padding: 6mm 0 !important;
-    border-top: 1px solid rgba(0,0,0,0.15) !important;
-    page-break-inside: avoid;
-    break-inside: avoid;
+  /* Citation Clémence Bechu — traitement éditorial fort */
+  .agence-quote {
+    padding: 14pt 0 14pt 16mm !important;
+    margin: 24pt 0 24pt 0 !important;
+    border-left: 2pt solid #1B1B1B !important;
+    background: transparent !important;
   }
-  .fiche-head {
-    grid-template-columns: 1fr 1fr;
-    gap: 10mm !important;
-    margin-bottom: 5mm !important;
-    page-break-after: avoid;
+  .agence-quote blockquote {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 14pt !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    line-height: 1.4 !important;
+    color: #1B1B1B !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
   }
-  .fiche-head-left h4 { font-size: 14pt !important; line-height: 1.1 !important; }
-  .fiche-head-left .fiche-num { font-size: 7.5pt !important; margin-bottom: 3mm !important; }
-  .fiche-head-left .subtitle { font-size: 9pt !important; }
-
-  .fiche-facts { max-width: 100% !important; margin-left: 0; }
-  .fiche-facts .row {
-    padding: 1.6mm 0 !important;
-    grid-template-columns: 30mm 1fr;
-    gap: 6mm;
+  .agence-quote .attribution {
+    display: block;
+    font-family: 'Altform', sans-serif !important;
     font-size: 9pt !important;
-    line-height: 1.3;
-    border-bottom-color: rgba(0,0,0,0.12) !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: #888 !important;
+    text-align: right;
+    margin: 12pt 0 0 0 !important;
   }
-  .fiche-facts .row:first-child { border-top-color: rgba(0,0,0,0.12) !important; }
-  .fiche-facts dt { font-size: 7pt !important; letter-spacing: 0.15em !important; }
-  .fiche-facts dd { font-size: 9pt !important; }
 
-  .fiche-images {
-    gap: 4mm !important;
-    margin-bottom: 4mm !important;
+  /* Chiffres-clés */
+  .agence-stats {
+    padding: 8pt 0 !important;
+    margin: 22pt 0 !important;
+    border-top: 0.5pt solid #BBB;
+    border-bottom: 0.5pt solid #BBB;
   }
-  /* Forcer la visibilité des images : l'IntersectionObserver ne s'exécute
-     pas pour les éléments hors viewport lors d'un print, donc on neutralise
-     l'opacité/transform du reveal. */
-  .ref-img.filled,
-  .ref-img.filled.is-in,
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+  .agence-stats__grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0 !important;
   }
-  .ref-img.filled img { display: block !important; }
-  .ref-img img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .ref-img .img-placeholder {
-    background: #fafafa !important;
-    border-color: rgba(0,0,0,0.1) !important;
-    color: rgba(0,0,0,0.35) !important;
+  .agence-stats__cell {
+    padding: 10pt 6mm !important;
+    border: none !important;
+    border-right: 0.25pt solid #DDD !important;
+    text-align: left;
+  }
+  .agence-stats__cell:last-child { border-right: none !important; }
+  .agence-stats__num {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 36pt !important;
+    font-weight: 700 !important;
+    color: #1B1B1B !important;
+    line-height: 1 !important;
+    letter-spacing: -0.03em;
+    display: block;
+    margin: 0 0 6pt 0 !important;
+  }
+  .agence-stats__label {
+    font-family: 'Altform', sans-serif !important;
     font-size: 8pt !important;
-  }
-  .ref-img figcaption {
-    font-size: 7pt !important;
-    margin-top: 1.5mm !important;
-    color: rgba(0,0,0,0.5) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #888 !important;
+    display: block;
+    line-height: 1.3;
   }
 
-  .fiche-body { max-width: 100% !important; }
-  .fiche-body p {
+  /* Domaines + Distinctions */
+  .agence-domains,
+  .agence-distinctions {
+    padding: 0 !important;
+    margin: 22pt 0 !important;
+  }
+  .agence-domains h3,
+  .agence-distinctions h3,
+  .agence-volumeabc h3,
+  .agence-volumeabc h5 {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 8pt !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: #888 !important;
+    margin: 0 0 10pt 0 !important;
+    padding: 0 0 6pt 0 !important;
+    border-bottom: 0.5pt solid #BBB;
+  }
+  .agence-domains__list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 6mm !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .agence-domains__list li {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 10pt !important;
+    font-weight: 400 !important;
+    color: #1B1B1B !important;
+    padding: 5pt 0 !important;
+    border-bottom: 0.25pt solid #EEE !important;
+    line-height: 1.3 !important;
+  }
+  .agence-domains__list li em { font-style: italic; color: #888; }
+
+  .agence-distinctions__list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .agence-distinctions__list li {
+    display: grid !important;
+    grid-template-columns: 18mm 1fr !important;
+    column-gap: 6mm !important;
+    padding: 5pt 0 !important;
+    border-bottom: 0.25pt solid #EEE !important;
+    font-family: 'Altform', sans-serif !important;
     font-size: 9.5pt !important;
     line-height: 1.4 !important;
-    margin-bottom: 0.7em !important;
+    color: #1B1B1B !important;
+  }
+  .agence-distinctions__year {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 7.5pt !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.1em !important;
+    color: #888 !important;
+    padding-top: 1pt;
+  }
+  .agence-distinctions__body strong { font-weight: 500; color: #1B1B1B; }
+  .agence-distinctions__body .ctx { color: #666; }
+
+  /* Encart Volume ABC */
+  .agence-volumeabc-wrap {
+    background: #F5F4F1 !important;
+    padding: 16mm !important;
+    margin: 22pt 0 0 0 !important;
+    position: relative;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .agence-volumeabc-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px;
+    height: 1pt;
+    background: #1B1B1B;
+  }
+  .agence-volumeabc {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10mm !important;
+    padding: 0 !important;
+  }
+  .agence-volumeabc h4 {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 16pt !important;
+    font-weight: 700 !important;
+    color: #1B1B1B !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+    margin: 0 0 10pt 0 !important;
+  }
+  .agence-volumeabc h4 em { font-style: italic; font-weight: 300; color: #666; }
+  .agence-volumeabc p {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 9.5pt !important;
+    line-height: 1.5 !important;
+    color: #1B1B1B !important;
+    margin: 0 0 0.8em 0 !important;
+    text-align: justify;
+    hyphens: auto;
+  }
+  .agence-volumeabc__refs ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .agence-volumeabc__refs li {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 9pt !important;
+    padding: 4pt 0 !important;
+    border-bottom: 0.25pt solid #DDD !important;
+    color: #1B1B1B !important;
+    line-height: 1.3 !important;
+  }
+  .agence-volumeabc__refs li strong { font-weight: 500; }
+  .agence-volumeabc__refs li .meta {
+    display: block;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 2pt;
+    font-style: italic;
+  }
+  .agence-volumeabc__foot {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 7pt !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    color: #888 !important;
+    margin-top: 12pt !important;
+    padding-top: 6pt !important;
+    border-top: 0.25pt solid #BBB !important;
+    grid-column: 1 / -1;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     5 · FICHE PROJET — double-page A4 stricte (texte / images)
+     ════════════════════════════════════════════════════════════════ */
+  .fiche {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-after: auto;
+    position: relative;
+  }
+
+  /* Ordre visuel impératif : titre + sous-titre + fiche tech + descriptif
+     sur la page GAUCHE, puis images sur la page DROITE. L'ordre source
+     du HTML place .fiche-images entre .fiche-head et .fiche-body — on le
+     corrige ici sans modifier le HTML. */
+  .fiche > .fiche-head    { order: 1 !important; }
+  .fiche > .fiche-facts   { order: 2 !important; }
+  .fiche > .fiche-body    { order: 3 !important; }
+  .fiche > .fiche-images  { order: 4 !important; }
+
+  /* Bandeau de chapitre courant en tête de page gauche
+     (rendu via ::before / ::after positionnés en absolute) */
+  .fiche::before,
+  .fiche::after {
+    position: absolute;
+    top: -6mm;
+    font-family: 'Altform', sans-serif;
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1B1B1B;
+    line-height: 1;
+  }
+  #section-residences .fiche::before { content: "I. Résidences étudiantes"; left: 0; }
+  #section-auditoriums .fiche::before { content: "II. Auditoriums"; left: 0; }
+  .fiche::after {
+    content: counter(ficheglobal, decimal-leading-zero) " / 23";
+    right: 0;
+    letter-spacing: 0.12em;
+  }
+
+  .fiche {
+    padding-top: 14mm !important;
+    border-top: 0.5pt solid #1B1B1B !important;
+  }
+
+  /* Header : titre + sous-titre (lieu + année) */
+  .fiche-head {
+    display: block !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .fiche-head-left { display: block; }
+  .fiche-head-left .fiche-num { display: none !important; }
+
+  .fiche-head-left h4 {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 22pt !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+    color: #1B1B1B !important;
+    margin: 0 0 4pt 0 !important;
+  }
+  .fiche-head-left h4 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #1B1B1B;
+  }
+  .fiche-head-left .subtitle {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 10pt !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    color: #666 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 16mm 0 !important;
+  }
+
+  /* Bloc fiche technique */
+  .fiche-facts {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 0 14mm 0 !important;
+    padding: 12pt 0 !important;
+    border-top: 0.25pt solid #BBB !important;
+    border-bottom: 0.25pt solid #BBB !important;
+  }
+  .fiche-facts .row {
+    display: grid !important;
+    grid-template-columns: 38mm 1fr !important;
+    gap: 6mm !important;
+    padding: 2.5pt 0 !important;
+    border: none !important;
+    align-items: baseline;
+  }
+  .fiche-facts dt {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 7.5pt !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #999 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .fiche-facts dd {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 9pt !important;
+    font-weight: 400 !important;
+    color: #1B1B1B !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Descriptif */
+  .fiche-body {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .fiche-body p {
+    font-family: 'Altform', sans-serif !important;
+    font-size: 9.5pt !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #1B1B1B !important;
+    margin: 0 0 0.7em 0 !important;
+    text-align: justify;
+    hyphens: auto;
     orphans: 3;
     widows: 3;
   }
-  .fiche-body p.kicker { font-size: 10.5pt !important; line-height: 1.4 !important; }
+  .fiche-body p:last-child { margin-bottom: 0 !important; }
+  .fiche-body p.kicker {
+    font-size: 10.5pt !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    color: #1B1B1B !important;
+    margin: 0 0 0.9em 0 !important;
+    letter-spacing: -0.005em;
+  }
+  .fiche-body p strong { font-weight: 500; color: #1B1B1B; }
+  .fiche-body p em { font-style: italic; color: #1B1B1B; }
 
-  /* Pied de page document */
-  .page-foot { display: none !important; }
+  /* Filet de sécurité anti-débordement : descriptifs > 250 mots */
+  .fiche-body.descriptif-dense p {
+    font-size: 9pt !important;
+    line-height: 1.45 !important;
+  }
+  .fiche-body.descriptif-dense p.kicker {
+    font-size: 10pt !important;
+    line-height: 1.35 !important;
+  }
 
-  /* Liens : neutralisés */
-  a { color: #000 !important; text-decoration: none !important; }
-  a[href]::after { content: ""; }
+  /* ───────── PAGE DROITE : bandeau + 2 images empilées ───────── */
+  .fiche-images {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 14mm 0 0 0 !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border-top: 0.5pt solid #1B1B1B !important;
+    position: relative;
+  }
+  /* Bandeau de page droite : chapitre à gauche, nom court projet à droite */
+  .fiche-images::before,
+  .fiche-images::after {
+    position: absolute;
+    top: -6mm;
+    font-family: 'Altform', sans-serif;
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1B1B1B;
+    line-height: 1;
+  }
+  #section-residences .fiche .fiche-images::before { content: "I. Résidences étudiantes"; left: 0; }
+  #section-auditoriums .fiche .fiche-images::before { content: "II. Auditoriums"; left: 0; }
+  .fiche-images::after {
+    content: attr(data-short-name);
+    right: 0;
+    letter-spacing: 0.08em;
+    color: #888;
+    text-transform: none;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 8pt;
+  }
+
+  /* Images — 2 empilées avec leur légende sous chacune */
+  .fiche-images > .ref-img {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 16cm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #EEE !important;
+    border: none !important;
+    position: relative;
+    overflow: visible;
+  }
+  /* Hauteurs : 2 images empilées (sans légende), ~105mm chacune.
+     Calcul : zone imprimable A4 = 257mm. padding-top du bandeau = 14mm.
+     2 × 105mm + gap 8mm = 218mm. Total = 232mm → 25mm de marge avant
+     le pied de page : sécurité contre tout débordement. */
+  .fiche-images > .ref-img:nth-child(1) { height: 105mm; margin: 0 auto !important; }
+  .fiche-images > .ref-img:nth-child(2) { height: 105mm; margin: 8mm auto 0 !important; }
+  .fiche-images > .ref-img:nth-child(n+3) { display: none !important; }
+
+  /* Si une seule image : pleine hauteur disponible avec marge de sécurité */
+  .fiche-images > .ref-img:only-child {
+    height: 218mm !important;
+    margin: 0 auto !important;
+  }
+  .fiche-images--single > .ref-img,
+  .fiche-images--small > .ref-img { max-width: 16cm !important; }
+
+  .fiche-images .ref-img img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .fiche-images .ref-img .img-placeholder {
+    background: #EEE !important;
+    border: 0.25pt solid #DDD !important;
+    color: #BBB !important;
+    font-family: 'Altform', sans-serif !important;
+    font-size: 7.5pt !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .fiche-images .ref-img.filled .img-placeholder { display: none !important; }
+
+  /* Légendes d'images masquées à l'impression — photos sans cartouche */
+  .fiche-images .ref-img figcaption,
+  .ref-img figcaption,
+  figcaption {
+    display: none !important;
+  }
 }
 </style>
 </head>
@@ -1068,7 +1646,7 @@ img { max-width: 100%; display: block; }
 <section class="print-cover" aria-hidden="true">
   <div class="cover-top">
     <div class="cover-logo">
-      <img src="https://bechubacasable.instawp.site/wp-content/uploads/2026/04/logo-behchu-associes-symbole.png" alt="Bechu &amp; Associés">
+      <img src="assets/logo-bechu-symbole.png" alt="Bechu &amp; Associés">
     </div>
     <div class="cover-top__id">
       Bechu &amp; Associés
@@ -1113,7 +1691,7 @@ img { max-width: 100%; display: block; }
        ========================================================= -->
   <header class="top-band">
     <div class="top-band__logo">
-      <img src="https://bechubacasable.instawp.site/wp-content/uploads/2026/04/logo-behchu-associes-symbole.png" alt="Bechu &amp; Associés">
+      <img src="assets/logo-bechu-symbole.png" alt="Bechu &amp; Associés">
     </div>
     <div class="top-band__identity">
       <div class="top-band__primary">
@@ -1136,7 +1714,7 @@ img { max-width: 100%; display: block; }
       <span class="eyebrow">Note sectorielle · 2026</span>
       <h1 data-reveal>Résidences étudiantes<br>et <em>auditoriums.</em></h1>
     </div>
-    <p class="lede" data-reveal>Une longue pratique sur deux typologies souvent croisées. Neuf résidences étudiantes, quatorze auditoriums — en France et à l'international, depuis le campus CELAP de Pudong jusqu'aux Tours Mercuriales de Bagnolet.</p>
+    <p class="lede" data-reveal>Une longue de pratique sur deux typologies souvent croisées. Neuf résidences étudiantes, quatorze auditoriums — en France et à l'international, depuis le campus CELAP de Pudong jusqu'aux Tours Mercuriales de Bagnolet.</p>
   </section>
 
   <!-- =========================================================
@@ -1158,7 +1736,7 @@ img { max-width: 100%; display: block; }
     <ul class="mininav__list">
       <li><span class="label">Sommaire</span></li>
       <li class="mininav__item" data-target="agence"><a href="#agence"><span class="mininav__num">00</span><span>L'agence</span></a></li>
-      <li class="mininav__item" data-target="intro"><a href="#intro"><span class="mininav__num">01</span><span>Introduction</span></a></li>
+      <li class="mininav__item" data-target="intro"><a href="#intro"><span class="mininav__num">01</span><span>Liminaire</span></a></li>
       <li class="mininav__item" data-target="section-residences"><a href="#section-residences"><span class="mininav__num">02</span><span>Résidences étudiantes</span></a></li>
       <li class="mininav__item" data-target="res-livres"><a href="#res-livres"><span class="mininav__num">—</span><span>Projets livrés</span></a></li>
       <li class="mininav__item" data-target="res-encours"><a href="#res-encours"><span class="mininav__num">—</span><span>En cours</span></a></li>
@@ -1572,6 +2150,13 @@ img { max-width: 100%; display: block; }
   }
   </style>
 
+  <!-- Page d'ouverture (impression uniquement) — « 0. L'agence. » -->
+  <section class="print-opener" aria-hidden="true">
+    <span class="po-num">0</span>
+    <h2 class="po-title">L'agence.</h2>
+    <span class="po-sub">Présentation</span>
+  </section>
+
   <section id="agence">
 
     <!-- Titre + manifeste -->
@@ -1666,7 +2251,7 @@ img { max-width: 100%; display: block; }
         <div class="agence-volumeabc__text">
           <h3>Entité sœur</h3>
           <h4>Volume ABC <em>— architecture d'intérieur &amp; design.</em></h4>
-          <p>Volume ABC est notre agence d'architecture d'intérieur partenaire, dirigée par Aliénor Bechu, diplômée de l'École Camondo. L'agence intervient en pleine complémentarité avec Bechu &amp; Associés sur les projets mixtes — sièges tertiaires, équipements culturels, hôtellerie, résidences premium — permettant ainsi de maîtriser les deux échelles, architecture et intérieur, au sein d'une même conduite de projet.</p>
+          <p>Volume ABC est notre agence d'architecture d'intérieur partenaire, dirigée par Aliénor Bechu, diplômée de l'École Camondo. L'agence intervient en pleine complémentarité avec  Bechu &amp; Associés sur les projets mixtes — sièges tertiaires, équipements culturels, hôtellerie, résidences premium — et permet de maîtriser les deux échelles, architecture et intérieur, au sein d'une même conduite de projet.</p>
           <p>Aliénor est entourée de ses deux associés expérimentés, Donald Bovy et Geneviève Pernin.</p>
         </div>
         <div class="agence-volumeabc__refs">
@@ -1678,7 +2263,7 @@ img { max-width: 100%; display: block; }
             <li><strong>Résidence Altiplano Toulouse</strong><span class="meta">Co-living premium (Greystar)</span></li>
           </ul>
         </div>
-        <div class="agence-volumeabc__foot">VOLUMEABC.FR</div>
+        <div class="agence-volumeabc__foot">VOLUMEABC.COM</div>
       </div>
     </div>
 
@@ -1690,7 +2275,7 @@ img { max-width: 100%; display: block; }
        ========================================================= -->
   <section class="intro" id="intro">
     <div class="intro-inner">
-      <span class="section-eyebrow" data-reveal>Introduction</span>
+      <span class="section-eyebrow" data-reveal>Liminaire</span>
       <h2 data-reveal>Deux typologies <em>souvent croisées.</em></h2>
 
       <p class="lead" data-reveal>Bechu &amp; Associés et Volume ABC interviennent sur les programmes de résidences étudiantes et d'auditoriums depuis de nombreuses années, en France et à l'international — deux typologies souvent croisées dans nos opérations mixtes (campus, hôtellerie, sièges sociaux, équipements culturels).</p>
@@ -1735,6 +2320,13 @@ img { max-width: 100%; display: block; }
        SECTION I — RÉSIDENCES ÉTUDIANTES
        =====================================================
        ========================================================= -->
+  <!-- Page d'ouverture (impression uniquement) — « I. Résidences étudiantes. » -->
+  <section class="print-opener" aria-hidden="true">
+    <span class="po-num">I</span>
+    <h2 class="po-title">Résidences étudiantes.</h2>
+    <span class="po-sub">Neuf références — France et international</span>
+  </section>
+
   <section id="section-residences">
 
     <header class="section-opener">
@@ -1771,7 +2363,7 @@ img { max-width: 100%; display: block; }
         <figure class="ref-img filled" data-id="IMG-RES-01-A">
           <div class="img-placeholder">IMG-RES-01-A</div>
           <img alt="CELAP Pudong — vue du campus" data-placeholder="IMG-RES-01-A" src="https://bechubacasable.instawp.site/wp-content/uploads/2026/05/Bechu-Associes-Campus-CELAP-Photographie-Fernando-Javier-Urquijo-Main.jpg">
-          <figcaption>CELAP Pudong — vue du campus (table de peintre laquée rouge, 300 m)</figcaption>
+          <figcaption>CELAP Pudong — vue du campus (table de peintre laquée rouge, 300 m)</figcaption>
         </figure>
         <figure class="ref-img filled" data-id="IMG-RES-01-B">
           <div class="img-placeholder">IMG-RES-01-B</div>
@@ -1795,10 +2387,10 @@ img { max-width: 100%; display: block; }
           <p class="subtitle">Résidence étudiante intégrée à un ensemble urbain mixte XXL, certifié THPE&nbsp;+ BBC Effinergie.</p>
         </div>
         <dl class="fiche-facts">
-          <div class="row"><dt>Lieu</dt><dd>Heyritz, 67100 Strasbourg </dd></div>
+          <div class="row"><dt>Lieu</dt><dd>Heyritz, 67100 Strasbourg </dd></div>
           <div class="row"><dt>Client / MOA</dt><dd>Nexity Georges V — gestion résidence&nbsp;: MACSF puis Twenty Campus</dd></div>
-          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés 
- Paysagiste : Villes &amp; Paysages / Thierry Muller</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés 
+ Paysagiste : Villes &amp; Paysages / Thierry Muller</dd></div>
           <div class="row"><dt>Année</dt><dd>2013 — résidence ouverte septembre 2013</dd></div>
           <div class="row"><dt>Surface</dt><dd>Ensemble Bechu&nbsp;: 28&nbsp;783&nbsp;m² SDP (40&nbsp;192&nbsp;m² toutes surfaces) · Résidence&nbsp;: 8&nbsp;000&nbsp;m²</dd></div>
           <div class="row"><dt>Programme</dt><dd>280-282 studios étudiants + hôtel 3* Holiday Inn Express 147 chambres + 209 logements + commerces + 514 places de parking</dd></div>
@@ -1833,9 +2425,9 @@ img { max-width: 100%; display: block; }
           <p class="subtitle">Précurseur de la reconversion tertiaire-résidentiel — 2014, six ans avant la généralisation post-Covid.</p>
         </div>
         <dl class="fiche-facts">
-          <div class="row"><dt>Lieu</dt><dd>76-84 rue Lecourbe, 75015 Paris </dd></div>
+          <div class="row"><dt>Lieu</dt><dd>76-84 rue Lecourbe, 75015 Paris </dd></div>
           <div class="row"><dt>Client / MOA</dt><dd>Gecina (GEC7) — exploitant&nbsp;: Campuséa → YouFirst Campus → YUGO Paris Lecourbe</dd></div>
-          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés 
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés 
 bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></div>
           <div class="row"><dt>Année</dt><dd>2014 — mission DIAG-PRO-DET-AOR</dd></div>
           <div class="row"><dt>Surface</dt><dd>4&nbsp;800&nbsp;m² (6&nbsp;054&nbsp;m² avant réhabilitation)</dd></div>
@@ -1949,7 +2541,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
           <div class="row"><dt>Client / MOA</dt><dd>Eiffage</dd></div>
           <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés (mandataire, urbaniste et coordinateur) · ACMH&nbsp;: Alain-Charles Perrot &amp; Florent Richard · Locaux&nbsp;: Chambaud, Studio Mustard, Archigroup</dd></div>
           <div class="row"><dt>Année</dt><dd>2022 — inauguré le 6 mai 2022</dd></div>
-          <div class="row"><dt>Surface</dt><dd>85 000 m² au total · Écoquartier : 53 388 m² · 1 résidence universitaire (Bât. G)</dd></div>
+          <div class="row"><dt>Surface</dt><dd>85 000 m² au total · Écoquartier : 53 388 m² · 1 résidence universitaire (Bât. G)</dd></div>
           <div class="row"><dt>Programme</dt><dd>CIGV + cinémas Pathé + Hilton 4* + commerces gastronomie + Écoquartier (2 résidences séniors, 1 universitaire, 1 tourisme, 4 accession, 3 sociaux)</dd></div>
         </dl>
       </header>
@@ -1969,7 +2561,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
 
       <div class="fiche-body">
         <p class="kicker">Première Cité de la gastronomie française du réseau de quatre (Lyon, Paris-Rungis, Tours, Dijon) — un million de visiteurs par an visés.</p>
-        <p>Programme XXL : CIGV (31 612 m², dont 12 850 m² patrimoniaux réhabilités) avec espaces d'exposition, école hôtelière Ferrandi, Espace 1204 (CIAP), deux cinémas Pathé (9 salles, 1 200 places), Hôtel Hilton 4* (125 chambres), huit commerces gastronomie, trois restaurants, Village by CA, et écoquartier de 53 388 m² incluant résidences séniors, universitaire, tourisme, accession et sociaux. Logements certifiés NF Habitat HQE, tertiaires BREEAM Very Good (neuf) / Good (ancien). Lien direct avec deux inscriptions UNESCO : Climats du vignoble de Bourgogne (2015) et Repas gastronomique des Français (2010). Concept architectural signature : le « Tunnel / Canon de lumière », bâtiment-sas contemporain articulant patrimoine et architecture contemporaine.</p>
+        <p>Programme XXL : CIGV (31 612 m², dont 12 850 m² patrimoniaux réhabilités) avec espaces d'exposition, école hôtelière Ferrandi, Espace 1204 (CIAP), deux cinémas Pathé (9 salles, 1 200 places), Hôtel Hilton 4* (125 chambres), huit commerces gastronomie, trois restaurants, Village by CA, et écoquartier de 53 388 m² incluant résidences séniors, universitaire, tourisme, accession et sociaux. Logements certifiés NF Habitat HQE, tertiaires BREEAM Very Good (neuf) / Good (ancien). Lien direct avec deux inscriptions UNESCO : Climats du vignoble de Bourgogne (2015) et Repas gastronomique des Français (2010). Concept architectural signature : le « Tunnel / Canon de lumière », bâtiment-sas contemporain articulant patrimoine et architecture contemporaine.</p>
       </div>
     </article>
 
@@ -2066,7 +2658,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
           <div class="row"><dt>Lieu</dt><dd>Lot 9 ZAC Gagarine-Truillot, rue Saint-Just, 94200 Ivry-sur-Seine (Val-de-Marne)</dd></div>
           <div class="row"><dt>Client / MOA</dt><dd>Greystar — exploitée sous l'enseigne Canvas by Greystar</dd></div>
           <div class="row"><dt>Architecte du bâti</dt><dd>Brenac &amp; Gonzalez &amp; Associés</dd></div>
-          <div class="row"><dt>Architecture intérieure</dt><dd>Volume ABC </dd></div>
+          <div class="row"><dt>Architecture intérieure</dt><dd>Volume ABC </dd></div>
           <div class="row"><dt>Année</dt><dd>Inaugurée officiellement le 11 avril 2026</dd></div>
           <div class="row"><dt>Surface</dt><dd>8&nbsp;300&nbsp;m² SDP · 310 à 341 chambres sur 18 étages · 550&nbsp;m² d'espaces communs</dd></div>
           <div class="row"><dt>Programme</dt><dd>Studios 17-26&nbsp;m² + lounge, coworking, salles d'études + rooftop panoramique sur Paris</dd></div>
@@ -2099,6 +2691,13 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
        SECTION II — AUDITORIUMS
        =====================================================
        ========================================================= -->
+  <!-- Page d'ouverture (impression uniquement) — « II. Auditoriums. » -->
+  <section class="print-opener" aria-hidden="true">
+    <span class="po-num">II</span>
+    <h2 class="po-title">Auditoriums.</h2>
+    <span class="po-sub">Quatorze références — France et international</span>
+  </section>
+
   <section id="section-auditoriums">
 
     <header class="section-opener">
@@ -2196,7 +2795,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
         <dl class="fiche-facts">
           <div class="row"><dt>Lieu</dt><dd>Pudong, Shanghai, Chine</dd></div>
           <div class="row"><dt>Client / MOA</dt><dd>Comité Central du PCC / Mairie de Shanghai</dd></div>
-          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecte associé : Tom Sheehan · Intérieurs : Volume ABC</dd></div>
+          <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés · Architecte associé : Tom Sheehan · Intérieurs : Volume ABC</dd></div>
           <div class="row"><dt>Année</dt><dd>2005 — Luban Price 2006</dd></div>
           <div class="row"><dt>Surface</dt><dd>72&nbsp;000&nbsp;m² SDP sur 42 hectares</dd></div>
           <div class="row"><dt>Programme</dt><dd>Auditorium institutionnel intégré au campus universitaire</dd></div>
@@ -2231,7 +2830,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
         </div>
         <dl class="fiche-facts">
           <div class="row"><dt>Lieu</dt><dd>19-25 place Vendôme + rue Cambon + rue des Capucines, 75001 Paris</dd></div>
-          <div class="row"><dt>Client / MOA</dt><dd>Galaxie Vendôme  · promoteur : Vinci Immobilier</dd></div>
+          <div class="row"><dt>Client / MOA</dt><dd>Galaxie Vendôme  · promoteur : Vinci Immobilier</dd></div>
           <div class="row"><dt>Architecte</dt><dd>Bechu &amp; Associés (mandataire) · ACMH&nbsp;: Alain-Charles Perrot · Intérieurs&nbsp;: Volume ABC</dd></div>
           <div class="row"><dt>Année</dt><dd>2007 (1<sup>re</sup> livraison) à 2022 (Castanier)</dd></div>
           <div class="row"><dt>Surface</dt><dd>60&nbsp;000&nbsp;m²</dd></div>
@@ -2474,7 +3073,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
       </div>
 
       <div class="fiche-body">
-        <p>Auditorium au cœur de la « place de village » du siège digital et durable de Canal+. Premier projet réalisé sur le modèle BHEP (Bâtiment Hybride à Économie Positive) labellisé Solar Impulse. Bechu rénove à 30 ans d'intervalle son propre Forum 52 (1992) .</p>
+        <p>Auditorium au cœur de la « place de village » du siège digital et durable de Canal+. Premier projet réalisé sur le modèle BHEP (Bâtiment Hybride à Économie Positive) labellisé Solar Impulse. Bechu rénove à 30 ans d'intervalle son propre Forum 52 (1992) .</p>
       </div>
     </article>
 
@@ -2483,7 +3082,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
       <header class="fiche-head">
         <div class="fiche-head-left">
           <span class="fiche-num">Auditoriums · 11 / 14</span>
-          <h4 data-reveal>123 Grenelle <em>—  auditorium intégré.</em></h4>
+          <h4 data-reveal>123 Grenelle <em>—  auditorium intégré.</em></h4>
           <p class="subtitle">Volume ABC en mission complète conception + exécution sur l'auditorium (136&nbsp;m²).</p>
         </div>
         <dl class="fiche-facts">
@@ -2640,9 +3239,9 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
        ========================================================= -->
   <footer class="page-foot">
     <div class="foot-logo">
-      <img src="https://bechubacasable.instawp.site/wp-content/uploads/2026/05/logo-bechu-associes-complet-avec-marge.png" alt="Bechu &amp; Associés">
+      <img src="assets/logo-complet-noir.png" alt="Bechu &amp; Associés">
     </div>
-    <div class="contact">BECHU &amp; ASSOCIÉS · Architecture et urbanisme — 82 rue Lecourbe, 75015 Paris <a href="mailto:contact@bechuetassocies.com">contact@bechuetassocies.com</a> · +33 (0)1 47 34 97 91</div>
+    <div class="contact">BECHU &amp; ASSOCIÉS · Architecture et urbanisme — 82 rue Lecourbe, 75015 Paris <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e4d41405a4f4d5a6e4c4b4d465b4b5a4f5d5d414d474b5d004d4143">[email&#160;protected]</a> · +33 (0)1 47 34 97 91</div>
     <div class="mention">
       Document de référence<br>
       Usage commercial restreint<br>
@@ -2652,7 +3251,7 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
 
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   (function(){
     function s(img){
       var f=img.closest('.ref-img');if(!f)return;
@@ -2907,6 +3506,78 @@ bâtiment d'origine conçu par l'agence Bechu pour l'INC fin années 1970</dd></
       } catch (e) { /* fallback : laisse "2026" */ }
     });
   })();
+</script>
+<script>
+/* ════════════════════════════════════════════════════════════════════════
+   PRINT — préparation du livret A4
+   1. Réécrit la page de garde pour le rendu print (typographique, gauche)
+   2. Extrait le nom court de chaque fiche pour le bandeau de page droite
+   3. Marque les descriptifs > 250 mots avec .descriptif-dense (filet de
+      sécurité anti-débordement de la double-page)
+   ════════════════════════════════════════════════════════════════════════ */
+(function () {
+  // ── 1 · Remonter la couverture en print ────────────────────────────────
+  var cover = document.querySelector('.print-cover');
+  if (cover && !cover.querySelector('.cv-band')) {
+    cover.insertAdjacentHTML('afterbegin', [
+      '<header class="cv-band">',
+      '  <span class="cv-band__left">Bechu &amp; Associés</span>',
+      '  <span class="cv-band__right">Document de référence — 2026</span>',
+      '</header>',
+      '<main class="cv-center">',
+      '  <span class="cv-eyebrow">I. — II.</span>',
+      '  <div class="cv-title">',
+      '    <span class="cv-line">Résidences<br>étudiantes</span>',
+      '    <span class="cv-amp">&amp;</span>',
+      '    <span class="cv-line">auditoriums.</span>',
+      '  </div>',
+      '  <span class="cv-rule"></span>',
+      '  <p class="cv-sub">Sélection de références — <strong>cent ans de pratique</strong> sur deux typologies souvent croisées. Neuf résidences étudiantes, quatorze auditoriums.</p>',
+      '</main>',
+      '<footer class="cv-foot">',
+      '  <div class="cv-foot__left">82 rue Lecourbe, 75015 Paris<br><span class="cv-email">contact@bechuetassocies.com</span></div>',
+      '  <div class="cv-foot__right">Mai 2026<br><span class="cv-conf">Document confidentiel</span></div>',
+      '</footer>'
+    ].join('\n'));
+  }
+
+  // ── 2 · Nom court de projet pour le bandeau de page droite ──────────────
+  //    Le titre <h4> est de la forme : "CELAP <em>— China Executive…</em>"
+  //    On extrait le texte AVANT le premier <em>.
+  document.querySelectorAll('.fiche').forEach(function (fiche) {
+    var h4 = fiche.querySelector('.fiche-head-left h4');
+    if (h4) {
+      var short = '';
+      for (var i = 0; i < h4.childNodes.length; i++) {
+        var n = h4.childNodes[i];
+        if (n.nodeType === 1 && n.tagName === 'EM') break;
+        short += (n.textContent || '');
+      }
+      short = short.replace(/\s+/g, ' ').replace(/[—–\-·]+\s*$/, '').trim();
+      if (short) fiche.setAttribute('data-short-name', short);
+    }
+
+    // ── 2b · Réorganisation DOM pour l'agencement print double-page ────
+    //    HTML source : head → images → body
+    //    Layout cible : head + body sur page gauche, images sur page droite
+    //    On déplace physiquement .fiche-images en dernière position pour
+    //    que la pagination du moteur d'impression suive l'ordre voulu
+    //    (l'ordre `flex` CSS n'est pas toujours respecté pour les sauts
+    //    de page).
+    var images = fiche.querySelector(':scope > .fiche-images');
+    if (images && images !== fiche.lastElementChild) {
+      fiche.appendChild(images);
+    }
+
+    // ── 3 · Filet de sécurité descriptif dense ──────────────────────────
+    var body = fiche.querySelector('.fiche-body');
+    if (body) {
+      var text = (body.innerText || body.textContent || '').trim();
+      var words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      if (words > 250) body.classList.add('descriptif-dense');
+    }
+  });
+})();
 </script>
 </body>
 </html>
